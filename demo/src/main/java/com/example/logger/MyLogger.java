@@ -3,7 +3,7 @@ package com.example.logger;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class MyLogger  extends Logger{
+public class MyLogger extends Logger {
     protected MyLogger(String name, String resourceBundleName) {
         super(name, resourceBundleName);
     }
@@ -14,7 +14,6 @@ public class MyLogger  extends Logger{
         configureLogger();
     }
 
-
     private static void configureLogger() {
         logger.setLevel(Level.ALL);
         MyHandler.configureHandler(logger);
@@ -23,7 +22,4 @@ public class MyLogger  extends Logger{
     public static Logger getLogger() {
         return logger;
     }
-   
-    
-
 }

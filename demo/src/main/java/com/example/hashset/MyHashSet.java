@@ -10,18 +10,18 @@ public class MyHashSet {
     private static final Logger logger = MyLogger.getLogger();
     Set<Customer> customers;
 
-    public MyHashSet() { 
+    public MyHashSet() {
         logger.entering(getClass().getName(), "MyHashSet");
-        this.customers = new HashSet<>(); 
+        this.customers = new HashSet<>();
     }
 
     public void addCustomer(String name) {
-        logger.entering(getClass().getName(), "addCustomer",new Object[]{name});
+        logger.entering(getClass().getName(), "addCustomer", new Object[] { name });
         long nextId = getNextId();
         Customer e = new Customer(nextId, name);
         customers.add(e);
         logger.fine("Added customer: " + name + " with ID: " + nextId);
-        logger.exiting(getClass().getName(), "addCustomer",e);
+        logger.exiting(getClass().getName(), "addCustomer", e);
     }
 
     private long getNextId() {
@@ -32,11 +32,19 @@ public class MyHashSet {
         return maxId + 1;
     }
 
-    public void removeCustomer(long id) { customers.remove(new Customer(id, ""));}
+    public void removeCustomer(long id) {
+        customers.remove(new Customer(id, ""));
+    }
 
-    public boolean containsCustomer(long id) { return customers.contains(new Customer(id, ""));}
+    public boolean containsCustomer(long id) {
+        return customers.contains(new Customer(id, ""));
+    }
 
-    public int getSize() {return customers.size(); }
+    public int getSize() {
+        return customers.size();
+    }
 
-    public void clearSet() { customers.clear();}
+    public void clearSet() {
+        customers.clear();
+    }
 }

@@ -24,6 +24,6 @@ public class MyFormatter extends Formatter {
             ((ObjectNode) jsonNode).put("targetId", System.identityHashCode(params[0]));
         }
         return jsonNode.toString() + System.lineSeparator();
-        //return jsonNode.toPrettyString() + System.lineSeparator();
+        // return jsonNode.toPrettyString() + System.lineSeparator();
     }
 }
