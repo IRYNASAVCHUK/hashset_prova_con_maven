@@ -3,7 +3,7 @@ package com.example.hashset;
 import java.util.logging.Logger;
 import com.example.logger.MyLogger;
 
-class Customer {
+public class Customer {
     private static final Logger logger = MyLogger.getLogger();
     private long id;
     private String name;
@@ -47,6 +47,6 @@ class Customer {
 
     @Override
     public String toString() {
-        return "\nCustomer{" + "id=" + id + ", name='" + name + '\'' + '}';
+        return "Customer{" + "id=" + id + ", name='" + name + '\'' + '}';
     }
 }

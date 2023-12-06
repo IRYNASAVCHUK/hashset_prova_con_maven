@@ -3,6 +3,7 @@ package com.example.hashset;
 public class Main {
 
     public static void main(String[] args) {
+        
         final MyHashSet example = new MyHashSet();
 
         example.addCustomer("Rajeev");
