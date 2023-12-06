@@ -20,7 +20,6 @@ public class MyHashSet {
         long nextId = getNextId();
         Customer e = new Customer(nextId, name);
         customers.add(e);
-        logger.fine("Added customer: " + name + " with ID: " + nextId);
         logger.exiting(getClass().getName(), "addCustomer", e);
     }
 
