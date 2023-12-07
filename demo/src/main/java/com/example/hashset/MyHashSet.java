@@ -1,7 +1,6 @@
 package com.example.hashset;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 import java.util.logging.Logger;
 
 import com.example.logger.MyLogger;
@@ -13,32 +12,21 @@ public class MyHashSet {
     public MyHashSet() {
         logger.entering(getClass().getName(), "MyHashSet");
         this.customers = new HashSet<>();
-        logger.exiting(getClass().getName(), "MyHashSet");
+        logger.exiting(getClass().getName(), "MyHashSet", this);
     }
 
-    public void addCustomer(String name) {
-        logger.entering(getClass().getName(), "addCustomer", new Object[] { name });
-        long nextId = getNextId();
-        Customer e = new Customer(nextId, name);
-         boolean returnValue =customers.add(e);
-        logger.exiting(getClass().getName(), "addCustomer", returnValue);
-    }
-
-    private long getNextId() {
-        logger.entering(getClass().getName(), "getNextId");
-        long maxId = 0;
-        for (Customer customer : customers) {
-            maxId = Math.max(maxId, customer.getId());
-        }
-        long returnValue = maxId + 1;
-        logger.exiting(getClass().getName(), "getNextId", returnValue);
+    public boolean addCustomer(long id, String name) {
+        logger.entering(getClass().getName(), "addCustomer", new Object[] { id,name });
+        Customer e = new Customer(id, name);
+        boolean returnValue =customers.add(e);
+        logger.exiting(getClass().getName(), "addCustomer", new Object[] { id,name, returnValue });
         return returnValue;
     }
-
-    public void removeCustomer(long id) {
+    public boolean removeCustomer(long id) {
         logger.entering(getClass().getName(), "removeCustomer",new Object[] { id });
         boolean returnValue = customers.remove(new Customer(id, ""));
         logger.exiting(getClass().getName(), "removeCustomer", returnValue);
+        return returnValue;
     }
 
     public boolean containsCustomer(long id) {

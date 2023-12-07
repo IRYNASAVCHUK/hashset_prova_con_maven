@@ -1,216 +1,108 @@
 {
   "event" : "func_pre",
-  "class" : "com.example.hashset.MyHashSet",
-  "method" : "MyHashSet",
-  "fullMethodName" : "com.example.hashset.MyHashSet.MyHashSet"
+  "name" : "com.example.hashset.MyHashSet.MyHashSet"
 }
 {
   "event" : "func_post",
-  "class" : "com.example.hashset.MyHashSet",
-  "method" : "MyHashSet",
-  "fullMethodName" : "com.example.hashset.MyHashSet.MyHashSet"
+  "name" : "com.example.hashset.MyHashSet.MyHashSet",
+  "args" : [ "com.example.hashset.MyHashSet@3e6fa38a" ],
+  "target" : 1047503754
 }
 {
   "event" : "func_pre",
-  "class" : "com.example.hashset.MyHashSet",
-  "method" : "addCustomer",
-  "arguments" : [ "Rajeev" ],
-  "fullMethodName" : "com.example.hashset.MyHashSet.addCustomer"
+  "name" : "com.example.hashset.MyHashSet.addCustomer",
+  "args" : [ "0", "Rajeev" ]
 }
 {
   "event" : "func_pre",
-  "class" : "com.example.hashset.MyHashSet",
-  "method" : "getNextId",
-  "fullMethodName" : "com.example.hashset.MyHashSet.getNextId"
+  "name" : "com.example.hashset.Customer.Customer",
+  "args" : [ "0", "Rajeev" ]
 }
 {
   "event" : "func_post",
-  "class" : "com.example.hashset.MyHashSet",
-  "method" : "getNextId",
-  "arguments" : [ "1" ],
-  "fullMethodName" : "com.example.hashset.MyHashSet.getNextId"
-}
-{
-  "event" : "func_pre",
-  "class" : "com.example.hashset.Customer",
-  "method" : "Customer",
-  "arguments" : [ "1", "Rajeev" ],
-  "fullMethodName" : "com.example.hashset.Customer.Customer"
+  "name" : "com.example.hashset.Customer.Customer",
+  "args" : [ "[com.example.hashset.Customer@0]" ]
 }
 {
   "event" : "func_post",
-  "class" : "com.example.hashset.MyHashSet",
-  "method" : "addCustomer",
-  "arguments" : [ "true" ],
-  "fullMethodName" : "com.example.hashset.MyHashSet.addCustomer"
+  "name" : "com.example.hashset.MyHashSet.addCustomer",
+  "args" : [ "[0, Rajeev, true]" ]
 }
 {
   "event" : "func_pre",
-  "class" : "com.example.hashset.MyHashSet",
-  "method" : "addCustomer",
-  "arguments" : [ "Sachin" ],
-  "fullMethodName" : "com.example.hashset.MyHashSet.addCustomer"
+  "name" : "com.example.hashset.MyHashSet.addCustomer",
+  "args" : [ "0", "Rajeev" ]
 }
 {
   "event" : "func_pre",
-  "class" : "com.example.hashset.MyHashSet",
-  "method" : "getNextId",
-  "fullMethodName" : "com.example.hashset.MyHashSet.getNextId"
+  "name" : "com.example.hashset.Customer.Customer",
+  "args" : [ "0", "Rajeev" ]
 }
 {
   "event" : "func_post",
-  "class" : "com.example.hashset.MyHashSet",
-  "method" : "getNextId",
-  "arguments" : [ "2" ],
-  "fullMethodName" : "com.example.hashset.MyHashSet.getNextId"
-}
-{
-  "event" : "func_pre",
-  "class" : "com.example.hashset.Customer",
-  "method" : "Customer",
-  "arguments" : [ "2", "Sachin" ],
-  "fullMethodName" : "com.example.hashset.Customer.Customer"
+  "name" : "com.example.hashset.Customer.Customer",
+  "args" : [ "[com.example.hashset.Customer@0]" ]
 }
 {
   "event" : "func_post",
-  "class" : "com.example.hashset.MyHashSet",
-  "method" : "addCustomer",
-  "arguments" : [ "true" ],
-  "fullMethodName" : "com.example.hashset.MyHashSet.addCustomer"
+  "name" : "com.example.hashset.MyHashSet.addCustomer",
+  "args" : [ "[0, Rajeev, false]" ]
 }
 {
   "event" : "func_pre",
-  "class" : "com.example.hashset.MyHashSet",
-  "method" : "addCustomer",
-  "arguments" : [ "Chris" ],
-  "fullMethodName" : "com.example.hashset.MyHashSet.addCustomer"
+  "name" : "com.example.hashset.MyHashSet.removeCustomer",
+  "args" : [ "0" ]
 }
 {
   "event" : "func_pre",
-  "class" : "com.example.hashset.MyHashSet",
-  "method" : "getNextId",
-  "fullMethodName" : "com.example.hashset.MyHashSet.getNextId"
+  "name" : "com.example.hashset.Customer.Customer",
+  "args" : [ "0", "" ]
 }
 {
   "event" : "func_post",
-  "class" : "com.example.hashset.MyHashSet",
-  "method" : "getNextId",
-  "arguments" : [ "3" ],
-  "fullMethodName" : "com.example.hashset.MyHashSet.getNextId"
-}
-{
-  "event" : "func_pre",
-  "class" : "com.example.hashset.Customer",
-  "method" : "Customer",
-  "arguments" : [ "3", "Chris" ],
-  "fullMethodName" : "com.example.hashset.Customer.Customer"
+  "name" : "com.example.hashset.Customer.Customer",
+  "args" : [ "[com.example.hashset.Customer@0]" ]
 }
 {
   "event" : "func_post",
-  "class" : "com.example.hashset.MyHashSet",
-  "method" : "addCustomer",
-  "arguments" : [ "true" ],
-  "fullMethodName" : "com.example.hashset.MyHashSet.addCustomer"
+  "name" : "com.example.hashset.MyHashSet.removeCustomer",
+  "args" : [ "false" ]
 }
 {
   "event" : "func_pre",
-  "class" : "com.example.hashset.MyHashSet",
-  "method" : "addCustomer",
-  "arguments" : [ "Rajeev" ],
-  "fullMethodName" : "com.example.hashset.MyHashSet.addCustomer"
+  "name" : "com.example.hashset.MyHashSet.containsCustomer",
+  "args" : [ "2" ]
 }
 {
   "event" : "func_pre",
-  "class" : "com.example.hashset.MyHashSet",
-  "method" : "getNextId",
-  "fullMethodName" : "com.example.hashset.MyHashSet.getNextId"
+  "name" : "com.example.hashset.Customer.Customer",
+  "args" : [ "2", "" ]
 }
 {
   "event" : "func_post",
-  "class" : "com.example.hashset.MyHashSet",
-  "method" : "getNextId",
-  "arguments" : [ "4" ],
-  "fullMethodName" : "com.example.hashset.MyHashSet.getNextId"
-}
-{
-  "event" : "func_pre",
-  "class" : "com.example.hashset.Customer",
-  "method" : "Customer",
-  "arguments" : [ "4", "Rajeev" ],
-  "fullMethodName" : "com.example.hashset.Customer.Customer"
+  "name" : "com.example.hashset.Customer.Customer",
+  "args" : [ "[com.example.hashset.Customer@2]" ]
 }
 {
   "event" : "func_post",
-  "class" : "com.example.hashset.MyHashSet",
-  "method" : "addCustomer",
-  "arguments" : [ "true" ],
-  "fullMethodName" : "com.example.hashset.MyHashSet.addCustomer"
+  "name" : "com.example.hashset.MyHashSet.containsCustomer",
+  "args" : [ "false" ]
 }
 {
   "event" : "func_pre",
-  "class" : "com.example.hashset.MyHashSet",
-  "method" : "removeCustomer",
-  "arguments" : [ "1" ],
-  "fullMethodName" : "com.example.hashset.MyHashSet.removeCustomer"
-}
-{
-  "event" : "func_pre",
-  "class" : "com.example.hashset.Customer",
-  "method" : "Customer",
-  "arguments" : [ "1", "" ],
-  "fullMethodName" : "com.example.hashset.Customer.Customer"
+  "name" : "com.example.hashset.MyHashSet.getSize"
 }
 {
   "event" : "func_post",
-  "class" : "com.example.hashset.MyHashSet",
-  "method" : "removeCustomer",
-  "arguments" : [ "true" ],
-  "fullMethodName" : "com.example.hashset.MyHashSet.removeCustomer"
+  "name" : "com.example.hashset.MyHashSet.getSize",
+  "args" : [ "1" ]
 }
 {
   "event" : "func_pre",
-  "class" : "com.example.hashset.MyHashSet",
-  "method" : "containsCustomer",
-  "arguments" : [ "2" ],
-  "fullMethodName" : "com.example.hashset.MyHashSet.containsCustomer"
-}
-{
-  "event" : "func_pre",
-  "class" : "com.example.hashset.Customer",
-  "method" : "Customer",
-  "arguments" : [ "2", "" ],
-  "fullMethodName" : "com.example.hashset.Customer.Customer"
+  "name" : "com.example.hashset.MyHashSet.clearSet"
 }
 {
   "event" : "func_post",
-  "class" : "com.example.hashset.MyHashSet",
-  "method" : "containsCustomer",
-  "arguments" : [ "true" ],
-  "fullMethodName" : "com.example.hashset.MyHashSet.containsCustomer"
-}
-{
-  "event" : "func_pre",
-  "class" : "com.example.hashset.MyHashSet",
-  "method" : "getSize",
-  "fullMethodName" : "com.example.hashset.MyHashSet.getSize"
-}
-{
-  "event" : "func_post",
-  "class" : "com.example.hashset.MyHashSet",
-  "method" : "getSize",
-  "arguments" : [ "3" ],
-  "fullMethodName" : "com.example.hashset.MyHashSet.getSize"
-}
-{
-  "event" : "func_pre",
-  "class" : "com.example.hashset.MyHashSet",
-  "method" : "clearSet",
-  "fullMethodName" : "com.example.hashset.MyHashSet.clearSet"
-}
-{
-  "event" : "func_post",
-  "class" : "com.example.hashset.MyHashSet",
-  "method" : "clearSet",
-  "arguments" : [ "false" ],
-  "fullMethodName" : "com.example.hashset.MyHashSet.clearSet"
+  "name" : "com.example.hashset.MyHashSet.clearSet",
+  "args" : [ "false" ]
 }

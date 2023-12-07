@@ -1,10 +1,7 @@
 package com.example.logger;
 
 import java.io.IOException;
-import java.util.logging.FileHandler;
-import java.util.logging.Handler;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.logging.*;
 
 public class MyHandler extends FileHandler {
     public MyHandler() throws IOException, SecurityException {

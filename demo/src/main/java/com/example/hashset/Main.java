@@ -6,16 +6,16 @@ public class Main {
         
         final MyHashSet example = new MyHashSet();
 
-        example.addCustomer("Rajeev");
-        example.addCustomer("Sachin");
-        example.addCustomer("Chris");
+        example.addCustomer(0,"Rajeev");
+       // example.addCustomer(1,"Sachin");
+       // example.addCustomer(2,"Chris");
 
-        example.addCustomer("Rajeev");
+        example.addCustomer(0,"Rajeev");
 
         System.out.println("\nCustomers: " + example.customers + "\n");
 
-        example.removeCustomer(1);
-        System.out.println("\nCustomers after removing customer with ID 1: " + example.customers + "\n");
+        example.removeCustomer(0);
+        System.out.println("\nCustomers after removing customer with ID 0: " + example.customers + "\n");
 
         System.out.println("\nContains customer with ID 2: " + example.containsCustomer(2));
 

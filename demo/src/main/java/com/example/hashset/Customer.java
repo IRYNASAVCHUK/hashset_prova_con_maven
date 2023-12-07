@@ -12,6 +12,7 @@ public class Customer {
         logger.entering(getClass().getName(), "Customer", new Object[] { id, name });
         this.id = id;
         this.name = name;
+        logger.exiting(getClass().getName(), "Customer", new Object[] { this });
     }
 
     public long getId() {
@@ -37,7 +38,7 @@ public class Customer {
         if (o == null || getClass() != o.getClass())
             return false;
         Customer customer = (Customer) o;
-        return id == customer.id;
+        return id == customer.id&&name==customer.name;
     }
 
     @Override
@@ -45,8 +46,4 @@ public class Customer {
         return Long.hashCode(id);
     }
 
-    @Override
-    public String toString() {
-        return "Customer{ id=" + id + ", name='" + name + "\'}";
-    }
 }
