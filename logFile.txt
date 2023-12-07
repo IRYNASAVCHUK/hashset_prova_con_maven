@@ -1,9 +1,27 @@
 {
   "event" : "func_pre",
   "class" : "com.example.hashset.MyHashSet",
+  "method" : "MyHashSet",
+  "fullMethodName" : "com.example.hashset.MyHashSet.MyHashSet"
+}
+{
+  "event" : "func_post",
+  "class" : "com.example.hashset.MyHashSet",
+  "method" : "MyHashSet",
+  "fullMethodName" : "com.example.hashset.MyHashSet.MyHashSet"
+}
+{
+  "event" : "func_pre",
+  "class" : "com.example.hashset.MyHashSet",
   "method" : "addCustomer",
   "arguments" : [ "Rajeev" ],
   "fullMethodName" : "com.example.hashset.MyHashSet.addCustomer"
+}
+{
+  "event" : "func_pre",
+  "class" : "com.example.hashset.MyHashSet",
+  "method" : "getNextId",
+  "fullMethodName" : "com.example.hashset.MyHashSet.getNextId"
 }
 {
   "event" : "func_post",
@@ -34,6 +52,12 @@
   "fullMethodName" : "com.example.hashset.MyHashSet.addCustomer"
 }
 {
+  "event" : "func_pre",
+  "class" : "com.example.hashset.MyHashSet",
+  "method" : "getNextId",
+  "fullMethodName" : "com.example.hashset.MyHashSet.getNextId"
+}
+{
   "event" : "func_post",
   "class" : "com.example.hashset.MyHashSet",
   "method" : "getNextId",
@@ -62,6 +86,12 @@
   "fullMethodName" : "com.example.hashset.MyHashSet.addCustomer"
 }
 {
+  "event" : "func_pre",
+  "class" : "com.example.hashset.MyHashSet",
+  "method" : "getNextId",
+  "fullMethodName" : "com.example.hashset.MyHashSet.getNextId"
+}
+{
   "event" : "func_post",
   "class" : "com.example.hashset.MyHashSet",
   "method" : "getNextId",
@@ -88,6 +118,12 @@
   "method" : "addCustomer",
   "arguments" : [ "Rajeev" ],
   "fullMethodName" : "com.example.hashset.MyHashSet.addCustomer"
+}
+{
+  "event" : "func_pre",
+  "class" : "com.example.hashset.MyHashSet",
+  "method" : "getNextId",
+  "fullMethodName" : "com.example.hashset.MyHashSet.getNextId"
 }
 {
   "event" : "func_post",
@@ -153,11 +189,23 @@
   "fullMethodName" : "com.example.hashset.MyHashSet.containsCustomer"
 }
 {
+  "event" : "func_pre",
+  "class" : "com.example.hashset.MyHashSet",
+  "method" : "getSize",
+  "fullMethodName" : "com.example.hashset.MyHashSet.getSize"
+}
+{
   "event" : "func_post",
   "class" : "com.example.hashset.MyHashSet",
   "method" : "getSize",
   "arguments" : [ "3" ],
   "fullMethodName" : "com.example.hashset.MyHashSet.getSize"
+}
+{
+  "event" : "func_pre",
+  "class" : "com.example.hashset.MyHashSet",
+  "method" : "clearSet",
+  "fullMethodName" : "com.example.hashset.MyHashSet.clearSet"
 }
 {
   "event" : "func_post",

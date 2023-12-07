@@ -12,16 +12,16 @@ public class Main {
 
         example.addCustomer("Rajeev");
 
-        System.out.println("Customers: " + example.customers + "\n");
+        System.out.println("\nCustomers: " + example.customers + "\n");
 
         example.removeCustomer(1);
-        System.out.println("Customers after removing customer with ID 1: " + example.customers + "\n");
+        System.out.println("\nCustomers after removing customer with ID 1: " + example.customers + "\n");
 
-        System.out.println("Contains customer with ID 2: " + example.containsCustomer(2));
+        System.out.println("\nContains customer with ID 2: " + example.containsCustomer(2));
 
-        System.out.println("Size of the set: " + example.getSize());
+        System.out.println("\nSize of the set: " + example.getSize());
 
         example.clearSet();
-        System.out.println("Customers after clearing the set: " + example.customers + "\n");
+        System.out.println("\nCustomers after clearing the set: " + example.customers + "\n");
     }
 }
