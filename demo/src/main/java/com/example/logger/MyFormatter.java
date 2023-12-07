@@ -33,9 +33,6 @@ public class MyFormatter extends Formatter {
                 .put("event", event)
                 .put("name", className + "." + methodName);
 
-        if (record.getMessage().contains("RETURN")) {
-            // ((ObjectNode) jsonNode).put("res",returnValue.toString());
-        }
         if (params != null && params.length > 0) {
             for (Object param : params) {
                 if (param instanceof Object[]) {
@@ -45,12 +42,15 @@ public class MyFormatter extends Formatter {
                 }
             }
             ((ObjectNode) jsonNode).set("args", paramsNode);
-            // Aggiungi il target solo se è un oggetto
-            if (params[0] != null && params[0] instanceof Customer || params[0] instanceof MyHashSet) {
+
+            if (params[0] instanceof Customer || params[0] instanceof MyHashSet) {
                 ((ObjectNode) jsonNode).put("target", System.identityHashCode(params[0]));
+            } else {
+                ((ObjectNode) jsonNode).put("target", this != null ? System.identityHashCode(this) : null);
             }
         }
         // return jsonNode.toString() + System.lineSeparator();
         return jsonNode.toPrettyString() + System.lineSeparator();// piu leggibile per debugging
     }
+
 }

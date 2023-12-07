@@ -25,14 +25,14 @@ public class MyHashSet {
     public boolean removeCustomer(long id) {
         logger.entering(getClass().getName(), "removeCustomer",new Object[] { id });
         boolean returnValue = customers.remove(new Customer(id, ""));
-        logger.exiting(getClass().getName(), "removeCustomer", returnValue);
+        logger.exiting(getClass().getName(), "removeCustomer", new Object[] { id, returnValue });
         return returnValue;
     }
 
     public boolean containsCustomer(long id) {
         logger.entering(getClass().getName(), "containsCustomer",new Object[] { id });
         boolean returnValue =customers.contains(new Customer(id, ""));
-        logger.exiting(getClass().getName(), "containsCustomer", returnValue);
+        logger.exiting(getClass().getName(), "containsCustomer", new Object[] { id, returnValue });
         return returnValue;
     }
 
@@ -47,6 +47,6 @@ public class MyHashSet {
     public void clearSet() {
         logger.entering(getClass().getName(), "clearSet");
         customers.clear();
-        logger.exiting(getClass().getName(), "clearSet", customers == null);
+        logger.exiting(getClass().getName(), "clearSet");
     }
 }
