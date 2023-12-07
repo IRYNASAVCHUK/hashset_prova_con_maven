@@ -16,12 +16,13 @@ public class MyHashSet {
     }
 
     public boolean addCustomer(long id, String name) {
-        logger.entering(getClass().getName(), "addCustomer", new Object[] { id,name });
+        logger.entering(getClass().getName(), "addCustomer", new Object[] { id, name });
         Customer e = new Customer(id, name);
         boolean returnValue =customers.add(e);
-        logger.exiting(getClass().getName(), "addCustomer", new Object[] { id,name, returnValue });
+        logger.exiting(getClass().getName(), "addCustomer", new Object[] { id, name, returnValue });
         return returnValue;
     }
+
     public boolean removeCustomer(long id) {
         logger.entering(getClass().getName(), "removeCustomer",new Object[] { id });
         boolean returnValue = customers.remove(new Customer(id, ""));
@@ -48,5 +49,9 @@ public class MyHashSet {
         logger.entering(getClass().getName(), "clearSet");
         customers.clear();
         logger.exiting(getClass().getName(), "clearSet");
+    }
+    @Override
+    public String toString() {
+        return "MyHashSet{" +"customers=" + customers +'}';
     }
 }

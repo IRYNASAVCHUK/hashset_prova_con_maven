@@ -45,12 +45,12 @@ public class MyFormatter extends Formatter {
 
             if (params[0] instanceof Customer || params[0] instanceof MyHashSet) {
                 ((ObjectNode) jsonNode).put("target", System.identityHashCode(params[0]));
-            } else {
-                ((ObjectNode) jsonNode).put("target", this != null ? System.identityHashCode(this) : null);
-            }
+            } 
+        }else{
+            ((ObjectNode) jsonNode).put("args", "null");
         }
-        // return jsonNode.toString() + System.lineSeparator();
-        return jsonNode.toPrettyString() + System.lineSeparator();// piu leggibile per debugging
+        return jsonNode.toString() + System.lineSeparator();
+        //return jsonNode.toPrettyString() + System.lineSeparator();// piu leggibile per debugging
     }
 
 }

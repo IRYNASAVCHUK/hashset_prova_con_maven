@@ -12,7 +12,7 @@ public class Customer {
         logger.entering(getClass().getName(), "Customer", new Object[] { id, name });
         this.id = id;
         this.name = name;
-        logger.exiting(getClass().getName(), "Customer", new Object[] { this });
+        logger.exiting(getClass().getName(), "Customer", this);
     }
 
     public long getId() {
@@ -44,6 +44,10 @@ public class Customer {
     @Override
     public int hashCode() {
         return Long.hashCode(id);
+    }
+     @Override
+    public String toString() {
+        return "id:"+id+" name:"+name;
     }
 
 }

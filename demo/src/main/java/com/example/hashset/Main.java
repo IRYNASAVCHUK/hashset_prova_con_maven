@@ -7,9 +7,8 @@ public class Main {
         final MyHashSet example = new MyHashSet();
 
         example.addCustomer(0,"Rajeev");
-       // example.addCustomer(1,"Sachin");
-       // example.addCustomer(2,"Chris");
-
+        example.addCustomer(1,"Sachin");
+        example.addCustomer(2,"Chris");
         example.addCustomer(0,"Rajeev");
 
         System.out.println("\nCustomers: " + example.customers + "\n");
