@@ -49,8 +49,8 @@ public class MyFormatter extends Formatter {
         }else{
             ((ObjectNode) jsonNode).put("args", "null");
         }
-        return jsonNode.toString() + System.lineSeparator();
-        //return jsonNode.toPrettyString() + System.lineSeparator();// piu leggibile per debugging
+        //return jsonNode.toString() + System.lineSeparator();
+        return jsonNode.toPrettyString() + System.lineSeparator();// piu leggibile per debugging
     }
 
 }

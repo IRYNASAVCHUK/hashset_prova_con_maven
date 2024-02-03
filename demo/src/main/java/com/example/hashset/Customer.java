@@ -14,7 +14,9 @@ public class Customer {
         this.name = name;
         logger.exiting(getClass().getName(), "Customer", this);
     }
-
+    public Customer(long id) {
+        this(id, "");
+    }
     public long getId() {
         return id;
     }
@@ -47,7 +49,7 @@ public class Customer {
     }
      @Override
     public String toString() {
-        return "id:"+id+" name:"+name;
+        return "("+id + " , " + name+")";
     }
 
 }
