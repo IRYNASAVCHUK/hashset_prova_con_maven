@@ -13,50 +13,46 @@ public class MyHashSet {
         logger.entering(getClass().getName(), "MyHashSet");
         this.customers = new HashSet<>();
         logger.exiting(getClass().getName(), "MyHashSet", this);
+
     }
+
     public boolean addCustomer(Customer persone) {
-        logger.entering(getClass().getName(), "addCustomer", new Object[] { persone});
-        boolean returnValue =customers.add(persone);
-        logger.exiting(getClass().getName(), "addCustomer", new Object[] { persone, returnValue });
-        return returnValue;
-    }
-    public boolean addCustomer(long id, String name) {
-        logger.entering(getClass().getName(), "addCustomer", new Object[] { id, name });
-        Customer e = new Customer(id, name);
-        boolean returnValue =customers.add(e);
-        logger.exiting(getClass().getName(), "addCustomer", new Object[] { id, name, returnValue });
+        logger.entering(getClass().getName(), "addCustomer", new Object[] { persone });
+        boolean returnValue = customers.add(persone);
+        logger.exiting(getClass().getName(), "addCustomer", new Object[] { returnValue, persone });
         return returnValue;
     }
 
-    public boolean removeCustomer(long id, String name) {
-        logger.entering(getClass().getName(), "removeCustomer",new Object[] { id });
-        boolean returnValue = customers.remove(new Customer(id, name));
-        logger.exiting(getClass().getName(), "removeCustomer", new Object[] { id, returnValue });
+    public boolean removeCustomer(Customer persone) {
+        logger.entering(getClass().getName(), "removeCustomer", new Object[] { persone });
+        boolean returnValue = customers.remove(persone);
+        logger.exiting(getClass().getName(), "removeCustomer", new Object[] { returnValue, persone });
         return returnValue;
     }
 
-    public boolean containsCustomer(long id,String name) {
-        logger.entering(getClass().getName(), "containsCustomer",new Object[] { id });
-        boolean returnValue =customers.contains(new Customer(id, name));
-        logger.exiting(getClass().getName(), "containsCustomer", new Object[] { id, returnValue });
+    public boolean containsCustomer(Customer persone) {
+        logger.entering(getClass().getName(), "containsCustomer", new Object[] { persone });
+        boolean returnValue = customers.contains(persone);
+        logger.exiting(getClass().getName(), "containsCustomer", new Object[] { returnValue, persone });
         return returnValue;
     }
 
     public int getSize() {
         logger.entering(getClass().getName(), "getSize");
-        int returnValue=customers.size();
+        int returnValue = customers.size();
         logger.exiting(getClass().getName(), "getSize", returnValue);
         return returnValue;
-       
+
     }
 
     public void clearSet() {
         logger.entering(getClass().getName(), "clearSet");
         customers.clear();
-        logger.exiting(getClass().getName(), "clearSet");
+        logger.exiting(getClass().getName(), "clearSet", Void.class);
     }
+
     @Override
     public String toString() {
-        return "MyHashSet{" +"customers=" + customers +'}';
+        return "{" + "customers=" + customers + '}';
     }
 }

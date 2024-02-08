@@ -1,7 +1,5 @@
 package com.example.logger;
 
-import com.example.hashset.*;
-
 import com.fasterxml.jackson.databind.*;
 import com.fasterxml.jackson.databind.node.*;
 
@@ -15,42 +13,76 @@ public class MyFormatter extends Formatter {
 
     @Override
     public String format(LogRecord record) {
-
+        System.out.println("\n***");
         String className = record.getSourceClassName();
         String methodName = record.getSourceMethodName();
         Object[] params = record.getParameters();
 
-        String event = "unknown";
-        if (record.getMessage().contains("ENTRY")) {
+        String event="";
+        if (record.getMessage().contains("ENTRY")) 
             event = "func_pre";
-        } else if (record.getMessage().contains("RETURN")) {
+        if (record.getMessage().contains("RETURN")) 
             event = "func_post";
-        }
 
         ArrayNode paramsNode = JsonNodeFactory.instance.arrayNode();
 
         JsonNode jsonNode = objectMapper.createObjectNode()
-                .put("event", event)
-                .put("name", className + "." + methodName);
+                .put("event", event);
 
         if (params != null && params.length > 0) {
+            int contatore = 0;
             for (Object param : params) {
+                System.out.println(contatore++ +" Param: \t"+param);
                 if (param instanceof Object[]) {
                     paramsNode.add(Arrays.toString((Object[]) param));
                 } else {
                     paramsNode.add(param.toString());
                 }
             }
-            ((ObjectNode) jsonNode).set("args", paramsNode);
+/*
+             * TODO:
+             * - obj == null -> restituisce null
+             * - obj instaceof Class<?> -> restituisce obj.getName()
+             * - altrimenti restituisce System.identityHashCode(obj)
+             */
 
-            if (params[0] instanceof Customer || params[0] instanceof MyHashSet) {
+            /*
+             * if (params[0] instanceof Customer || params[0] instanceof MyHashSet) {
+             *     ((ObjectNode) jsonNode).put("target", System.identityHashCode(params[0]));
+             * }
+             */
+            
+            if (params[0] == null) {
+                ((ObjectNode) jsonNode).putNull("target");
+            } else if (params[0] instanceof Class<?>) {
+                ((ObjectNode) jsonNode).put("target", ((Class<?>) params[0]).getName());
+            } else {
                 ((ObjectNode) jsonNode).put("target", System.identityHashCode(params[0]));
-            } 
-        }else{
+            }
+
+
+            ((ObjectNode) jsonNode).set("args", objectMapper.valueToTree(params[0]));
+
+            // new returnValue
+            if (record.getMessage().contains("RETURN")){
+                if (params[0] != Void.class) {
+                    ((ObjectNode) jsonNode).set("returnValue", objectMapper.valueToTree(params[0]));
+                }
+                //((ObjectNode) jsonNode).set("returnValue", paramsNode);
+            }
+            
+                
+            System.out.println(className + "." + methodName);
+            System.out.println("***");
+            ((ObjectNode)jsonNode).put("name", className + "." + methodName);
+
+            
+        } else {
             ((ObjectNode) jsonNode).put("args", "null");
         }
-        //return jsonNode.toString() + System.lineSeparator();
-        return jsonNode.toPrettyString() + System.lineSeparator();// piu leggibile per debugging
+        // return jsonNode.toString() + System.lineSeparator();
+        // piu leggibile per debugging
+        return jsonNode.toPrettyString() + System.lineSeparator();
     }
 
 }

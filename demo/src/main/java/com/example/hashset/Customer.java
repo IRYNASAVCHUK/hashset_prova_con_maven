@@ -14,23 +14,31 @@ public class Customer {
         this.name = name;
         logger.exiting(getClass().getName(), "Customer", this);
     }
-    public Customer(long id) {
-        this(id, "");
-    }
+    
     public long getId() {
+        logger.entering(getClass().getName(), "getId");
+        logger.exiting(getClass().getName(), "getId",id);
         return id;
     }
 
     public void setId(long id) {
+        if (id < 0)
+            throw new IllegalArgumentException();
+        logger.entering(getClass().getName(), "setId", id);
         this.id = id;
+        logger.exiting(getClass().getName(), "setId", Void.class);
     }
 
     public String getName() {
+        logger.entering(getClass().getName(), "getName");
+        logger.exiting(getClass().getName(), "getName",name);
         return name;
     }
 
     public void setName(String name) {
+        logger.entering(getClass().getName(), "setName", name);
         this.name = name;
+        logger.exiting(getClass().getName(), "setName",Void.class);
     }
 
     @Override
@@ -42,7 +50,7 @@ public class Customer {
         Customer customer = (Customer) o;
         return id == customer.id&&name==customer.name;
     }
-
+    
     @Override
     public int hashCode() {
         return Long.hashCode(id);
