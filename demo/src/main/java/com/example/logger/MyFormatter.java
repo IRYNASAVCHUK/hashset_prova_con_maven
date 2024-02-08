@@ -16,7 +16,7 @@ public class MyFormatter extends Formatter {
         System.out.println("\n***");
         String className = record.getSourceClassName();
         String methodName = record.getSourceMethodName();
-        Object[] params = record.getParameters();
+        Object[] params = record.getParameters();// exiting ha Object params non arrayyy
 
         String event="";
         if (record.getMessage().contains("ENTRY")) 
@@ -26,7 +26,8 @@ public class MyFormatter extends Formatter {
 
         ArrayNode paramsNode = JsonNodeFactory.instance.arrayNode();
 
-        JsonNode jsonNode = objectMapper.createObjectNode()
+        ObjectNode jsonNode = objectMapper.createObjectNode()// cambiato da  Json Node
+        
                 .put("event", event);
 
         if (params != null && params.length > 0) {

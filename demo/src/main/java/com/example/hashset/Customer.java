@@ -9,14 +9,14 @@ public class Customer {
     private String name;
 
     public Customer(long id, String name) {
-        logger.entering(getClass().getName(), "Customer", new Object[] { id, name });
+        //logger.entering(getClass().getName(), "Customer", new Object[] { id, name });
         this.id = id;
         this.name = name;
         logger.exiting(getClass().getName(), "Customer", this);
     }
     
     public long getId() {
-        logger.entering(getClass().getName(), "getId");
+       // logger.entering(getClass().getName(), "getId");
         logger.exiting(getClass().getName(), "getId",id);
         return id;
     }
@@ -24,19 +24,19 @@ public class Customer {
     public void setId(long id) {
         if (id < 0)
             throw new IllegalArgumentException();
-        logger.entering(getClass().getName(), "setId", id);
+       // logger.entering(getClass().getName(), "setId", id);
         this.id = id;
         logger.exiting(getClass().getName(), "setId", Void.class);
     }
 
     public String getName() {
-        logger.entering(getClass().getName(), "getName");
+       // logger.entering(getClass().getName(), "getName");
         logger.exiting(getClass().getName(), "getName",name);
         return name;
     }
 
     public void setName(String name) {
-        logger.entering(getClass().getName(), "setName", name);
+        //logger.entering(getClass().getName(), "setName", name);
         this.name = name;
         logger.exiting(getClass().getName(), "setName",Void.class);
     }

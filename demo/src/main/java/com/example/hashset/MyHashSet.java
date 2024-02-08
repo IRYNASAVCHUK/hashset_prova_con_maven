@@ -10,35 +10,35 @@ public class MyHashSet {
     Set<Customer> customers;
 
     public MyHashSet() {
-        logger.entering(getClass().getName(), "MyHashSet");
+        //logger.entering(getClass().getName(), "MyHashSet");
         this.customers = new HashSet<>();
         logger.exiting(getClass().getName(), "MyHashSet", this);
 
     }
 
     public boolean addCustomer(Customer persone) {
-        logger.entering(getClass().getName(), "addCustomer", new Object[] { persone });
+        //logger.entering(getClass().getName(), "addCustomer", new Object[] { persone });
         boolean returnValue = customers.add(persone);
         logger.exiting(getClass().getName(), "addCustomer", new Object[] { returnValue, persone });
         return returnValue;
     }
 
     public boolean removeCustomer(Customer persone) {
-        logger.entering(getClass().getName(), "removeCustomer", new Object[] { persone });
+       // logger.entering(getClass().getName(), "removeCustomer", new Object[] { persone });
         boolean returnValue = customers.remove(persone);
         logger.exiting(getClass().getName(), "removeCustomer", new Object[] { returnValue, persone });
         return returnValue;
     }
 
     public boolean containsCustomer(Customer persone) {
-        logger.entering(getClass().getName(), "containsCustomer", new Object[] { persone });
+       // logger.entering(getClass().getName(), "containsCustomer", new Object[] { persone });
         boolean returnValue = customers.contains(persone);
         logger.exiting(getClass().getName(), "containsCustomer", new Object[] { returnValue, persone });
         return returnValue;
     }
 
     public int getSize() {
-        logger.entering(getClass().getName(), "getSize");
+        //logger.entering(getClass().getName(), "getSize");
         int returnValue = customers.size();
         logger.exiting(getClass().getName(), "getSize", returnValue);
         return returnValue;
@@ -46,7 +46,7 @@ public class MyHashSet {
     }
 
     public void clearSet() {
-        logger.entering(getClass().getName(), "clearSet");
+        //logger.entering(getClass().getName(), "clearSet");
         customers.clear();
         logger.exiting(getClass().getName(), "clearSet", Void.class);
     }
