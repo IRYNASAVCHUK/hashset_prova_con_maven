@@ -11,63 +11,57 @@ public class MyHashSet {
     Set<Customer> customers;
 
     public MyHashSet() {
-        //logger.entering(getClass().getName(), "MyHashSet");
+        logger.entering(getClass().getName(), "MyHashSet");
         this.customers = new HashSet<>();
-        logger.exiting(getClass().getName(), "MyHashSet", this);
-
+        MyRecord<MyHashSet> result = new MyRecord<>(MyHashSet.class, this, null);
+        logger.exiting(getClass().getName(), "MyHashSet", result);
     }
 
-    public boolean addCustomer(Customer persone) {
-        //logger.entering(getClass().getName(), "addCustomer", new Object[] { persone });
-        boolean returnValue = customers.add(persone);
-        logger.exiting(getClass().getName(), "addCustomer", new Object[] { returnValue, persone });
+    public boolean addCustomer(Customer person) {
+        logger.entering(getClass().getName(), "addCustomer", new Object[] { person });
+        boolean returnValue = customers.add(person);
+        MyRecord<Boolean> result = new MyRecord<>(boolean.class, returnValue, new Object[] { person });
+        logger.exiting(getClass().getName(), "addCustomer", result);
         return returnValue;
     }
 
-    public boolean removeCustomer(Customer persone) {
-       // logger.entering(getClass().getName(), "removeCustomer", new Object[] { persone });
-        boolean returnValue = customers.remove(persone);
-        logger.exiting(getClass().getName(), "removeCustomer", new Object[] { returnValue, persone });
+    public boolean removeCustomer(Customer person) {
+        logger.entering(getClass().getName(), "removeCustomer", new Object[] { person });
+        boolean returnValue = customers.remove(person);
+        MyRecord<Boolean> result = new MyRecord<>(boolean.class, returnValue, new Object[] { person });
+        logger.exiting(getClass().getName(), "removeCustomer", result);
         return returnValue;
     }
 
-    public boolean containsCustomer(Customer persone) {
-       // logger.entering(getClass().getName(), "containsCustomer", new Object[] { persone });
-        boolean returnValue = customers.contains(persone);
-        logger.exiting(getClass().getName(), "containsCustomer", new Object[] { returnValue, persone });
+    public boolean containsCustomer(Customer person) {
+        logger.entering(getClass().getName(), "containsCustomer", new Object[] { person });
+        boolean returnValue = customers.contains(person);
+        MyRecord<Boolean> result = new MyRecord<>(boolean.class, returnValue, new Object[] { person });
+        logger.exiting(getClass().getName(), "containsCustomer", result);
         return returnValue;
     }
 
     public int getSize() {
-        //logger.entering(getClass().getName(), "getSize");
+        logger.entering(getClass().getName(), "getSize");
         int returnValue = customers.size();
-        logger.exiting(getClass().getName(), "getSize", returnValue);
+        MyRecord<Integer> result = new MyRecord<>(int.class, returnValue, null);
+        logger.exiting(getClass().getName(), "getSize", result);
         return returnValue;
-
     }
 
     public void clearSet() {
-        //logger.entering(getClass().getName(), "clearSet");
+        logger.entering(getClass().getName(), "clearSet");
         customers.clear();
-        logger.exiting(getClass().getName(), "clearSet", Void.class);
-        //logger.exiting(getClass().getName(), "clearSet", Void.class); isVoid true
+        MyRecord<Void> result = new MyRecord<>(void.class, null, null);
+        logger.exiting(getClass().getName(), "clearSet", result);
     }
 
     @Override
     public String toString() {
-        return "{" + "customers=" + customers + '}';
+        logger.entering(getClass().getName(), "toString");
+        String returnValue = "{" + "customers = " + customers + '}';
+        MyRecord<String> result = new MyRecord<>(String.class, returnValue, null);
+        logger.exiting(getClass().getName(), "toString", result);
+        return returnValue;
     }
 }
-//TODO:
-// tipi, super tipi del altro
-// Enum Logger undefined
-// oggetto con due campi: result e params object[]... e terzo isVoid=true/false
-
-// java record(Oracal da leggere)
-
-// recod semplifica molto tutto
-// record(params)
-// record(result, params)
-// !!! a provare: implementa interface comune (getResult di default???) o usare instanceof (se il risultato oppure no)
-// getter 
-// instanceof di tipo giusto
