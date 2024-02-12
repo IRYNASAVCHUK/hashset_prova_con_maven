@@ -2,13 +2,12 @@ package com.example.hashset;
 
 import java.util.Arrays;
 
-import com.example.logger.MyLogger;
-import com.example.logger.MyResult;
+import com.example.logger.MyRecord;
 
 public class Main {
     public static void main(String[] args) {
         // Creazione di un oggetto Result usando il record
-        MyResult<String> result = new MyResult<>(String.class, "Success", new Object[]{"param1", "param2"});
+        MyRecord<String> result = new MyRecord<>(String.class, "Success", new Object[]{"param1", "param2"});
 
         // Accesso ai campi dell'oggetto Result
         System.out.println("Return Type: " + result.returnType());

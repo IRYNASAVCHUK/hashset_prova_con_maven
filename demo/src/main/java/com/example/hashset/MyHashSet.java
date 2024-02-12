@@ -4,7 +4,7 @@ import java.util.*;
 import java.util.logging.Logger;
 
 import com.example.logger.MyLogger;
-import com.example.logger.MyResult;
+import com.example.logger.MyRecord;
 
 public class MyHashSet {
     private static final Logger logger = MyLogger.getLogger();
