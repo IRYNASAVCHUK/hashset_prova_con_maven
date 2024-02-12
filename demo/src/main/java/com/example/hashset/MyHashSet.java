@@ -4,6 +4,7 @@ import java.util.*;
 import java.util.logging.Logger;
 
 import com.example.logger.MyLogger;
+import com.example.logger.MyResult;
 
 public class MyHashSet {
     private static final Logger logger = MyLogger.getLogger();
@@ -49,6 +50,7 @@ public class MyHashSet {
         //logger.entering(getClass().getName(), "clearSet");
         customers.clear();
         logger.exiting(getClass().getName(), "clearSet", Void.class);
+        //logger.exiting(getClass().getName(), "clearSet", Void.class); isVoid true
     }
 
     @Override
@@ -56,3 +58,16 @@ public class MyHashSet {
         return "{" + "customers=" + customers + '}';
     }
 }
+//TODO:
+// tipi, super tipi del altro
+// Enum Logger undefined
+// oggetto con due campi: result e params object[]... e terzo isVoid=true/false
+
+// java record(Oracal da leggere)
+
+// recod semplifica molto tutto
+// record(params)
+// record(result, params)
+// !!! a provare: implementa interface comune (getResult di default???) o usare instanceof (se il risultato oppure no)
+// getter 
+// instanceof di tipo giusto

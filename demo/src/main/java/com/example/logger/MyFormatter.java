@@ -26,8 +26,8 @@ public class MyFormatter extends Formatter {
 
         ArrayNode paramsNode = JsonNodeFactory.instance.arrayNode();
 
-        ObjectNode jsonNode = objectMapper.createObjectNode()// cambiato da  Json Node
-        
+        ObjectNode jsonNode = objectMapper.createObjectNode()// cambiato da  Json Node, togliere (ObjectNode) jsonNode
+
                 .put("event", event);
 
         if (params != null && params.length > 0) {

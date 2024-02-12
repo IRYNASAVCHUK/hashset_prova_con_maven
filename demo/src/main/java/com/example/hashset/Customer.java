@@ -1,7 +1,9 @@
 package com.example.hashset;
 
 import java.util.logging.Logger;
+
 import com.example.logger.MyLogger;
+import com.example.logger.MyResult;
 
 public class Customer {
     private static final Logger logger = MyLogger.getLogger();
@@ -17,6 +19,7 @@ public class Customer {
     
     public long getId() {
        // logger.entering(getClass().getName(), "getId");
+     
         logger.exiting(getClass().getName(), "getId",id);
         return id;
     }

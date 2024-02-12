@@ -3,6 +3,7 @@ package com.example.logger;
 import java.util.logging.*;
 
 public class MyLogger extends Logger {
+    
     protected MyLogger(String name, String resourceBundleName) {
         super(name, resourceBundleName);
     }
