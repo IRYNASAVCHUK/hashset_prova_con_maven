@@ -1,10 +1,10 @@
 package com.example.hashset;
 
-import java.util.*;
-import java.util.logging.Logger;
-
 import com.example.logger.MyLogger;
 import com.example.logger.MyRecord;
+
+import java.util.*;
+import java.util.logging.Logger;
 
 public class MyHashSet {
     private static final Logger logger = MyLogger.getLogger();
