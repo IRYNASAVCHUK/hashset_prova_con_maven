@@ -3,14 +3,15 @@ package com.example.hashset;
 import com.example.logger.MyLogger;
 import com.example.logger.MyRecord;
 
+import java.util.Objects;
 import java.util.logging.Logger;
 
 public class Customer {
     private static final Logger logger = MyLogger.getLogger();
-    private long id;
+    private int id;
     private String name;
 
-    public Customer(long id, String name) {
+    public Customer(int id, String name) {
         logger.entering(getClass().getName(), "Customer", new Object[] { id, name });
         this.id = id;
         this.name = name;
@@ -18,14 +19,14 @@ public class Customer {
         logger.exiting(getClass().getName(), "Customer", result);
     }
 
-    public long getId() {
-        logger.entering(getClass().getName(), "getId");
-        MyRecord<Long> result = new MyRecord<>(long.class, id, null);
+    public int getId() {
+        logger.entering(getClass().getName(), "getId",null);
+        MyRecord<Integer> result = new MyRecord<>(int.class, id, null);
         logger.exiting(getClass().getName(), "getId", result);
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         if (id < 0)
             throw new IllegalArgumentException();
         logger.entering(getClass().getName(), "setId", new Object[] { id });
@@ -35,7 +36,7 @@ public class Customer {
     }
 
     public String getName() {
-        logger.entering(getClass().getName(), "getName");
+        logger.entering(getClass().getName(), "getName",null);
         MyRecord<String> result = new MyRecord<>(String.class, name, null);
         logger.exiting(getClass().getName(), "getName", result);
         return name;
@@ -64,8 +65,8 @@ public class Customer {
 
     @Override
     public int hashCode() {
-        logger.entering(getClass().getName(), "hashCode");
-        int returnValue = Long.hashCode(id);
+        logger.entering(getClass().getName(), "hashCode",null);
+        int returnValue = Objects.hash(id);
         MyRecord<Integer> result = new MyRecord<>(int.class, returnValue, null);
         logger.exiting(getClass().getName(), "hashCode", result);
         return returnValue;
@@ -73,7 +74,7 @@ public class Customer {
 
     @Override
     public String toString() {
-        logger.entering(getClass().getName(), "toString");
+        logger.entering(getClass().getName(), "toString",null);
         String returnValue = "(" + id + " , " + name + ")";
         MyRecord<String> result = new MyRecord<>(String.class, returnValue, null);
         logger.exiting(getClass().getName(), "toString", result);

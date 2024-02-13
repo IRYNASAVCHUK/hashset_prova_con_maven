@@ -11,7 +11,7 @@ public class MyHashSet {
     Set<Customer> customers;
 
     public MyHashSet() {
-        logger.entering(getClass().getName(), "MyHashSet");
+        logger.entering(getClass().getName(), "MyHashSet", null);
         this.customers = new HashSet<>();
         MyRecord<MyHashSet> result = new MyRecord<>(MyHashSet.class, this, null);
         logger.exiting(getClass().getName(), "MyHashSet", result);
@@ -42,7 +42,7 @@ public class MyHashSet {
     }
 
     public int getSize() {
-        logger.entering(getClass().getName(), "getSize");
+        logger.entering(getClass().getName(), "getSize",null);
         int returnValue = customers.size();
         MyRecord<Integer> result = new MyRecord<>(int.class, returnValue, null);
         logger.exiting(getClass().getName(), "getSize", result);
@@ -50,7 +50,7 @@ public class MyHashSet {
     }
 
     public void clearSet() {
-        logger.entering(getClass().getName(), "clearSet");
+        logger.entering(getClass().getName(), "clearSet",null);
         customers.clear();
         MyRecord<Void> result = new MyRecord<>(void.class, null, null);
         logger.exiting(getClass().getName(), "clearSet", result);
@@ -58,7 +58,7 @@ public class MyHashSet {
 
     @Override
     public String toString() {
-        logger.entering(getClass().getName(), "toString");
+        logger.entering(getClass().getName(), "toString",null);
         String returnValue = "{" + "customers = " + customers + '}';
         MyRecord<String> result = new MyRecord<>(String.class, returnValue, null);
         logger.exiting(getClass().getName(), "toString", result);

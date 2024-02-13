@@ -3,7 +3,6 @@ package com.example.logger;
 import com.fasterxml.jackson.databind.*;
 import com.fasterxml.jackson.databind.node.*;
 
-import java.util.*;
 import java.util.logging.*;
 import java.util.logging.Formatter;
 
@@ -13,77 +12,58 @@ public class MyFormatter extends Formatter {
 
     @Override
     public String format(LogRecord record) {
-        System.out.println("\n***");
-        String className = record.getSourceClassName();
-        String methodName = record.getSourceMethodName();
-        Object[] params = record.getParameters();// exiting ha Object params non arrayyy
+        String event = record.getMessage().contains("ENTRY") ? "func_pre"
+                : record.getMessage().contains("RETURN") ? "func_post" : "";
 
-        String event="";
-        if (record.getMessage().contains("ENTRY")) 
-            event = "func_pre";
-        if (record.getMessage().contains("RETURN")) 
-            event = "func_post";
+        ObjectNode jsonNode = objectMapper.createObjectNode().put("event", event);
 
-        ArrayNode paramsNode = JsonNodeFactory.instance.arrayNode();
+        Object[] params = record.getParameters();
 
-        ObjectNode jsonNode = objectMapper.createObjectNode()// cambiato da  Json Node, togliere (ObjectNode) jsonNode
+        MyRecord<?> myRecord = (MyRecord<?>) params[0];
 
-                .put("event", event);
+        Object target;
+        if (params[0] instanceof MyRecord)
+            target = myRecord.result();
+        else
+            target = params[0];
 
+        if (target == null||params.length == 0)
+            jsonNode.putNull("target");
+        else if (target instanceof Class<?>) 
+            jsonNode.put("target", ((Class<?>) target).getName());
+        else 
+            jsonNode.put("target", System.identityHashCode(target));
+        
         if (params != null && params.length > 0) {
-            int contatore = 0;
-            for (Object param : params) {
-                System.out.println(contatore++ +" Param: \t"+param);
-                if (param instanceof Object[]) {
-                    paramsNode.add(Arrays.toString((Object[]) param));
-                } else {
-                    paramsNode.add(param.toString());
+            if (params[0] instanceof MyRecord) {
+                // Controllo se params è vuoto
+                Object[] args = myRecord.params();
+                if (args != null && args.length > 0) {
+                    ArrayNode argsNode = objectMapper.createArrayNode();
+                    for (Object arg : args)
+                        argsNode.addPOJO(arg);
+                    jsonNode.set("args", argsNode);
                 }
-            }
-/*
-             * TODO:
-             * - obj == null -> restituisce null
-             * - obj instaceof Class<?> -> restituisce obj.getName()
-             * - altrimenti restituisce System.identityHashCode(obj)
-             */
-
-            /*
-             * if (params[0] instanceof Customer || params[0] instanceof MyHashSet) {
-             *     ((ObjectNode) jsonNode).put("target", System.identityHashCode(params[0]));
-             * }
-             */
-            
-            if (params[0] == null) {
-                ((ObjectNode) jsonNode).putNull("target");
-            } else if (params[0] instanceof Class<?>) {
-                ((ObjectNode) jsonNode).put("target", ((Class<?>) params[0]).getName());
+                // Controllo se returnType è void.class
+                Class<?> returnType = myRecord.returnType();
+                if (!returnType.equals(void.class)) {
+                    Object returnValue = myRecord.result();
+                    if (returnValue != null)
+                        jsonNode.putPOJO("returnValue", returnValue);
+                    else
+                        jsonNode.putNull("returnValue");
+                }
             } else {
-                ((ObjectNode) jsonNode).put("target", System.identityHashCode(params[0]));
+                // Gestisco il caso in cui params non è un'istanza di MyRecord, ma un Object[]
+                ArrayNode argsNode = objectMapper.createArrayNode();
+                for (Object arg : params)
+                    argsNode.addPOJO(arg);
+                jsonNode.set("args", argsNode);
             }
-
-
-            ((ObjectNode) jsonNode).set("args", objectMapper.valueToTree(params[0]));
-
-            // new returnValue
-            if (record.getMessage().contains("RETURN")){
-                if (params[0] != Void.class) {
-                    ((ObjectNode) jsonNode).set("returnValue", objectMapper.valueToTree(params[0]));
-                }
-                //((ObjectNode) jsonNode).set("returnValue", paramsNode);
-            }
-            
-                
-            System.out.println(className + "." + methodName);
-            System.out.println("***");
-            ((ObjectNode)jsonNode).put("name", className + "." + methodName);
-
-            
-        } else {
-            ((ObjectNode) jsonNode).put("args", "null");
         }
+        jsonNode.put("name", record.getSourceClassName() + "." + record.getSourceMethodName());
+
         // return jsonNode.toString() + System.lineSeparator();
-        // piu leggibile per debugging
         return jsonNode.toPrettyString() + System.lineSeparator();
     }
-
 }
