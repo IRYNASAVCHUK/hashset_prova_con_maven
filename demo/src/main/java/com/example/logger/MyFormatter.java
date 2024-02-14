@@ -4,7 +4,6 @@ import com.fasterxml.jackson.databind.*;
 import com.fasterxml.jackson.databind.node.*;
 
 import java.util.logging.*;
-import java.util.logging.Formatter;
 
 public class MyFormatter extends Formatter {
 
@@ -18,21 +17,22 @@ public class MyFormatter extends Formatter {
         ObjectNode jsonNode = objectMapper.createObjectNode().put("event", event);
 
         Object[] params = record.getParameters();
-
         MyRecord<?> myRecord = (MyRecord<?>) params[0];
+        
+        Object target = null;
+        if (params != null && params.length > 0) {
+            if (params[0] instanceof MyRecord<?>) {
+                target = myRecord.result();
+            } else
+                target = params[0];
+        }
 
-        Object target;
-        if (params[0] instanceof MyRecord)
-            target = myRecord.result();
-        else
-            target = params[0];
-
-        if (target == null||params.length == 0)
+        if (target == null) 
             jsonNode.putNull("target");
         else if (target instanceof Class<?>) 
-            jsonNode.put("target", ((Class<?>) target).getName());
+                jsonNode.put("target", ((Class<?>) target).getName());
         else 
-            jsonNode.put("target", System.identityHashCode(target));
+                jsonNode.put("target", System.identityHashCode(target));
         
         if (params != null && params.length > 0) {
             if (params[0] instanceof MyRecord) {
@@ -40,6 +40,12 @@ public class MyFormatter extends Formatter {
                 Object[] args = myRecord.params();
                 if (args != null && args.length > 0) {
                     ArrayNode argsNode = objectMapper.createArrayNode();
+/*
+    addPOJO() è un metodo della libreria Jackson ObjectMapper che consente di aggiungere 
+    un oggetto Java POJO (Plain Old Java Object) come valore a un nodo di tipo ArrayNode 
+    o ObjectNode durante la serializzazione JSON. Questo metodo si occupa automaticamente 
+    di convertire l'oggetto Java in un formato JSON corrispondente.
+*/                   
                     for (Object arg : args)
                         argsNode.addPOJO(arg);
                     jsonNode.set("args", argsNode);
