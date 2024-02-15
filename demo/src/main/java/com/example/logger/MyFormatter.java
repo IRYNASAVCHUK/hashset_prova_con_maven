@@ -24,9 +24,8 @@ public class MyFormatter extends Formatter {
             if (params[0] instanceof MyRecord<?>) {
                 MyRecord<?> myRecord = (MyRecord<?>) params[0];
                 target = myRecord.result();
-            } else {
+            } else
                 target = params[0];
-            }
         }
         if (target == null)
             jsonNode.putNull("target");
@@ -35,84 +34,70 @@ public class MyFormatter extends Formatter {
         else
             jsonNode.put("target", System.identityHashCode(target));
 
-        if (params != null && params.length > 0) {
-            if (params[0] instanceof MyRecord) {
-                MyRecord<?> myRecord = (MyRecord<?>) params[0];
-                // Controllo se params è vuoto
-                Object[] args = myRecord.params();
-                /*
-                 * addPOJO() è un metodo della libreria Jackson ObjectMapper che consente di
-                 * aggiungere un oggetto Java POJO (Plain Old Java Object) come valore a un nodo
-                 * di tipo ArrayNode o ObjectNode durante la serializzazione JSON. Questo metodo
-                 * si occupa automaticamente di convertire l'oggetto Java in un formato JSON
-                 * corrispondente.
-                 */
-                if (args != null && args.length > 0) {
-                    ArrayNode argsNode = objectMapper.createArrayNode();
-                    for (Object arg : args)
-                        argsNode.addPOJO(arg);
-                    jsonNode.set("args", argsNode);
-                }
-                // Controllo se returnType è void.class
-                Class<?> returnType = myRecord.returnType();
-                if (!returnType.equals(void.class)) {
-                    Object returnValue = myRecord.result();
-                    if (returnValue != null) {
-                        // Verifica se il risultato è un tipo primitivo
-                        // The primitive Java types: boolean, byte, char, short, int, long, float,
-                        // double
-                        if (returnType.isPrimitive()) {
-                            switch (returnType.getTypeName()) {
-                                case "boolean":
-                                    boolean boolValue = (boolean) returnValue;
-                                    jsonNode.put("result", boolValue);
-                                    break;
-                                case "byte":
-                                    byte byteValue = (byte) returnValue;
-                                    jsonNode.put("result", byteValue);
-                                    break;
-                                case "char":
-                                    char charValue = (char) returnValue;
-                                    jsonNode.put("result", charValue);
-                                    break;
-                                case "short":
-                                    short shortValue = (short) returnValue;
-                                    jsonNode.put("result", shortValue);
-                                    break;
-                                case "int":
-                                    int intValue = (int) returnValue;
-                                    jsonNode.put("result", intValue);
-                                    break;
-                                case "long":
-                                    long longValue = (long) returnValue;
-                                    jsonNode.put("result", longValue);
-                                    break;
-                                case "float":
-                                    float floatValue = (float) returnValue;
-                                    jsonNode.put("result", floatValue);
-                                    break;
-                                case "double":
-                                    double doubleValue = (double) returnValue;
-                                    jsonNode.put("result", doubleValue);
-                                    break;
-                            }
-                        }
-                    }
+        if (params != null && params.length > 0)
+            paramsControl(jsonNode, params);
 
-                    else
-                        jsonNode.putNull("result");
-                }
-            } else {
-                // Gestisco il caso in cui params non è un'istanza di MyRecord, ma un Object[]
-                ArrayNode argsNode = objectMapper.createArrayNode();
-                for (Object arg : params)
-                    argsNode.addPOJO(arg);
-                jsonNode.set("args", argsNode);
-            }
-        }
         jsonNode.put("name", record.getSourceClassName() + "." + record.getSourceMethodName());
 
         // return jsonNode.toString() + System.lineSeparator();
         return jsonNode.toPrettyString() + System.lineSeparator();
+    }
+
+    private void paramsControl(ObjectNode jsonNode, Object[] params) {
+        if (params[0] instanceof MyRecord) {
+            MyRecord<?> myRecord = (MyRecord<?>) params[0];
+            Object[] args = myRecord.params();
+            if (args != null && args.length > 0) {
+                ArrayNode argsNode = objectMapper.createArrayNode();
+                for (Object arg : args)
+                    argsNode.addPOJO(arg);
+                jsonNode.set("args", argsNode);
+            }
+            Class<?> returnType = myRecord.returnType();
+            if (!returnType.equals(void.class)) {
+                Object returnValue = myRecord.result();
+                if (returnValue != null) {
+                    if (returnType.isPrimitive())
+                        primitiveReturnValue(jsonNode, returnType, returnValue);
+                    else
+                        jsonNode.putPOJO("result", returnValue);
+                } else
+                    jsonNode.putNull("result");
+            }
+        } else {
+            ArrayNode argsNode = objectMapper.createArrayNode();
+            for (Object arg : params)
+                argsNode.addPOJO(arg);
+            jsonNode.set("args", argsNode);
+        }
+    }
+    // The primitive types: boolean, byte, char, short, int, long, float, double
+    private void primitiveReturnValue(ObjectNode jsonNode, Class<?> returnType, Object returnValue) {
+        switch (returnType.getTypeName()) {
+            case "boolean":
+                jsonNode.put("result", (boolean) returnValue);
+                break;
+            case "byte":
+                jsonNode.put("result", (byte) returnValue);
+                break;
+            case "char":
+                jsonNode.put("result", (char) returnValue);
+                break;
+            case "short":
+                jsonNode.put("result", (short) returnValue);
+                break;
+            case "int":
+                jsonNode.put("result", (int) returnValue);
+                break;
+            case "long":
+                jsonNode.put("result", (long) returnValue);
+                break;
+            case "float":
+                jsonNode.put("result", (float) returnValue);
+                break;
+            case "double":
+                jsonNode.put("result", (double) returnValue);
+                break;
+        }
     }
 }
