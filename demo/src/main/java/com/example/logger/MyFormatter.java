@@ -19,7 +19,9 @@ public class MyFormatter extends Formatter {
         Object[] params = record.getParameters();
         // TODO: non sono sicura che si fa cosi
         // FIXME: target
+
         Object target = null;
+
         if (params != null && params.length > 0) {
             if (params[0] instanceof MyRecord<?>) {
                 MyRecord<?> myRecord = (MyRecord<?>) params[0];
@@ -54,11 +56,14 @@ public class MyFormatter extends Formatter {
                 jsonNode.set("args", argsNode);
             }
             Class<?> returnType = myRecord.returnType();
+
             if (!returnType.equals(void.class)) {
                 Object returnValue = myRecord.result();
                 if (returnValue != null) {
-                    if (returnType.isPrimitive())
+                    if (returnType.isPrimitive()) {
                         primitiveReturnValue(jsonNode, returnType, returnValue);
+                    }
+
                     else
                         jsonNode.putPOJO("result", returnValue);
                 } else
@@ -71,6 +76,7 @@ public class MyFormatter extends Formatter {
             jsonNode.set("args", argsNode);
         }
     }
+
     // The primitive types: boolean, byte, char, short, int, long, float, double
     private void primitiveReturnValue(ObjectNode jsonNode, Class<?> returnType, Object returnValue) {
         switch (returnType.getTypeName()) {
