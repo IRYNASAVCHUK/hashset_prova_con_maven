@@ -1,3 +1,3 @@
 package com.example.logger;
 
-public record MyRecordEntering<T>(Object[] params, Object thisObject){}
+public record MyRecordEntering (Object[] params, Object thisObject){}

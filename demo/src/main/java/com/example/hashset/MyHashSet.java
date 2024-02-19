@@ -1,66 +1,74 @@
 package com.example.hashset;
 
 import com.example.logger.MyLogger;
+import com.example.logger.MyRecordEntering;
 import com.example.logger.MyRecordExiting;
 
 import java.util.*;
 import java.util.logging.Logger;
 
 public class MyHashSet {
-    static final Logger logger = MyLogger.getLogger();
-    Set<Customer> customers;
+    private static final Logger logger = MyLogger.getLogger();
+    private Set<Customer> customers;
 
     public MyHashSet() {
-        logger.entering(getClass().getName(), "MyHashSet", new Object[] { this });
+        MyRecordEntering enter = new MyRecordEntering(null, this);
+        logger.entering(getClass().getName(), "MyHashSet", enter);
         this.customers = new HashSet<>();
-        MyRecordExiting<MyHashSet> result = new MyRecordExiting<>(MyHashSet.class, this, new Object[] { this }, this);
+        MyRecordExiting<MyHashSet> result = new MyRecordExiting<>(MyHashSet.class, this, null, this);
         logger.exiting(getClass().getName(), "MyHashSet", result);
     }
 
     public boolean addCustomer(Customer person) {
-        logger.entering(getClass().getName(), "addCustomer", new Object[] { this, person });
+        MyRecordEntering enter = new MyRecordEntering( new Object[] { person }, this);
+        logger.entering(getClass().getName(), "addCustomer",enter);
         boolean returnValue = customers.add(person);
-        MyRecordExiting<Boolean> result = new MyRecordExiting<>(boolean.class, returnValue, new Object[] { this, person }, this);
+        MyRecordExiting<Boolean> result = new MyRecordExiting<>(boolean.class, returnValue, new Object[] { person }, this);
         logger.exiting(getClass().getName(), "addCustomer", result);
         return returnValue;
     }
 
     public boolean removeCustomer(Customer person) {
-        logger.entering(getClass().getName(), "removeCustomer", new Object[] { this, person });
+        MyRecordEntering enter = new MyRecordEntering( new Object[] { person }, this);
+        logger.entering(getClass().getName(), "removeCustomer",enter);
         boolean returnValue = customers.remove(person);
-        MyRecordExiting<Boolean> result = new MyRecordExiting<>(boolean.class, returnValue, new Object[] {this,  person }, this);
+        MyRecordExiting<Boolean> result = new MyRecordExiting<>(boolean.class, returnValue, new Object[] {person }, this);
         logger.exiting(getClass().getName(), "removeCustomer", result);
         return returnValue;
     }
 
     public boolean containsCustomer(Customer person) {
-        logger.entering(getClass().getName(), "containsCustomer", new Object[] { this, person });
+        MyRecordEntering enter = new MyRecordEntering( new Object[] { person }, this);
+        logger.entering(getClass().getName(), "containsCustomer", enter);
         boolean returnValue = customers.contains(person);
-        MyRecordExiting<Boolean> result = new MyRecordExiting<>(boolean.class, returnValue, new Object[] { this, person }, this);
+        MyRecordExiting<Boolean> result = new MyRecordExiting<>(boolean.class, returnValue, new Object[] { person }, this);
         logger.exiting(getClass().getName(), "containsCustomer", result);
         return returnValue;
     }
 
     public int getSize() {
-        logger.entering(getClass().getName(), "getSize", new Object[] { this });
+        MyRecordEntering enter = new MyRecordEntering(null, this);
+        logger.entering(getClass().getName(), "getSize", enter);
         int returnValue = customers.size();
-        MyRecordExiting<Integer> result = new MyRecordExiting<>(int.class, returnValue, new Object[] { this }, this);
+        MyRecordExiting<Integer> result = new MyRecordExiting<>(int.class, returnValue, null, this);
         logger.exiting(getClass().getName(), "getSize", result);
         return returnValue;
     }
 
     public void clearSet() {
-        logger.entering(getClass().getName(), "clearSet", new Object[] { this });
+        MyRecordEntering enter = new MyRecordEntering(null, this);
+        logger.entering(getClass().getName(), "clearSet", enter);
         customers.clear();
-        MyRecordExiting<Void> result = new MyRecordExiting<>(void.class, null, new Object[] { this }, this);
+        MyRecordExiting<Void> result = new MyRecordExiting<>(void.class, null, null, this);
         logger.exiting(getClass().getName(), "clearSet", result);
     }
 
     @Override
     public String toString() {
-        logger.entering(getClass().getName(), "toString", new Object[] { this });
+        MyRecordEntering enter = new MyRecordEntering(null, this);
+        logger.entering(getClass().getName(), "toString", enter);
         String returnValue = "{" + "customers = " + customers + '}';
-        MyRecordExiting<String> result = new MyRecordExiting<>(String.class, returnValue, new Object[] { this }, this);
+        MyRecordExiting<String> result = new MyRecordExiting<>(String.class, returnValue, null, this);
         logger.exiting(getClass().getName(), "toString", result);
         return returnValue;
     }
@@ -68,7 +76,8 @@ public class MyHashSet {
     // metodi statici:
 
     public static void printAllCustomers(MyHashSet myHashSet) {
-        logger.entering(MyHashSet.class.getName(), "printAllCustomers", new Object[] { myHashSet });
+        MyRecordEntering enter = new MyRecordEntering(new Object[] { myHashSet }, null);
+        logger.entering(MyHashSet.class.getName(), "printAllCustomers",enter );
         for (Customer customer : myHashSet.customers) {
             System.out.println(customer);
         }
@@ -77,7 +86,8 @@ public class MyHashSet {
     }
 
     public static boolean containsAnyCustomerWithName(MyHashSet myHashSet, String name) {
-        logger.entering(MyHashSet.class.getName(), "containsAnyCustomerWithName", new Object[] { myHashSet, name });
+        MyRecordEntering enter = new MyRecordEntering(new Object[] { myHashSet, name }, null);
+        logger.entering(MyHashSet.class.getName(), "containsAnyCustomerWithName", enter);
         boolean returnValue = false;
         for (Customer customer : myHashSet.customers) {
             if (customer.getName().equals(name)) {
@@ -91,7 +101,8 @@ public class MyHashSet {
     }
 
     public static int countCustomersWithIdGreaterThan(MyHashSet myHashSet, int id) {
-        logger.entering(MyHashSet.class.getName(), "countCustomersWithIdGreaterThan", new Object[] { myHashSet, id });
+        MyRecordEntering enter = new MyRecordEntering(new Object[] { myHashSet, id }, null);
+        logger.entering(MyHashSet.class.getName(), "countCustomersWithIdGreaterThan", enter);
         int count = 0;
         for (Customer customer : myHashSet.customers) {
             if (customer.getId() > id) {

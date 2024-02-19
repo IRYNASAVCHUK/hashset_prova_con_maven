@@ -1,6 +1,7 @@
 package com.example.hashset;
 
 import com.example.logger.MyLogger;
+import com.example.logger.MyRecordEntering;
 import com.example.logger.MyRecordExiting;
 
 import java.util.Objects;
@@ -12,7 +13,8 @@ public class Customer {
     private String name;
 
     public Customer(int id, String name) {
-        logger.entering(getClass().getName(), "Customer", new Object[] { id, name });
+        MyRecordEntering enter = new MyRecordEntering(new Object[] { id, name }, this);
+        logger.entering(getClass().getName(), "Customer", enter);
         this.id = id;
         this.name = name;
         MyRecordExiting<Customer> result = new MyRecordExiting<>(Customer.class, this, new Object[] { id, name }, this);
@@ -20,7 +22,8 @@ public class Customer {
     }
 
     public int getId() {
-        logger.entering(getClass().getName(), "getId",null);
+        MyRecordEntering enter = new MyRecordEntering(null, this);
+        logger.entering(getClass().getName(), "getId",enter);
         MyRecordExiting<Integer> result = new MyRecordExiting<>(int.class, id, null, this);
         logger.exiting(getClass().getName(), "getId", result);
         return id;
@@ -29,21 +32,24 @@ public class Customer {
     public void setId(int id) {
         if (id < 0)
             throw new IllegalArgumentException();
-        logger.entering(getClass().getName(), "setId", new Object[] { id });
+        MyRecordEntering enter = new MyRecordEntering(new Object[] { id }, this);
+        logger.entering(getClass().getName(), "setId",enter );
         this.id = id;
         MyRecordExiting<Void> result = new MyRecordExiting<>(void.class, null, new Object[] { id }, this);
         logger.exiting(getClass().getName(), "setId", result);
     }
 
     public String getName() {
-        logger.entering(getClass().getName(), "getName",null);
+        MyRecordEntering enter = new MyRecordEntering(null, this);
+        logger.entering(getClass().getName(), "getName",enter);
         MyRecordExiting<String> result = new MyRecordExiting<>(String.class, name, null, this);
         logger.exiting(getClass().getName(), "getName", result);
         return name;
     }
 
     public void setName(String name) {
-        logger.entering(getClass().getName(), "setName", new Object[] { name });
+        MyRecordEntering enter = new MyRecordEntering(new Object[] { name }, this);
+        logger.entering(getClass().getName(), "setName", enter);
         this.name = name;
         MyRecordExiting<Void> result = new MyRecordExiting<>(void.class, null, new Object[] { name }, this);
         logger.exiting(getClass().getName(), "setName", result);
@@ -51,7 +57,8 @@ public class Customer {
 
     @Override
     public boolean equals(Object o) {
-        logger.entering(getClass().getName(), "equals", new Object[] { o });
+        MyRecordEntering enter = new MyRecordEntering(new Object[] { o }, this);
+        logger.entering(getClass().getName(), "equals", enter);
         if (this == o)
             return true;
         if (o == null || getClass() != o.getClass())
@@ -65,7 +72,8 @@ public class Customer {
 
     @Override
     public int hashCode() {
-        logger.entering(getClass().getName(), "hashCode",null);
+        MyRecordEntering enter = new MyRecordEntering(null, this);
+        logger.entering(getClass().getName(), "hashCode",enter);
         int returnValue = Objects.hash(id);
         MyRecordExiting<Integer> result = new MyRecordExiting<>(int.class, returnValue, null, this);
         logger.exiting(getClass().getName(), "hashCode", result);
@@ -74,7 +82,8 @@ public class Customer {
 
     @Override
     public String toString() {
-        logger.entering(getClass().getName(), "toString",null);
+        MyRecordEntering enter = new MyRecordEntering(null, this);
+        logger.entering(getClass().getName(), "toString",enter);
         String returnValue = "(" + id + " , " + name + ")";
         MyRecordExiting<String> result = new MyRecordExiting<>(String.class, returnValue, null, this);
         logger.exiting(getClass().getName(), "toString", result);
