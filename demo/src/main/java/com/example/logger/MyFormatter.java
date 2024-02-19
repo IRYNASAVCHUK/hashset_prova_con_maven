@@ -23,11 +23,12 @@ public class MyFormatter extends Formatter {
         Object target = null;
 
         if (params != null && params.length > 0) {
-            if (params[0] instanceof MyRecord<?>) {
-                MyRecord<?> myRecord = (MyRecord<?>) params[0];
+            if (params[0] instanceof MyRecordExiting<?>) {
+                MyRecordExiting<?> myRecord = (MyRecordExiting<?>) params[0];
                 target = myRecord.result();
             } else
                 target = params[0];
+            System.out.println(target);
         }
         if (target == null)
             jsonNode.putNull("target");
@@ -46,8 +47,8 @@ public class MyFormatter extends Formatter {
     }
 
     private void paramsControl(ObjectNode jsonNode, Object[] params) {
-        if (params[0] instanceof MyRecord) {
-            MyRecord<?> myRecord = (MyRecord<?>) params[0];
+        if (params[0] instanceof MyRecordExiting) {
+            MyRecordExiting<?> myRecord = (MyRecordExiting<?>) params[0];
             Object[] args = myRecord.params();
             if (args != null && args.length > 0) {
                 ArrayNode argsNode = objectMapper.createArrayNode();
