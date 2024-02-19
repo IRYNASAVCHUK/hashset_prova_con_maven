@@ -21,27 +21,36 @@ public class MyFormatter extends Formatter {
         // FIXME: target
 
         Object target = null;
-
+        boolean isStatic = false;
         if (params != null && params.length > 0) {
             if (params[0] instanceof MyRecordExiting<?>) {
                 MyRecordExiting<?> myRecord = (MyRecordExiting<?>) params[0];
                 target = myRecord.thisObject();
+                isStatic = myRecord.isStatic();
             }
             if (params[0] instanceof MyRecordEntering) {
                 MyRecordEntering myRecord = (MyRecordEntering) params[0];
                 target = myRecord.thisObject();
+                isStatic = myRecord.isStatic();
             }
-               
             System.out.println(target);
         }
+        
         if (target == null) {
-            // Se thisObject è null, il metodo è statico
-            jsonNode.put("target", record.getSourceClassName());
+            if (isStatic) {
+                // Se il metodo è statico, imposto il target sul nome della classe
+                jsonNode.put("target", record.getSourceClassName());
+            } else {
+                // Se thisObject è null ma il metodo non è statico, potrebbe essere dovuto a una chiamata su un riferimento nullo
+                jsonNode.putNull("target");
+            }
         } else if (target instanceof Class<?>) {
+            // Se target è una classe, ottengo il suo nome
             jsonNode.put("target", ((Class<?>) target).getName());
         } else {
             jsonNode.put("target", System.identityHashCode(target));
         }
+        
 
         if (params != null && params.length > 0)
             paramsControl(jsonNode, params);
@@ -70,17 +79,20 @@ public class MyFormatter extends Formatter {
                     if (returnType.isPrimitive()) {
                         primitiveReturnValue(jsonNode, returnType, returnValue);
                     }
-
                     else
                         jsonNode.putPOJO("result", returnValue);
                 } else
                     jsonNode.putNull("result");
             }
-        } else {
-            ArrayNode argsNode = objectMapper.createArrayNode();
-            for (Object arg : params)
-                argsNode.addPOJO(arg);
-            jsonNode.set("args", argsNode);
+        } else if (params[0] instanceof MyRecordEntering) {
+            MyRecordEntering myRecord = (MyRecordEntering) params[0];
+            Object[] args = myRecord.params();
+            if (args != null && args.length > 0) {
+                ArrayNode argsNode = objectMapper.createArrayNode();
+                for (Object arg : args)
+                    argsNode.addPOJO(arg);
+                jsonNode.set("args", argsNode);
+            }
         }
     }
 
