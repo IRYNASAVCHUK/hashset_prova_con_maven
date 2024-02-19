@@ -25,17 +25,23 @@ public class MyFormatter extends Formatter {
         if (params != null && params.length > 0) {
             if (params[0] instanceof MyRecordExiting<?>) {
                 MyRecordExiting<?> myRecord = (MyRecordExiting<?>) params[0];
-                target = myRecord.result();
-            } else
-                target = params[0];
+                target = myRecord.thisObject();
+            }
+            if (params[0] instanceof MyRecordEntering) {
+                MyRecordEntering myRecord = (MyRecordEntering) params[0];
+                target = myRecord.thisObject();
+            }
+               
             System.out.println(target);
         }
-        if (target == null)
-            jsonNode.putNull("target");
-        else if (target instanceof Class<?>)
+        if (target == null) {
+            // Se thisObject è null, il metodo è statico
+            jsonNode.put("target", record.getSourceClassName());
+        } else if (target instanceof Class<?>) {
             jsonNode.put("target", ((Class<?>) target).getName());
-        else
+        } else {
             jsonNode.put("target", System.identityHashCode(target));
+        }
 
         if (params != null && params.length > 0)
             paramsControl(jsonNode, params);
