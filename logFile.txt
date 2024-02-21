@@ -1,0 +1,148 @@
+{
+  "event" : "func_pre",
+  "target" : 346861221,
+  "name" : "com.example.hashset.MyHashSet.MyHashSet"
+}
+{
+  "event" : "func_pre",
+  "target" : 346861221,
+  "name" : "com.example.hashset.MyHashSet.getSize"
+}
+{
+  "event" : "func_post",
+  "target" : 346861221,
+  "result" : 0,
+  "name" : "com.example.hashset.MyHashSet.getSize"
+}
+{
+  "event" : "func_post",
+  "target" : 346861221,
+  "result" : {
+    "size" : 0
+  },
+  "name" : "com.example.hashset.MyHashSet.MyHashSet"
+}
+{
+  "event" : "func_pre",
+  "target" : 1615056168,
+  "args" : [ 0, "Mario" ],
+  "name" : "com.example.hashset.Customer.Customer"
+}
+{
+  "event" : "func_pre",
+  "target" : 1615056168,
+  "name" : "com.example.hashset.Customer.getId"
+}
+{
+  "event" : "func_post",
+  "target" : 1615056168,
+  "result" : 0,
+  "name" : "com.example.hashset.Customer.getId"
+}
+{
+  "event" : "func_pre",
+  "target" : 1615056168,
+  "name" : "com.example.hashset.Customer.getName"
+}
+{
+  "event" : "func_post",
+  "target" : 1615056168,
+  "result" : "Mario",
+  "name" : "com.example.hashset.Customer.getName"
+}
+{
+  "event" : "func_post",
+  "target" : 1615056168,
+  "args" : [ 0, "Mario" ],
+  "result" : {
+    "id" : 0,
+    "name" : "Mario"
+  },
+  "name" : "com.example.hashset.Customer.Customer"
+}
+{
+  "event" : "func_pre",
+  "target" : 640363654,
+  "args" : [ 1, "Marco" ],
+  "name" : "com.example.hashset.Customer.Customer"
+}
+{
+  "event" : "func_pre",
+  "target" : 640363654,
+  "name" : "com.example.hashset.Customer.getId"
+}
+{
+  "event" : "func_post",
+  "target" : 640363654,
+  "result" : 1,
+  "name" : "com.example.hashset.Customer.getId"
+}
+{
+  "event" : "func_pre",
+  "target" : 640363654,
+  "name" : "com.example.hashset.Customer.getName"
+}
+{
+  "event" : "func_post",
+  "target" : 640363654,
+  "result" : "Marco",
+  "name" : "com.example.hashset.Customer.getName"
+}
+{
+  "event" : "func_post",
+  "target" : 640363654,
+  "args" : [ 1, "Marco" ],
+  "result" : {
+    "id" : 1,
+    "name" : "Marco"
+  },
+  "name" : "com.example.hashset.Customer.Customer"
+}
+{
+  "event" : "func_pre",
+  "target" : 924477420,
+  "args" : [ 2, "Matteo" ],
+  "name" : "com.example.hashset.Customer.Customer"
+}
+{
+  "event" : "func_pre",
+  "target" : 924477420,
+  "name" : "com.example.hashset.Customer.getId"
+}
+{
+  "event" : "func_post",
+  "target" : 924477420,
+  "result" : 2,
+  "name" : "com.example.hashset.Customer.getId"
+}
+{
+  "event" : "func_pre",
+  "target" : 924477420,
+  "name" : "com.example.hashset.Customer.getName"
+}
+{
+  "event" : "func_post",
+  "target" : 924477420,
+  "result" : "Matteo",
+  "name" : "com.example.hashset.Customer.getName"
+}
+{
+  "event" : "func_post",
+  "target" : 924477420,
+  "args" : [ 2, "Matteo" ],
+  "result" : {
+    "id" : 2,
+    "name" : "Matteo"
+  },
+  "name" : "com.example.hashset.Customer.Customer"
+}
+{
+  "event" : "func_pre",
+  "target" : 346861221,
+  "name" : "com.example.hashset.MyHashSet.clearSet"
+}
+{
+  "event" : "func_post",
+  "target" : 346861221,
+  "name" : "com.example.hashset.MyHashSet.clearSet"
+}

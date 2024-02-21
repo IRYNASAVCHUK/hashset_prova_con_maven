@@ -17,8 +17,6 @@ public class MyFormatter extends Formatter {
         ObjectNode jsonNode = objectMapper.createObjectNode().put("event", event);
 
         Object[] params = record.getParameters();
-        // TODO: non sono sicura che si fa cosi
-        // FIXME: target
 
         Object target = null;
         boolean isStatic = false;
@@ -33,9 +31,8 @@ public class MyFormatter extends Formatter {
                 target = myRecord.thisObject();
                 isStatic = myRecord.isStatic();
             }
-            System.out.println(target);
+            
         }
-        
         if (target == null) {
             if (isStatic) {
                 // Se il metodo è statico, imposto il target sul nome della classe
@@ -50,7 +47,6 @@ public class MyFormatter extends Formatter {
         } else {
             jsonNode.put("target", System.identityHashCode(target));
         }
-        
 
         if (params != null && params.length > 0)
             paramsControl(jsonNode, params);
