@@ -14,12 +14,9 @@ public class Main {
         assert !example.removeCustomer(person1);
         assert example.containsCustomer(person3);
         assert example.getSize() == 2;
-        // metodi statici
-        MyHashSet.containsAnyCustomerWithName(example, "Mario");
-        MyHashSet.countCustomersWithIdGreaterThan(example, 0);
-        //assert con metodi statici non funzionano
-        // assert MyHashSet.containsAnyCustomerWithName(example, "Mario");
-        // assert MyHashSet.countCustomersWithIdGreaterThan(example, 0)==1;
+       
+        // metodio statico
+        MyHashSet.sum(2, 2);
         example.clearSet();
     }
 }
