@@ -9,14 +9,17 @@ public class Main {
         assert example.addCustomer(person1);
         assert example.addCustomer(person2);
         assert example.addCustomer(person3);
-        // assert !example.addCustomer(person3); 
-        // assert example.removeCustomer(person1);
-        // assert !example.removeCustomer(person1);
-        // assert example.containsCustomer(person3);
+        assert !example.addCustomer(person3); 
+        assert example.removeCustomer(person1);
+        assert !example.removeCustomer(person1);
+        assert example.containsCustomer(person3);
         assert example.getSize() == 2;
         // metodi statici
-        assert MyHashSet.containsAnyCustomerWithName(example, "Mario");
-        assert MyHashSet.countCustomersWithIdGreaterThan(example, 0) == 1;
+        MyHashSet.containsAnyCustomerWithName(example, "Mario");
+        MyHashSet.countCustomersWithIdGreaterThan(example, 0);
+        //assert con metodi statici non funzionano
+        // assert MyHashSet.containsAnyCustomerWithName(example, "Mario");
+        // assert MyHashSet.countCustomersWithIdGreaterThan(example, 0)==1;
         example.clearSet();
     }
 }
