@@ -11,7 +11,7 @@ public class MyFormatter extends Formatter {
 
     @Override
     public String format(LogRecord record) {
-        String event = record.getMessage().contains("ENTRY") ? "func_pre"
+        String event = record.getMessage().contains("ENTRY") ? "func_pre" // per i literal di tipo String principali suggerisco di usare delle costanti eventualmente inizializzate con file json di configurazione
                 : record.getMessage().contains("RETURN") ? "func_post" : "";
 
         ObjectNode jsonNode = objectMapper.createObjectNode().put("event", event);
