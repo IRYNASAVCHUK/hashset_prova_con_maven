@@ -15,7 +15,7 @@ public class Main {
         assert example.containsCustomer(person3);
         assert example.getSize() == 2;
        
-        // metodio statico
+        // metodo statico
         MyHashSet.sum(2, 2);
         example.clearSet();
     }

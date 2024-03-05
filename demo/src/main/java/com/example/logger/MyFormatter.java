@@ -11,36 +11,31 @@ public class MyFormatter extends Formatter {
 
     @Override
     public String format(LogRecord record) {
-        String event = record.getMessage().contains("ENTRY") ? "func_pre" // per i literal di tipo String principali suggerisco di usare delle costanti eventualmente inizializzate con file json di configurazione
-                : record.getMessage().contains("RETURN") ? "func_post" : "";
-
-        ObjectNode jsonNode = objectMapper.createObjectNode().put("event", event);
+        //String event = record.getMessage().contains("ENTRY") ? "func_pre" // per i literal di tipo String principali suggerisco di usare delle costanti eventualmente inizializzate con file json di configurazione
+        //        : record.getMessage().contains("RETURN") ? "func_post" : "";
+        
+        String event = record.getMessage().contains("ENTRY") ? ConfigLoader.getEventEntry() :
+            record.getMessage().contains("RETURN") ? ConfigLoader.getEventReturn() : "";
+        
+            ObjectNode jsonNode = objectMapper.createObjectNode().put("event", event);
 
         Object[] params = record.getParameters();
 
         Object target = null;
-        boolean isStatic = false;
+    
         if (params != null && params.length > 0) {
             if (params[0] instanceof MyRecordExiting<?>) {
                 MyRecordExiting<?> myRecord = (MyRecordExiting<?>) params[0];
                 target = myRecord.thisObject();
-                isStatic = myRecord.isStatic();
             }
             if (params[0] instanceof MyRecordEntering) {
                 MyRecordEntering myRecord = (MyRecordEntering) params[0];
                 target = myRecord.thisObject();
-                isStatic = myRecord.isStatic();
             }
             
         }
         if (target == null) {
-            if (isStatic) {
-                // Se il metodo è statico, imposto il target sul nome della classe
                 jsonNode.put("target", record.getSourceClassName());
-            } else {
-                // Se thisObject è null ma il metodo non è statico, potrebbe essere dovuto a una chiamata su un riferimento nullo
-                jsonNode.putNull("target");
-            }
         } else if (target instanceof Class<?>) {
             // Se target è una classe, ottengo il suo nome
             jsonNode.put("target", ((Class<?>) target).getName());
