@@ -14,8 +14,8 @@ public class MyFormatter extends Formatter {
         //String event = record.getMessage().contains("ENTRY") ? "func_pre" // per i literal di tipo String principali suggerisco di usare delle costanti eventualmente inizializzate con file json di configurazione
         //        : record.getMessage().contains("RETURN") ? "func_post" : "";
         
-        String event = record.getMessage().contains("ENTRY") ? ConfigLoader.getEventEntry() :
-            record.getMessage().contains("RETURN") ? ConfigLoader.getEventReturn() : "";
+        String event = record.getMessage().contains("ENTRY") ? ConfigLoader.getConfigValue("eventEntry")  :
+            record.getMessage().contains("RETURN") ? ConfigLoader.getConfigValue("eventReturn")  : "";
         
             ObjectNode jsonNode = objectMapper.createObjectNode().put("event", event);
 

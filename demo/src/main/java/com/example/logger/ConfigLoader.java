@@ -18,11 +18,7 @@ public class ConfigLoader {
         }
     }
 
-    public static String getEventEntry() {
-        return configNode.get("eventEntry").asText();
-    }
-
-    public static String getEventReturn() {
-        return configNode.get("eventReturn").asText();
+    public static String getConfigValue(String key) {
+        return configNode.get(key).asText();
     }
 }
