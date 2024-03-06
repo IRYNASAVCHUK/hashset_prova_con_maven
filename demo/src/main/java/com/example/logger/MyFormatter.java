@@ -23,8 +23,8 @@ public class MyFormatter extends Formatter {
 
         Object target = null;
     
-        if (params != null && params.length > 0) {
-            if (params[0] instanceof MyRecordExiting<?>) {
+        if (params != null && params.length > 0) { // questa condizione dovrebbe essere sempre vera, giusto? lancerei un'eccezione nel caso non lo fosse
+            if (params[0] instanceof MyRecordExiting<?>) { // non sappiamo già dal codice sopra se si tratta di entry o return?
                 MyRecordExiting<?> myRecord = (MyRecordExiting<?>) params[0];
                 target = myRecord.thisObject();
             }
@@ -38,12 +38,13 @@ public class MyFormatter extends Formatter {
                 jsonNode.put("target", record.getSourceClassName());
         } else if (target instanceof Class<?>) {
             // Se target è una classe, ottengo il suo nome
-            jsonNode.put("target", ((Class<?>) target).getName());
+            jsonNode.put("target", ((Class<?>) target).getName()); // gli oggetti di tipo Class non dovrebbero essere trattati allo stesso modo?
+                                                                   // se vogliamo possiamo aggiungere un ulteriore property 'targetClass' nel file JSON che specifica la classe dell'oggetto target
         } else {
             jsonNode.put("target", System.identityHashCode(target));
         }
 
-        if (params != null && params.length > 0)
+        if (params != null && params.length > 0) // vedere commento sopra
             paramsControl(jsonNode, params);
 
         jsonNode.put("name", record.getSourceClassName() + "." + record.getSourceMethodName());
@@ -53,10 +54,10 @@ public class MyFormatter extends Formatter {
     }
 
     private void paramsControl(ObjectNode jsonNode, Object[] params) {
-        if (params[0] instanceof MyRecordExiting) {
+        if (params[0] instanceof MyRecordExiting) { // non si potrebbe evitare questo controllo?
             MyRecordExiting<?> myRecord = (MyRecordExiting<?>) params[0];
             Object[] args = myRecord.params();
-            if (args != null && args.length > 0) {
+            if (args != null && args.length > 0) { 
                 ArrayNode argsNode = objectMapper.createArrayNode();
                 for (Object arg : args)
                     argsNode.addPOJO(arg);
@@ -78,7 +79,7 @@ public class MyFormatter extends Formatter {
         } else if (params[0] instanceof MyRecordEntering) {
             MyRecordEntering myRecord = (MyRecordEntering) params[0];
             Object[] args = myRecord.params();
-            if (args != null && args.length > 0) {
+            if (args != null && args.length > 0) { // codice uguale a quello sopra, si potrebbe evitare duplicazione
                 ArrayNode argsNode = objectMapper.createArrayNode();
                 for (Object arg : args)
                     argsNode.addPOJO(arg);
