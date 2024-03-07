@@ -54,12 +54,7 @@ public class MyFormatter extends Formatter {
         if (params[0] instanceof MyRecordExiting) { // non si potrebbe evitare questo controllo?
             MyRecordExiting<?> myRecord = (MyRecordExiting<?>) params[0];
             Object[] args = myRecord.params();
-            if (args != null && args.length > 0) { 
-                ArrayNode argsNode = objectMapper.createArrayNode();
-                for (Object arg : args)
-                    argsNode.addPOJO(arg);
-                jsonNode.set("args", argsNode);
-            }
+            addArgsNode(jsonNode, args);
             Class<?> returnType = myRecord.returnType();
 
             if (!returnType.equals(void.class)) {
@@ -76,12 +71,16 @@ public class MyFormatter extends Formatter {
         } else if (params[0] instanceof MyRecordEntering) {
             MyRecordEntering myRecord = (MyRecordEntering) params[0];
             Object[] args = myRecord.params();
-            if (args != null && args.length > 0) { // codice uguale a quello sopra, si potrebbe evitare duplicazione
-                ArrayNode argsNode = objectMapper.createArrayNode();
-                for (Object arg : args)
-                    argsNode.addPOJO(arg);
-                jsonNode.set("args", argsNode);
-            }
+            addArgsNode(jsonNode, args);
+        }
+    }
+
+    private void addArgsNode(ObjectNode jsonNode, Object[] args) {
+        if (args != null && args.length > 0) { 
+            ArrayNode argsNode = objectMapper.createArrayNode();
+            for (Object arg : args)
+                argsNode.addPOJO(arg);
+            jsonNode.set("args", argsNode);
         }
     }
 
