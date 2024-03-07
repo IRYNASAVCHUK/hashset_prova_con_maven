@@ -1,5 +1,7 @@
 package com.example.logger;
 
+import com.example.record.MyRecordEntering;
+import com.example.record.MyRecordExiting;
 import com.fasterxml.jackson.databind.*;
 import com.fasterxml.jackson.databind.node.*;
 
@@ -52,11 +54,12 @@ public class MyFormatter extends Formatter {
 
     private void paramsControl(ObjectNode jsonNode, Object[] params) {
         if (params[0] instanceof MyRecordExiting) { // non si potrebbe evitare questo controllo?
+                                                    // devo tratare in modo diverso due tipi di record
             MyRecordExiting<?> myRecord = (MyRecordExiting<?>) params[0];
             Object[] args = myRecord.params();
             addArgsNode(jsonNode, args);
+            
             Class<?> returnType = myRecord.returnType();
-
             if (!returnType.equals(void.class)) {
                 Object returnValue = myRecord.result();
                 if (returnValue != null) {
