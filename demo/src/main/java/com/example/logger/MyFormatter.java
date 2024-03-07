@@ -1,5 +1,6 @@
 package com.example.logger;
 
+import com.example.record.MyRecord;
 import com.example.record.MyRecordEntering;
 import com.example.record.MyRecordExiting;
 import com.fasterxml.jackson.databind.*;
@@ -12,39 +13,50 @@ public class MyFormatter extends Formatter {
     private static final ObjectMapper objectMapper = new ObjectMapper();
 
     @Override
-    public String format(LogRecord record) {    
-        String event = record.getMessage().contains("ENTRY") ? ConfigLoader.getConfigValue("eventEntry")  :
-            record.getMessage().contains("RETURN") ? ConfigLoader.getConfigValue("eventReturn")  : "";
-        
+    public String format(LogRecord record) {
+        String event = record.getMessage().contains("ENTRY") ? ConfigLoader.getConfigValue("eventEntry")
+                : record.getMessage().contains("RETURN") ? ConfigLoader.getConfigValue("eventReturn") : "";
+
         ObjectNode jsonNode = objectMapper.createObjectNode().put("event", event);
 
         Object[] params = record.getParameters();
 
         Object target = null;
-    
-        if (params != null && params.length > 0) { // questa condizione dovrebbe essere sempre vera, giusto? lancerei un'eccezione nel caso non lo fosse
-            if (params[0] instanceof MyRecordExiting<?>) { // non sappiamo già dal codice sopra se si tratta di entry o return?
-                MyRecordExiting<?> myRecord = (MyRecordExiting<?>) params[0];
-                target = myRecord.thisObject();
-            }
-            if (params[0] instanceof MyRecordEntering) {
-                MyRecordEntering myRecord = (MyRecordEntering) params[0];
-                target = myRecord.thisObject();
-            }
-            
-        }
-        if (target == null) {
-                jsonNode.put("target", record.getSourceClassName());
-        } else if (target instanceof Class<?>) {
-            // Se target è una classe, ottengo il suo nome
-            jsonNode.put("target", ((Class<?>) target).getName()); // gli oggetti di tipo Class non dovrebbero essere trattati allo stesso modo?
-                                                                   // se vogliamo possiamo aggiungere un ulteriore property 'targetClass' nel file JSON che specifica la classe dell'oggetto target
-        } else {
-            jsonNode.put("target", System.identityHashCode(target));
+        // TODO: eliminato controllo , lanciato eccezione
+        // questa condizione dovrebbe essere sempre vera, giusto? lancerei un'eccezione
+        // nel caso non lo fosse
+        if (params == null || params.length == 0) {
+            throw new IllegalArgumentException("No parameters found in the record.");
         }
 
-        if (params != null && params.length > 0) // vedere commento sopra
-            paramsControl(jsonNode, params);
+        // TODO: ??? non sapiamo tipo di thisObject
+        // non sappiamo già dal codice sopra se si tratta di entry o return?
+        if (params[0] instanceof MyRecord) {
+            MyRecord myRecord = (MyRecord) params[0];
+
+            if (myRecord instanceof MyRecordExiting) {
+                MyRecordExiting<?> exitingRecord = (MyRecordExiting<?>) myRecord;
+                target = exitingRecord.thisObject();
+            } else if (myRecord instanceof MyRecordEntering) {
+                MyRecordEntering enteringRecord = (MyRecordEntering) myRecord;
+                target = enteringRecord.thisObject();
+            }
+            if (target == null) {
+                jsonNode.put("target", record.getSourceClassName());
+            } else {
+                // TODO: Se il target è un'istanza di Class, ottengo il nome della classe???
+
+                // gli oggetti di tipo Class non dovrebbero essere trattati allo stesso modo?
+                // se vogliamo possiamo aggiungere un ulteriore property 'targetClass' nel file
+                // JSON che specifica la classe dell'oggetto target
+
+                jsonNode.put("target", System.identityHashCode(target));
+                // if (target instanceof Class<?>) {
+                //     jsonNode.put("targetClass", ((Class<?>) target).getName());
+                // }
+            }
+            paramsControl(jsonNode, myRecord);
+        }
 
         jsonNode.put("name", record.getSourceClassName() + "." + record.getSourceMethodName());
 
@@ -52,34 +64,39 @@ public class MyFormatter extends Formatter {
         return jsonNode.toPrettyString() + System.lineSeparator();
     }
 
-    private void paramsControl(ObjectNode jsonNode, Object[] params) {
-        if (params[0] instanceof MyRecordExiting) { // non si potrebbe evitare questo controllo?
-                                                    // devo tratare in modo diverso due tipi di record
-            MyRecordExiting<?> myRecord = (MyRecordExiting<?>) params[0];
-            Object[] args = myRecord.params();
-            addArgsNode(jsonNode, args);
-            
-            Class<?> returnType = myRecord.returnType();
-            if (!returnType.equals(void.class)) {
-                Object returnValue = myRecord.result();
-                if (returnValue != null) {
-                    if (returnType.isPrimitive()) {
-                        primitiveReturnValue(jsonNode, returnType, returnValue);
-                    }
-                    else
-                        jsonNode.putPOJO("result", returnValue);
-                } else
-                    jsonNode.putNull("result");
+    private void paramsControl(ObjectNode jsonNode, MyRecord record) {
+        // TODO: con interfaccia MyRecord evitiamo controllo
+        // if (params[0] instanceof MyRecordExiting) { // non si potrebbe evitare questo
+        // controllo?
+        Object[] args = record.params();
+        addArgsNode(jsonNode, args);
+        if (record instanceof MyRecordExiting) {
+            handleExitingRecord(jsonNode, (MyRecordExiting<?>) record);
+        }
+    }
+
+    private void handleExitingRecord(ObjectNode jsonNode, MyRecordExiting<?> exitingRecord) {
+        Class<?> returnType = exitingRecord.returnType();
+        if (!returnType.equals(void.class)) {
+            Object returnValue = exitingRecord.result();
+            if (returnValue != null) {
+                if (returnType.isPrimitive()) {
+                    primitiveReturnValue(jsonNode, returnType, returnValue);
+                } else {
+                    jsonNode.putPOJO("result", returnValue);
+                }
+            } else {
+                jsonNode.putNull("result");
             }
-        } else if (params[0] instanceof MyRecordEntering) {
-            MyRecordEntering myRecord = (MyRecordEntering) params[0];
-            Object[] args = myRecord.params();
-            addArgsNode(jsonNode, args);
         }
     }
 
     private void addArgsNode(ObjectNode jsonNode, Object[] args) {
-        if (args != null && args.length > 0) { 
+        // TODO: elliminato
+        // if (args != null && args.length > 0) {
+        // codice uguale a quello sopra, si potrebbe evitare duplicazione
+
+        if (args != null && args.length > 0) {
             ArrayNode argsNode = objectMapper.createArrayNode();
             for (Object arg : args)
                 argsNode.addPOJO(arg);
