@@ -1,8 +1,8 @@
 package com.example.hashset;
 
 import com.example.logger.MyLogger;
-import com.example.logger.MyRecordEntering;
-import com.example.logger.MyRecordExiting;
+import com.example.record.MyRecordEntering;
+import com.example.record.MyRecordExiting;
 
 import java.util.Objects;
 import java.util.logging.Logger;

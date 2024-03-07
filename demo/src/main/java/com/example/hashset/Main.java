@@ -18,5 +18,11 @@ public class Main {
         // metodo statico
         MyHashSet.sum(2, 2);
         example.clearSet();
+
+        // Creazione di un oggetto Customer
+        Customer customer = new Customer(1, "John Doe");
+        assert customer.getId() == 1 : "ID non corrisponde";
+        assert customer.getName().equals("John Doe") : "Nome non corrisponde";
+       
     }
 }
