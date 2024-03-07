@@ -8,11 +8,12 @@ public class MyHandler extends FileHandler {
         super();
     }
 
-    private static final String LOG_FILE = "logFile.txt";
+    private static final String LOG_FILE = "logFile.json"; /* va bene come nome di default, ma dovrebbe essere possibile passare il nome da
+                                                              linea di comando o definirlo nel file di configurazione */
 
     public static void configureHandler(Logger logger) {
         try {
-            Handler fileHandler = new FileHandler(LOG_FILE);
+            Handler fileHandler = new FileHandler(LOG_FILE,true);
             fileHandler.setLevel(Level.ALL);
             fileHandler.setFormatter(new MyFormatter());
 

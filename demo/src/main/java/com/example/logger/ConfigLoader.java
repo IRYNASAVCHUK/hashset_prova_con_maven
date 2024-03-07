@@ -12,7 +12,7 @@ public class ConfigLoader {
 
     static {
         try {
-            configNode = objectMapper.readTree(new File("demo/src/main/java/com/example/logger/config.json"));
+            configNode = objectMapper.readTree(new File("config.json"));
         } catch (IOException e) {
             e.printStackTrace();
         }
