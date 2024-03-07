@@ -10,14 +10,11 @@ public class MyFormatter extends Formatter {
     private static final ObjectMapper objectMapper = new ObjectMapper();
 
     @Override
-    public String format(LogRecord record) {
-        //String event = record.getMessage().contains("ENTRY") ? "func_pre" // per i literal di tipo String principali suggerisco di usare delle costanti eventualmente inizializzate con file json di configurazione
-        //        : record.getMessage().contains("RETURN") ? "func_post" : "";
-        
+    public String format(LogRecord record) {    
         String event = record.getMessage().contains("ENTRY") ? ConfigLoader.getConfigValue("eventEntry")  :
             record.getMessage().contains("RETURN") ? ConfigLoader.getConfigValue("eventReturn")  : "";
         
-            ObjectNode jsonNode = objectMapper.createObjectNode().put("event", event);
+        ObjectNode jsonNode = objectMapper.createObjectNode().put("event", event);
 
         Object[] params = record.getParameters();
 
@@ -88,7 +85,6 @@ public class MyFormatter extends Formatter {
         }
     }
 
-    // The primitive types: boolean, byte, char, short, int, long, float, double
     private void primitiveReturnValue(ObjectNode jsonNode, Class<?> returnType, Object returnValue) {
         switch (returnType.getTypeName()) {
             case "boolean":
