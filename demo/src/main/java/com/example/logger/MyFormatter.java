@@ -1,12 +1,11 @@
 package com.example.logger;
 
-import com.example.record.MyRecord;
-import com.example.record.MyRecordEntering;
-import com.example.record.MyRecordExiting;
+import com.example.record.*;
+
+import java.util.logging.*;
 import com.fasterxml.jackson.databind.*;
 import com.fasterxml.jackson.databind.node.*;
 
-import java.util.logging.*;
 
 public class MyFormatter extends Formatter {
 

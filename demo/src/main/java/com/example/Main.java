@@ -1,4 +1,7 @@
-package com.example.hashset;
+package com.example;
+
+import com.example.hashset.Customer;
+import com.example.hashset.MyHashSet;
 
 public class Main {
     public static void main(String[] args) {
