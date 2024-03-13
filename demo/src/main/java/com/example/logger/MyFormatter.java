@@ -6,7 +6,6 @@ import java.util.logging.*;
 import com.fasterxml.jackson.databind.*;
 import com.fasterxml.jackson.databind.node.*;
 
-
 public class MyFormatter extends Formatter {
 
     private static final ObjectMapper objectMapper = new ObjectMapper();
@@ -51,7 +50,7 @@ public class MyFormatter extends Formatter {
 
                 jsonNode.put("target", System.identityHashCode(target));
                 // if (target instanceof Class<?>) {
-                //     jsonNode.put("targetClass", ((Class<?>) target).getName());
+                // jsonNode.put("targetClass", ((Class<?>) target).getName());
                 // }
             }
             paramsControl(jsonNode, myRecord);
@@ -59,8 +58,8 @@ public class MyFormatter extends Formatter {
 
         jsonNode.put("name", record.getSourceClassName() + "." + record.getSourceMethodName());
 
-        // return jsonNode.toString() + System.lineSeparator();
-        return jsonNode.toPrettyString() + System.lineSeparator();
+        String jsonString = jsonNode.toPrettyString() + System.lineSeparator(); // jsonNode.toString() 
+        return jsonString;
     }
 
     private void paramsControl(ObjectNode jsonNode, MyRecord record) {

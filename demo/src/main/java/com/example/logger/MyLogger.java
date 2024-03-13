@@ -2,6 +2,9 @@ package com.example.logger;
 
 import java.util.logging.*;
 
+import com.example.record.MyRecordEntering;
+import com.example.record.MyRecordExiting;
+
 public class MyLogger extends Logger {
     
     protected MyLogger(String name, String resourceBundleName) {
@@ -22,24 +25,18 @@ public class MyLogger extends Logger {
     public static Logger getLogger() {
         return logger;
     }
-/*
- * TODO:
- *      log(LogRecord record)
- * 
- *      setParameters(Object[] parameters)
- *      setSourceClassName(String sourceClassName)
- *      setSourceMethodName(String sourceMethodName)
- *      setMessage(String message): "ENTRY", "RETURN"
- *      setLevel(Level level): log level FINER
- * ***********************************
- * public void entering(String sourceClass,String sourceMethod, Object[] params)
- * 
- */
-    public static LogRecord logEntering(){
-        return null;
+    
+    public static LogRecord logEntering( MyRecordEntering enter){
+        LogRecord log = new LogRecord(Level.FINER, GLOBAL_LOGGER_NAME);
+        log.setParameters(new Object[] {enter});
+        log.setMessage("ENTRY");
+        return log;
     }
 
-    public static LogRecord logExiting(){
-        return null;
+    public static <T> LogRecord logExiting(MyRecordExiting<T> result){
+        LogRecord log = new LogRecord(Level.FINER, GLOBAL_LOGGER_NAME);
+        log.setParameters(new Object[] {result});
+        log.setMessage("RETURN");
+        return log;
     }
 }

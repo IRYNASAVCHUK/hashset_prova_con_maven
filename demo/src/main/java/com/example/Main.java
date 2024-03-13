@@ -16,7 +16,7 @@ public class Main {
         assert example.removeCustomer(person1);
         assert !example.removeCustomer(person1);
         assert example.containsCustomer(person3);
-        assert example.getSize() == 2;
+        assert example.getSize() == 2: "Size non corrisponde";
        
         // metodo statico
         MyHashSet.sum(2, 2);
