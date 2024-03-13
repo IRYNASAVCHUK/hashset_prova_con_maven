@@ -22,4 +22,24 @@ public class MyLogger extends Logger {
     public static Logger getLogger() {
         return logger;
     }
+/*
+ * TODO:
+ *      log(LogRecord record)
+ * 
+ *      setParameters(Object[] parameters)
+ *      setSourceClassName(String sourceClassName)
+ *      setSourceMethodName(String sourceMethodName)
+ *      setMessage(String message): "ENTRY", "RETURN"
+ *      setLevel(Level level): log level FINER
+ * ***********************************
+ * public void entering(String sourceClass,String sourceMethod, Object[] params)
+ * 
+ */
+    public static LogRecord logEntering(){
+        return null;
+    }
+
+    public static LogRecord logExiting(){
+        return null;
+    }
 }
