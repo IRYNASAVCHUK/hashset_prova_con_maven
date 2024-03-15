@@ -2,8 +2,8 @@ package com.example.hashset;
 
 import com.example.logger.MyLogger;
 import com.example.record.*;
-import com.example.utils.CallerUtil;
 
+import java.util.Arrays;
 import java.util.Objects;
 import java.util.logging.Logger;
 
@@ -13,7 +13,7 @@ public class Customer {
     private String name;
 
     public Customer(int id, String name) {
-        if (CallerUtil.isCalledFromMain()) {
+        if ("main".equals(getCallerMethodName(Thread.currentThread().getStackTrace()))) {
             logger.log(MyLogger.logEntering(new MyRecordEntering(new Object[] { id, name }, this)));
             this.id = id;
             this.name = name;
@@ -27,7 +27,7 @@ public class Customer {
     }
 
     public int getId() {
-        if (CallerUtil.isCalledFromMain()) {
+        if ("main".equals(getCallerMethodName(Thread.currentThread().getStackTrace()))) {
             logger.log(MyLogger.logEntering(new MyRecordEntering(null, this)));
             logger.log(MyLogger.logExiting(new MyRecordExiting<>(int.class, id, null, this)));
         }
@@ -37,7 +37,7 @@ public class Customer {
     public void setId(int id) {
         if (id < 0)
             throw new IllegalArgumentException();
-        if (CallerUtil.isCalledFromMain()) {
+        if ("main".equals(getCallerMethodName(Thread.currentThread().getStackTrace()))) {
             logger.log(MyLogger.logEntering(new MyRecordEntering(new Object[] { id }, this)));
             this.id = id;
             logger.log(MyLogger.logExiting(new MyRecordExiting<>(void.class, null, new Object[] { id }, this)));
@@ -46,7 +46,7 @@ public class Customer {
     }
 
     public String getName() {
-        if (CallerUtil.isCalledFromMain()) {
+        if ("main".equals(getCallerMethodName(Thread.currentThread().getStackTrace()))) {
             logger.log(MyLogger.logEntering(new MyRecordEntering(null, this)));
             logger.log(MyLogger.logExiting(new MyRecordExiting<>(String.class, name, null, this)));
         }
@@ -54,7 +54,7 @@ public class Customer {
     }
 
     public void setName(String name) {
-        if (CallerUtil.isCalledFromMain()) {
+        if ("main".equals(getCallerMethodName(Thread.currentThread().getStackTrace()))) {
             logger.log(MyLogger.logEntering(new MyRecordEntering(new Object[] { name }, this)));
             this.name = name;
             logger.log(MyLogger.logExiting(new MyRecordExiting<>(void.class, null, new Object[] { name }, this)));
@@ -64,7 +64,7 @@ public class Customer {
 
     @Override
     public boolean equals(Object o) {
-        if (CallerUtil.isCalledFromMain()) {
+        if ("main".equals(getCallerMethodName(Thread.currentThread().getStackTrace()))) {
             logger.log(MyLogger.logEntering(new MyRecordEntering(new Object[] { o }, this)));
             if (this == o) {
                 logger.log(MyLogger.logExiting(new MyRecordExiting<>(boolean.class, true, new Object[] { o }, this)));
@@ -90,7 +90,7 @@ public class Customer {
 
     @Override
     public int hashCode() {
-        if (CallerUtil.isCalledFromMain()) {
+        if ("main".equals(getCallerMethodName(Thread.currentThread().getStackTrace()))) {
             logger.log(MyLogger.logEntering(new MyRecordEntering(null, this)));
             int returnValue = Objects.hash(id);
             logger.log(MyLogger.logExiting(new MyRecordExiting<>(int.class, returnValue, null, this)));
@@ -101,7 +101,7 @@ public class Customer {
 
     @Override
     public String toString() {
-        if (CallerUtil.isCalledFromMain()) {
+        if ("main".equals(getCallerMethodName(Thread.currentThread().getStackTrace()))) {
             logger.log(MyLogger.logEntering(new MyRecordEntering(null, this)));
             String returnValue = "(" + id + " , " + name + ")";
             logger.log(MyLogger.logExiting(new MyRecordExiting<>(String.class, returnValue, null, this)));
@@ -109,4 +109,22 @@ public class Customer {
         }
         return "(" + id + " , " + name + ")";
     }
+
+    private String getCallerMethodName(StackTraceElement[] stackTrace) {
+      // Analizza gli elementi dello stack trace per ottenere il chiamante diretto
+      String callerMethodName = Arrays.stream(stackTrace)
+            // Ignora il primo elemento dello stack trace (quello relativo al metodo
+            // getSize() stesso)
+            .skip(1)
+            // Trova il primo elemento non relativo alla classe corrente
+            .filter(element -> !element.getClassName().equals(getClass().getName()))
+            // Ottieni il nome del metodo chiamante
+            .map(StackTraceElement::getMethodName)
+            // Trova il primo nome di metodo non standard (cioè, che non inizia con
+            // 'lambda$' o '$$')
+            .filter(name -> !name.startsWith("lambda$") && !name.contains("$$"))
+            .findFirst()
+            .orElse("Unknown");
+      return callerMethodName;
+   }
 }
