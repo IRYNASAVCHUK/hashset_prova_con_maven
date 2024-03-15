@@ -3,6 +3,7 @@ package com.example.hashset;
 import com.example.logger.MyLogger;
 import com.example.record.MyRecordEntering;
 import com.example.record.MyRecordExiting;
+import com.example.utils.CallerUtil;
 
 import java.util.*;
 import java.util.logging.Logger;
@@ -12,79 +13,88 @@ public class MyHashSet {
    private Set<Customer> customers;
 
    public MyHashSet() {
-      MyRecordEntering enter = new MyRecordEntering(null, this);
-      logger.log(MyLogger.logEntering(enter));
+      if (CallerUtil.isCalledFromMain()) {
+         logger.log(MyLogger.logEntering(new MyRecordEntering(null, this)));
+         this.customers = new HashSet<>();
+         logger.log(MyLogger.logExiting(new MyRecordExiting<>(MyHashSet.class, this, null, this)));
+      }
       this.customers = new HashSet<>();
-      MyRecordExiting<MyHashSet> result = new MyRecordExiting<>(MyHashSet.class, this, null, this);
-      logger.log(MyLogger.logExiting(result));
    }
 
    public boolean addCustomer(Customer person) {
-      MyRecordEntering enter = new MyRecordEntering(new Object[] { person }, this);
-      logger.log(MyLogger.logEntering(enter));
-      boolean returnValue = customers.add(person);
-      MyRecordExiting<Boolean> result = new MyRecordExiting<>(boolean.class, returnValue, new Object[] { person },
-            this);
-      logger.log(MyLogger.logExiting(result));
-      return returnValue;
+      if (CallerUtil.isCalledFromMain()) {
+         logger.log(MyLogger.logEntering(new MyRecordEntering(new Object[] { person }, this)));
+         boolean returnValue = customers.add(person);
+         logger.log(
+               MyLogger.logExiting(new MyRecordExiting<>(boolean.class, returnValue, new Object[] { person }, this)));
+         return returnValue;
+      }
+      return customers.add(person);
    }
 
    public boolean removeCustomer(Customer person) {
-      MyRecordEntering enter = new MyRecordEntering(new Object[] { person }, this);
-      logger.log(MyLogger.logEntering(enter));
-      boolean returnValue = customers.remove(person);
-      MyRecordExiting<Boolean> result = new MyRecordExiting<>(boolean.class, returnValue, new Object[] { person },
-            this);
-      logger.log(MyLogger.logExiting(result));
-      return returnValue;
+      if (CallerUtil.isCalledFromMain()) {
+         logger.log(MyLogger.logEntering(new MyRecordEntering(new Object[] { person }, this)));
+         boolean returnValue = customers.remove(person);
+         logger.log(
+               MyLogger.logExiting(new MyRecordExiting<>(boolean.class, returnValue, new Object[] { person }, this)));
+         return returnValue;
+      }
+      return customers.remove(person);
    }
 
    public boolean containsCustomer(Customer person) {
-      MyRecordEntering enter = new MyRecordEntering(new Object[] { person }, this);
-      logger.log(MyLogger.logEntering(enter));
-      boolean returnValue = customers.contains(person);
-      MyRecordExiting<Boolean> result = new MyRecordExiting<>(boolean.class, returnValue, new Object[] { person },
-            this);
-      logger.log(MyLogger.logExiting(result));
-      return returnValue;
+      if (CallerUtil.isCalledFromMain()) {
+         logger.log(MyLogger.logEntering(new MyRecordEntering(new Object[] { person }, this)));
+         boolean returnValue = customers.contains(person);
+         logger.log(
+               MyLogger.logExiting(new MyRecordExiting<>(boolean.class, returnValue, new Object[] { person }, this)));
+         return returnValue;
+      }
+      return customers.contains(person);
    }
 
    public int getSize() {
-      MyRecordEntering enter = new MyRecordEntering(null, this);
-      logger.log(MyLogger.logEntering(enter));
-      int returnValue = customers.size();
-      MyRecordExiting<Integer> result = new MyRecordExiting<>(int.class, returnValue, null, this);
-      logger.log(MyLogger.logExiting(result));
-      return returnValue;
+      if (CallerUtil.isCalledFromMain()) {
+         System.out.println("*****");
+         logger.log(MyLogger.logEntering(new MyRecordEntering(null, this)));
+         int returnValue = customers.size();
+         logger.log(MyLogger.logExiting(new MyRecordExiting<>(int.class, returnValue, null, this)));
+         return returnValue;
+      }
+      return customers.size();
    }
 
    public void clearSet() {
-      MyRecordEntering enter = new MyRecordEntering(null, this);
-      logger.log(MyLogger.logEntering(enter));
+      if (CallerUtil.isCalledFromMain()) {
+         logger.log(MyLogger.logEntering(new MyRecordEntering(null, this)));
+         customers.clear();
+         logger.log(MyLogger.logExiting(new MyRecordExiting<>(void.class, null, null, this)));
+      }
       customers.clear();
-      MyRecordExiting<Void> result = new MyRecordExiting<>(void.class, null, null, this);
-      logger.log(MyLogger.logExiting(result));
    }
 
    @Override
    public String toString() {
-      MyRecordEntering enter = new MyRecordEntering(null, this);
-      logger.log(MyLogger.logEntering(enter));
-      String returnValue = "{" + "customers = " + customers + '}';
-      MyRecordExiting<String> result = new MyRecordExiting<>(String.class, returnValue, null, this);
-      logger.log(MyLogger.logExiting(result));
-      return returnValue;
+      if (CallerUtil.isCalledFromMain()) {
+         logger.log(MyLogger.logEntering(new MyRecordEntering(null, this)));
+         String returnValue = "{" + "customers = " + customers + '}';
+         logger.log(MyLogger.logExiting(new MyRecordExiting<>(String.class, returnValue, null, this)));
+         return returnValue;
+      }
+      return "{" + "customers = " + customers + '}';
    }
 
    // metodi statici:
 
    public static int sum(int num1, int num2) {
-      MyRecordEntering enter = new MyRecordEntering(new Object[] { num1, num2 }, null);
-      logger.log(MyLogger.logEntering(enter));
-      int returnValue = num1 + num2;
-      MyRecordExiting<Integer> result = new MyRecordExiting<>(int.class, returnValue, new Object[] { num1, num2 },
-            null);
-      logger.log(MyLogger.logExiting(result));
-      return returnValue;
+      if (CallerUtil.isCalledFromMain()) {
+         logger.log(MyLogger.logEntering(new MyRecordEntering(new Object[] { num1, num2 }, null)));
+         int returnValue = num1 + num2;
+         logger.log(MyLogger.logExiting(new MyRecordExiting<>(int.class, returnValue, new Object[] { num1, num2 },
+               null)));
+         return returnValue;
+      }
+      return num1 + num2;
    }
 }
