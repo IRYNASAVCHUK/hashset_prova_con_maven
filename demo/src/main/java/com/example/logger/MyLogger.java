@@ -8,7 +8,8 @@ public class MyLogger extends Logger {
         super(name, resourceBundleName);
     }
 
-    private static final Logger logger = Logger.getLogger(MyLogger.class.getName());
+    private static final Logger logger = Logger.getLogger("");
+//    private static final Logger logger = Logger.getLogger(MyLogger.class.getName());
 
     static {
         configureLogger();
