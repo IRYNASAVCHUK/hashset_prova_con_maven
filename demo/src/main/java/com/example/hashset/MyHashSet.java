@@ -8,82 +8,103 @@ import java.util.*;
 import java.util.logging.Logger;
 
 public class MyHashSet {
-    private static final Logger logger = MyLogger.getLogger();
-    private Set<Customer> customers;
+   private static final Logger logger = MyLogger.getLogger();
+   private Set<Customer> customers;
 
-    public MyHashSet() {
-        MyRecordEntering enter = new MyRecordEntering(null, this);
-        logger.entering(getClass().getName(), "MyHashSet", enter);
-        this.customers = new HashSet<>();
-        MyRecordExiting<MyHashSet> result = new MyRecordExiting<>(MyHashSet.class, this, null, this);
-        logger.exiting(getClass().getName(), "MyHashSet", result);
-    }
+   public MyHashSet() {
+      if ("main".equals(getCallerMethodName(Thread.currentThread().getStackTrace()))) {
+         logger.log(MyLogger.logEntering(new MyRecordEntering(null, this)));
+         this.customers = new HashSet<>();
+         logger.log(MyLogger.logExiting(new MyRecordExiting<>(MyHashSet.class, this, null, this)));
+      }
+      this.customers = new HashSet<>();
+   }
 
-    public boolean addCustomer(Customer person) {
-        MyRecordEntering enter = new MyRecordEntering(new Object[] { person }, this);
-        logger.entering(getClass().getName(), "addCustomer", enter);
-        boolean returnValue = customers.add(person);
-        MyRecordExiting<Boolean> result = new MyRecordExiting<>(boolean.class, returnValue, new Object[] { person },
-                this);
-        logger.exiting(getClass().getName(), "addCustomer", result);
-        return returnValue;
-    }
+   public boolean addCustomer(Customer person) {
+      if ("main".equals(getCallerMethodName(Thread.currentThread().getStackTrace()))) {
+         logger.log(MyLogger.logEntering(new MyRecordEntering(new Object[] { person }, this)));
+         boolean returnValue = customers.add(person);
+         logger.log(
+               MyLogger.logExiting(new MyRecordExiting<>(boolean.class, returnValue, new Object[] { person }, this)));
+         return returnValue;
+      }
+      return customers.add(person);
+   }
 
-    public boolean removeCustomer(Customer person) {
-        MyRecordEntering enter = new MyRecordEntering(new Object[] { person }, this);
-        logger.entering(getClass().getName(), "removeCustomer", enter);
-        boolean returnValue = customers.remove(person);
-        MyRecordExiting<Boolean> result = new MyRecordExiting<>(boolean.class, returnValue, new Object[] { person },
-                this);
-        logger.exiting(getClass().getName(), "removeCustomer", result);
-        return returnValue;
-    }
+   public boolean removeCustomer(Customer person) {
+      if ("main".equals(getCallerMethodName(Thread.currentThread().getStackTrace()))) {
+         logger.log(MyLogger.logEntering(new MyRecordEntering(new Object[] { person }, this)));
+         boolean returnValue = customers.remove(person);
+         logger.log(
+               MyLogger.logExiting(new MyRecordExiting<>(boolean.class, returnValue, new Object[] { person }, this)));
+         return returnValue;
+      }
+      return customers.remove(person);
+   }
 
-    public boolean containsCustomer(Customer person) {
-        MyRecordEntering enter = new MyRecordEntering(new Object[] { person }, this);
-        logger.entering(getClass().getName(), "containsCustomer", enter);
-        boolean returnValue = customers.contains(person);
-        MyRecordExiting<Boolean> result = new MyRecordExiting<>(boolean.class, returnValue, new Object[] { person },
-                this);
-        logger.exiting(getClass().getName(), "containsCustomer", result);
-        return returnValue;
-    }
+   public boolean containsCustomer(Customer person) {
+      if ("main".equals(getCallerMethodName(Thread.currentThread().getStackTrace()))) {
+         logger.log(MyLogger.logEntering(new MyRecordEntering(new Object[] { person }, this)));
+         boolean returnValue = customers.contains(person);
+         logger.log(
+               MyLogger.logExiting(new MyRecordExiting<>(boolean.class, returnValue, new Object[] { person }, this)));
+         return returnValue;
+      }
+      return customers.contains(person);
+   }
 
-    public int getSize() {
-        MyRecordEntering enter = new MyRecordEntering(null, this);
-        logger.entering(getClass().getName(), "getSize", enter);
-        int returnValue = customers.size();
-        MyRecordExiting<Integer> result = new MyRecordExiting<>(int.class, returnValue, null, this);
-        logger.exiting(getClass().getName(), "getSize", result);
-        return returnValue;
-    }
+   public int getSize() {
+      if ("main".equals(getCallerMethodName(Thread.currentThread().getStackTrace()))) {
+         logger.log(MyLogger.logEntering(new MyRecordEntering(null, this)));
+         int returnValue = customers.size();
+         logger.log(MyLogger.logExiting(new MyRecordExiting<>(int.class, returnValue, null, this)));
+         return returnValue;
+      }
+      return customers.size();
+   }
 
-    public void clearSet() {
-        MyRecordEntering enter = new MyRecordEntering(null, this);
-        logger.entering(getClass().getName(), "clearSet", enter);
-        customers.clear();
-        MyRecordExiting<Void> result = new MyRecordExiting<>(void.class, null, null, this);
-        logger.exiting(getClass().getName(), "clearSet", result);
-    }
+   public void clearSet() {
+      if ("main".equals(getCallerMethodName(Thread.currentThread().getStackTrace()))) {
+         logger.log(MyLogger.logEntering(new MyRecordEntering(null, this)));
+         customers.clear();
+         logger.log(MyLogger.logExiting(new MyRecordExiting<>(void.class, null, null, this)));
+      }
+      customers.clear();
+   }
 
-    @Override
-    public String toString() {
-        MyRecordEntering enter = new MyRecordEntering(null, this);
-        logger.entering(getClass().getName(), "toString", enter);
-        String returnValue = "{" + "customers = " + customers + '}';
-        MyRecordExiting<String> result = new MyRecordExiting<>(String.class, returnValue, null, this);
-        logger.exiting(getClass().getName(), "toString", result);
-        return returnValue;
-    }
+   @Override
+   public String toString() {
+      if ("main".equals(getCallerMethodName(Thread.currentThread().getStackTrace()))) {
+         logger.log(MyLogger.logEntering(new MyRecordEntering(null, this)));
+         String returnValue = "{" + "customers = " + customers + '}';
+         logger.log(MyLogger.logExiting(new MyRecordExiting<>(String.class, returnValue, null, this)));
+         return returnValue;
+      }
+      return "{" + "customers = " + customers + '}';
+   }
 
-    // metodi statici:
+   // metodo statico:
+   public static int sum(int num1, int num2) {
+      logger.log(MyLogger.logEntering(new MyRecordEntering(new Object[] { num1, num2 }, null)));
+      int returnValue = num1 + num2;
+      logger.log(MyLogger.logExiting(new MyRecordExiting<>(int.class, returnValue, new Object[] { num1, num2 },
+            null)));
+      return returnValue;
+   }
 
-    public static int sum(int num1, int num2) {
-        MyRecordEntering enter = new MyRecordEntering(new Object[] { num1,num2 }, null);
-        logger.entering(MyHashSet.class.getName(), "sum", enter);
-        int returnValue = num1 + num2;
-        MyRecordExiting<Integer> result = new MyRecordExiting<>(int.class, returnValue,new Object[] { num1,num2}, null);
-        logger.exiting(MyHashSet.class.getName(), "sum", result);
-        return returnValue;
-    }
+   private String getCallerMethodName(StackTraceElement[] stackTrace) {
+      // Analizza gli elementi dello stack trace per ottenere il chiamante diretto
+      String callerMethodName = Arrays.stream(stackTrace)
+            // Ignora il primo elemento dello stack trace (quello relativo al metodo stesso)
+            .skip(1)
+            // Trova il primo elemento non relativo alla classe corrente
+            .filter(element -> !element.getClassName().equals(getClass().getName()))
+            // Ottieni il nome del metodo chiamante
+            .map(StackTraceElement::getMethodName)
+            // Trova il primo nome di metodo non standard (non inizia con 'lambda$' o '$$')
+            .filter(name -> !name.startsWith("lambda$") && !name.contains("$$"))
+            .findFirst()
+            .orElse("Unknown");
+      return callerMethodName;
+   }
 }
