@@ -1,6 +1,7 @@
 package com.example.logger;
 
 import java.io.IOException;
+import java.io.RandomAccessFile;
 import java.util.logging.*;
 
 public class MyHandler extends FileHandler {
@@ -8,7 +9,7 @@ public class MyHandler extends FileHandler {
     private static final String LOG_FILE;
 
     public MyHandler() throws IOException, SecurityException {
-        super();
+        super(LOG_FILE, false); // false - sovrascrive il file, ogni volta che lanciamo main
     }
 
     static {
@@ -18,18 +19,32 @@ public class MyHandler extends FileHandler {
 
     public static void configureHandler(Logger logger) {
         try {
-            Handler fileHandler = new FileHandler(LOG_FILE, false);
+            MyHandler fileHandler = new MyHandler();
             fileHandler.setLevel(Level.ALL);
             fileHandler.setFormatter(new MyFormatter());
-
-            // Rimuovi gli handler esistenti per evitare duplicati
             for (Handler existingHandler : logger.getHandlers()) {
                 logger.removeHandler(existingHandler);
             }
-
-            // Aggiungi il nuovo handler
             logger.addHandler(fileHandler);
         } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void publish(LogRecord record) {
+        try {
+            RandomAccessFile file = new RandomAccessFile(LOG_FILE, "rw");
+            if (file.length() == 0) {
+                file.writeBytes("[\n\t");
+            } else {
+                file.seek(file.length() - 2);
+                file.writeBytes(",\n\t");
+            }
+            file.writeBytes(new MyFormatter().format(record));
+            file.writeBytes("]");
+            file.close();
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }

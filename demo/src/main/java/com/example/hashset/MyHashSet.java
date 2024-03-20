@@ -4,7 +4,6 @@ import com.example.logger.MyLogger;
 import com.example.record.MyRecordEntering;
 import com.example.record.MyRecordExiting;
 
-
 import java.util.*;
 import java.util.logging.Logger;
 
@@ -84,8 +83,7 @@ public class MyHashSet {
       return "{" + "customers = " + customers + '}';
    }
 
-   // metodi statici:
-
+   // metodo statico:
    public static int sum(int num1, int num2) {
       logger.log(MyLogger.logEntering(new MyRecordEntering(new Object[] { num1, num2 }, null)));
       int returnValue = num1 + num2;
@@ -97,15 +95,13 @@ public class MyHashSet {
    private String getCallerMethodName(StackTraceElement[] stackTrace) {
       // Analizza gli elementi dello stack trace per ottenere il chiamante diretto
       String callerMethodName = Arrays.stream(stackTrace)
-            // Ignora il primo elemento dello stack trace (quello relativo al metodo
-            // getSize() stesso)
+            // Ignora il primo elemento dello stack trace (quello relativo al metodo stesso)
             .skip(1)
             // Trova il primo elemento non relativo alla classe corrente
             .filter(element -> !element.getClassName().equals(getClass().getName()))
             // Ottieni il nome del metodo chiamante
             .map(StackTraceElement::getMethodName)
-            // Trova il primo nome di metodo non standard (cioè, che non inizia con
-            // 'lambda$' o '$$')
+            // Trova il primo nome di metodo non standard (non inizia con 'lambda$' o '$$')
             .filter(name -> !name.startsWith("lambda$") && !name.contains("$$"))
             .findFirst()
             .orElse("Unknown");

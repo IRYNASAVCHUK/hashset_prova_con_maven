@@ -14,24 +14,13 @@ public class MyFormatter extends Formatter {
     public String format(LogRecord record) {
         String event = record.getMessage().contains("ENTRY") ? ConfigLoader.getConfigValue("eventEntry")
                 : record.getMessage().contains("RETURN") ? ConfigLoader.getConfigValue("eventReturn") : "";
-
         ObjectNode jsonNode = objectMapper.createObjectNode().put("event", event);
-
         Object[] params = record.getParameters();
-
         Object target = null;
-        // TODO: eliminato controllo , lanciato eccezione
-        // questa condizione dovrebbe essere sempre vera, giusto? lancerei un'eccezione
-        // nel caso non lo fosse
-        if (params == null || params.length == 0) {
+        if (params == null || params.length == 0)
             throw new IllegalArgumentException("No parameters found in the record.");
-        }
-
-        // TODO: ??? non sapiamo tipo di thisObject
-        // non sappiamo già dal codice sopra se si tratta di entry o return?
         if (params[0] instanceof MyRecord) {
             MyRecord myRecord = (MyRecord) params[0];
-
             if (myRecord instanceof MyRecordExiting) {
                 MyRecordExiting<?> exitingRecord = (MyRecordExiting<?>) myRecord;
                 target = exitingRecord.thisObject();
@@ -39,61 +28,39 @@ public class MyFormatter extends Formatter {
                 MyRecordEntering enteringRecord = (MyRecordEntering) myRecord;
                 target = enteringRecord.thisObject();
             }
-            if (target == null) {
+            if (target == null)
                 jsonNode.put("target", record.getSourceClassName());
-            } else {
-                // TODO: Se il target è un'istanza di Class, ottengo il nome della classe???
-
-                // gli oggetti di tipo Class non dovrebbero essere trattati allo stesso modo?
-                // se vogliamo possiamo aggiungere un ulteriore property 'targetClass' nel file
-                // JSON che specifica la classe dell'oggetto target
-
+            else
                 jsonNode.put("target", System.identityHashCode(target));
-                // if (target instanceof Class<?>) {
-                // jsonNode.put("targetClass", ((Class<?>) target).getName());
-                // }
-            }
             paramsControl(jsonNode, myRecord);
         }
-
         jsonNode.put("name", record.getSourceClassName() + "." + record.getSourceMethodName());
 
-        String jsonString = jsonNode.toPrettyString() + System.lineSeparator(); // jsonNode.toString() 
-        return jsonString;
+        return jsonNode.toString() + System.lineSeparator(); // jsonNode.toString()
     }
 
     private void paramsControl(ObjectNode jsonNode, MyRecord record) {
-        // TODO: con interfaccia MyRecord evitiamo controllo
-        // if (params[0] instanceof MyRecordExiting) { // non si potrebbe evitare questo
-        // controllo?
         Object[] args = record.params();
         addArgsNode(jsonNode, args);
-        if (record instanceof MyRecordExiting) {
+        if (record instanceof MyRecordExiting)
             handleExitingRecord(jsonNode, (MyRecordExiting<?>) record);
-        }
     }
 
     private void handleExitingRecord(ObjectNode jsonNode, MyRecordExiting<?> exitingRecord) {
         Class<?> returnType = exitingRecord.returnType();
         if (!returnType.equals(void.class)) {
             Object returnValue = exitingRecord.result();
-            if (returnValue != null) {
-                if (returnType.isPrimitive()) {
+            if (returnValue != null)
+                if (returnType.isPrimitive())
                     primitiveReturnValue(jsonNode, returnType, returnValue);
-                } else {
+                else
                     jsonNode.putPOJO("result", returnValue);
-                }
-            } else {
+            else
                 jsonNode.putNull("result");
-            }
         }
     }
 
     private void addArgsNode(ObjectNode jsonNode, Object[] args) {
-        // TODO: elliminato
-        // if (args != null && args.length > 0) {
-        // codice uguale a quello sopra, si potrebbe evitare duplicazione
-
         if (args != null && args.length > 0) {
             ArrayNode argsNode = objectMapper.createArrayNode();
             for (Object arg : args)
