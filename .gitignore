@@ -3,3 +3,7 @@
 /.metadata/
 *~
 target/
+demo/.classpath
+demo/.project
+demo/.settings/
+demo/bin/
