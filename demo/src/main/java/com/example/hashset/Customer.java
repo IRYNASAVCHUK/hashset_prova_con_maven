@@ -7,6 +7,7 @@ import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+
 public class Customer {
     private static final Logger logger = MyLogger.getLogger();
     private int id;
