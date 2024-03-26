@@ -11,10 +11,16 @@ public class MyFormatter extends Formatter {
                 : record.getMessage().contains("RETURN") ? ConfigLoader.getConfigValue("eventReturn") : "";
 
         /*
-         * {"event":"func_post",
-         * "target":1458540918,
-         * "result":0,
-         * "name":"com.example.hashset.MyHashSet.getSize"}
+         * "func_post",
+         * "target":1693847660,
+         * "args":[0,"Mario"],
+         * "result":{"id":0,"name":"Mario"},
+         * "name":"com.example.hashset.Customer.<init>"},
+         * 
+         * {"event":"func_pre",
+         * "target":1131645570,
+         * "args":[1,"Marco"],
+         * "name":"com.example.hashset.Customer.<init>"},
          */
 
         String resultString = "\n\t{\n\t\t\"event\":\t\"" + event + "\",";
@@ -37,11 +43,14 @@ public class MyFormatter extends Formatter {
             resultString += "\n\t\t\"target\":\t\"" + record.getSourceClassName() + "\",";
         else
             resultString += "\n\t\t\"target\":\t\"" + System.identityHashCode(target) + "\",";
-        resultString += "\n\t\t\"args\":\t\"";
-        // Object[] args = ((MyRecord) record).params();
-        // if (args != null && args.length > 0)
-        //     for (Object arg : args)
-        //         resultString += arg + "\",";
+        resultString += "\n\t\t\"args\":\t[";
+        
+        Object[] args = ((MyRecord) record).params();
+
+        if (args != null && args.length > 0)
+            for (Object arg : args)
+                System.out.println(arg);
+        // resultString += arg + "\",";
 
         // paramsControl(jsonNode, myRecord);
         resultString += "\n\t\t\"name\":\t\"" + record.getSourceClassName() + "." + record.getSourceMethodName()
