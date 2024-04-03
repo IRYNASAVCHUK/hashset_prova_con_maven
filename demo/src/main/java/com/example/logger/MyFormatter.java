@@ -4,17 +4,20 @@ import com.example.record.*;
 
 import java.util.logging.*;
 
-
 public class MyFormatter extends Formatter {
-    
+
     @Override
     public String format(LogRecord record) {
+        System.out.println(record);
+        System.out.println(record.getMessage());
+
         String event = record.getMessage().contains("ENTRY") ? ConfigLoader.getConfigValue("eventEntry")
                 : record.getMessage().contains("RETURN") ? ConfigLoader.getConfigValue("eventReturn") : "";
 
         String resultString = "\n\t{\n\t\t\"event\": \"" + event + "\",";
 
         Object[] params = record.getParameters();
+
         Object target = null;
 
         if (params == null || params.length == 0)
@@ -29,72 +32,67 @@ public class MyFormatter extends Formatter {
                 MyRecordEntering enteringRecord = (MyRecordEntering) myRecord;
                 target = enteringRecord.thisObject();
             }
-            if (target == null)
-                resultString += "\n\t\t\"target\": \"" + record.getSourceClassName() + "\",";
-            else
-                resultString += "\n\t\t\"target\": \"" + System.identityHashCode(target) + "\",";
-
-            resultString += "\n\t\t\"args\": [";
-            Object[] args = myRecord.params();
-            if (args != null && args.length > 0) {
-                for (Object arg : args)
-                    resultString += "\"" + arg + "\",";
-                resultString = resultString.substring(0, resultString.length() - 1); // Rimuove l'ultima virgola
-            }
-            resultString += "],";
-            if (myRecord instanceof MyRecordExiting<?>) {
-                resultString += "\n\t\t\"result\": [";
-                Class<?> returnType = ((MyRecordExiting<?>) myRecord).returnType();
-                if (!returnType.equals(void.class)) {
-                    Object returnValue = ((MyRecordExiting<?>) myRecord).result();
-                    if (returnValue != null)
-                        if (returnType.isPrimitive())
-                            //primitiveReturnValue(returnType, returnValue);
-                        //else
-                            resultString += "\"" + returnValue + "\"";
-                    else
-                        resultString += "\"" + null + "\"";
-                }
-
-                resultString += "],";
-            }
-
+            // chiamate di hashCode() inaspetatti : addCustomer, removeCustomer, containsCustomer,
+            resultString += "\n\t\t\"target\": \"";
+            resultString += (target == null) ? record.getSourceClassName() : System.identityHashCode(target);
+            resultString += "\",";
+            // resultString += "\n\t\t\"args\": [";
+            // Object[] args = myRecord.params();
+            // if (args != null && args.length > 0) {
+            //     for (Object arg : args)
+            //         resultString += "\"" + arg + "\",";
+            //     resultString = resultString.substring(0, resultString.length() - 1); // Rimuove l'ultima virgola
+            // }
+            // resultString += "],";
+            // if (myRecord instanceof MyRecordExiting<?>) {
+            //     Class<?> returnType = ((MyRecordExiting<?>) myRecord).returnType();
+            //     if (!returnType.equals(void.class)) {
+            //         resultString += "\n\t\t\"result\": [";
+            //         Object returnValue = ((MyRecordExiting<?>) myRecord).result();
+            //         if (returnValue != null)
+            //             if (returnType.isPrimitive())
+            //                 primitiveReturnValue(returnType, returnValue, resultString);
+            //             else
+            //                 resultString += "\"" + returnValue + "\"";
+            //         else
+            //             resultString += "\"" + null + "\"";
+            //         resultString += "],";
+            //     }
+            // }
         }
         resultString += "\n\t\t\"name\": \"" + record.getSourceClassName() + "." + record.getSourceMethodName()
                 + "\"\n\t}";
-
         return resultString;
     }
 
-
-    // private void primitiveReturnValue(Class<?> returnType,
-    //         Object returnValue) {
-    //     switch (returnType.getTypeName()) {
-    //         case "boolean":
-    //             jsonNode.put("result", (boolean) returnValue);
-    //             break;
-    //         case "byte":
-    //             jsonNode.put("result", (byte) returnValue);
-    //             break;
-    //         case "char":
-    //             jsonNode.put("result", (char) returnValue);
-    //             break;
-    //         case "short":
-    //             jsonNode.put("result", (short) returnValue);
-    //             break;
-    //         case "int":
-    //             jsonNode.put("result", (int) returnValue);
-    //             break;
-    //         case "long":
-    //             jsonNode.put("result", (long) returnValue);
-    //             break;
-    //         case "float":
-    //             jsonNode.put("result", (float) returnValue);
-    //             break;
-    //         case "double":
-    //             jsonNode.put("result", (double) returnValue);
-    //             break;
-    //     }
-    // }
+    private void primitiveReturnValue(Class<?> returnType,
+            Object returnValue, String resultString) {
+        switch (returnType.getTypeName()) {
+            case "boolean":
+                resultString += "\"" + (boolean) returnValue + "\"";
+                break;
+            case "byte":
+                resultString += "\"" + (byte) returnValue + "\"";
+                break;
+            case "char":
+                resultString += "\"" + (char) returnValue + "\"";
+                break;
+            case "short":
+                resultString += "\"" + (short) returnValue + "\"";
+                break;
+            case "int":
+                resultString += "\"" + (int) returnValue + "\"";
+                break;
+            case "long":
+                resultString += "\"" + (long) returnValue + "\"";
+                break;
+            case "float":
+                resultString += "\"" + (float) returnValue + "\"";
+                break;
+            case "double":
+                resultString += "\"" + (double) returnValue + "\"";
+                break;
+        }
+    }
 
 }
