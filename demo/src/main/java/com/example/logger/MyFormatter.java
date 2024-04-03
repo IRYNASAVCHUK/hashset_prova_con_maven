@@ -8,9 +8,6 @@ public class MyFormatter extends Formatter {
 
     @Override
     public String format(LogRecord record) {
-        System.out.println(record);
-        System.out.println(record.getMessage());
-
         String event = record.getMessage().contains("ENTRY") ? ConfigLoader.getConfigValue("eventEntry")
                 : record.getMessage().contains("RETURN") ? ConfigLoader.getConfigValue("eventReturn") : "";
 
@@ -32,33 +29,34 @@ public class MyFormatter extends Formatter {
                 MyRecordEntering enteringRecord = (MyRecordEntering) myRecord;
                 target = enteringRecord.thisObject();
             }
-            // chiamate di hashCode() inaspetatti : addCustomer, removeCustomer, containsCustomer,
+            // chiamate di hashCode() inaspetatti : addCustomer, removeCustomer,
+            // containsCustomer,
             resultString += "\n\t\t\"target\": \"";
             resultString += (target == null) ? record.getSourceClassName() : System.identityHashCode(target);
             resultString += "\",";
-            // resultString += "\n\t\t\"args\": [";
-            // Object[] args = myRecord.params();
-            // if (args != null && args.length > 0) {
-            //     for (Object arg : args)
-            //         resultString += "\"" + arg + "\",";
-            //     resultString = resultString.substring(0, resultString.length() - 1); // Rimuove l'ultima virgola
-            // }
-            // resultString += "],";
-            // if (myRecord instanceof MyRecordExiting<?>) {
-            //     Class<?> returnType = ((MyRecordExiting<?>) myRecord).returnType();
-            //     if (!returnType.equals(void.class)) {
-            //         resultString += "\n\t\t\"result\": [";
-            //         Object returnValue = ((MyRecordExiting<?>) myRecord).result();
-            //         if (returnValue != null)
-            //             if (returnType.isPrimitive())
-            //                 primitiveReturnValue(returnType, returnValue, resultString);
-            //             else
-            //                 resultString += "\"" + returnValue + "\"";
-            //         else
-            //             resultString += "\"" + null + "\"";
-            //         resultString += "],";
-            //     }
-            // }
+            resultString += "\n\t\t\"args\": [";
+            Object[] args = myRecord.params();
+            if (args != null && args.length > 0) {
+                for (Object arg : args)
+                    resultString += "\"" + arg + "\",";
+                resultString = resultString.substring(0, resultString.length() - 1); // Rimuove l'ultima virgola
+            }
+            resultString += "],";
+            if (myRecord instanceof MyRecordExiting<?>) {
+                Class<?> returnType = ((MyRecordExiting<?>) myRecord).returnType();
+                if (!returnType.equals(void.class)) {
+                    resultString += "\n\t\t\"result\": [";
+                    Object returnValue = ((MyRecordExiting<?>) myRecord).result();
+                    if (returnValue != null)
+                        if (returnType.isPrimitive())
+                            primitiveReturnValue(returnType, returnValue, resultString);
+                        else
+                            resultString += "\"" + returnValue + "\"";
+                    else
+                        resultString += "\"" + null + "\"";
+                    resultString += "],";
+                }
+            }
         }
         resultString += "\n\t\t\"name\": \"" + record.getSourceClassName() + "." + record.getSourceMethodName()
                 + "\"\n\t}";
