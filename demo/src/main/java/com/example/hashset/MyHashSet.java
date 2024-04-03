@@ -9,7 +9,7 @@ import java.util.logging.Logger;
 
 public class MyHashSet {
     private static final Logger logger = MyLogger.getLogger();
-    private Set<Customer> customers;
+    private HashSet<Customer> customers;
 
     public MyHashSet() {
         MyRecordEntering enter = new MyRecordEntering(null, this);

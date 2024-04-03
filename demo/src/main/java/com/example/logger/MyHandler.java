@@ -13,7 +13,7 @@ public class MyHandler extends FileHandler {
 
     public static void configureHandler(Logger logger) {
         try {
-            Handler fileHandler = new FileHandler(LOG_FILE,true);
+            Handler fileHandler = new FileHandler(LOG_FILE,false);
             fileHandler.setLevel(Level.ALL);
             fileHandler.setFormatter(new MyFormatter());
 
