@@ -25,14 +25,14 @@ public class Counter {
         new MyRecordEntering(null, this));
         val++;
         logger.logp(Level.INFO, getClass().getName(), "inc", "RETURN",
-                new MyRecordExiting<>(void.class, null, new Object[]{val}, this));
+                new MyRecordExiting<>(void.class, null, null, this));
     }
 
     public int getValue() {
         logger.logp(Level.INFO, getClass().getName(), "getValue", "ENTRY",
         new MyRecordEntering(null, this));
         logger.logp(Level.INFO, getClass().getName(), "getValue", "RETURN",
-        new MyRecordExiting<>(int.class, val, new Object[]{val}, this));
+        new MyRecordExiting<>(int.class, val, null, this));
         return val;
 
 
