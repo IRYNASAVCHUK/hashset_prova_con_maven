@@ -34,24 +34,37 @@ public class MyFormatter extends Formatter {
             resultString += "\n\t\t\"target\": \"";
             resultString += (target == null) ? record.getSourceClassName() : System.identityHashCode(target);
             resultString += "\",";
-            resultString += "\n\t\t\"args\": [";
             Object[] args = myRecord.params();
             if (args != null && args.length > 0) {
-                for (Object arg : args)
-                    resultString += "\"" + arg + "\",";
+                resultString += "\n\t\t\"args\": [";
+                for (Object arg : args) {
+                    System.out.println(arg);
+                    if (isPrimitiveOrWrapper(arg)) {
+                        resultString += "\"" + arg + "\",";
+                    } else
+                        resultString += "\"" + System.identityHashCode(arg) + "\",";
+                }
                 resultString = resultString.substring(0, resultString.length() - 1); // Rimuove l'ultima virgola
+                resultString += "],";
             }
-            resultString += "],";
             if (myRecord instanceof MyRecordExiting<?>) {
                 Class<?> returnType = ((MyRecordExiting<?>) myRecord).returnType();
                 if (!returnType.equals(void.class)) {
                     resultString += "\n\t\t\"result\": [";
                     Object returnValue = ((MyRecordExiting<?>) myRecord).result();
-                    if (returnValue != null)
-                        if (returnType.isPrimitive())
-                            primitiveReturnValue(returnType, returnValue, resultString);
-                        else
+                    System.out.println("return value: " + returnValue);
+                    if (returnValue != null) {
+                        System.out.println("1111");
+                        if (returnType.isPrimitive()) {
+                            System.out.println("2222");
+                            resultString += primitiveReturnValue(returnType, returnValue);
+                        } else {
+                            System.out.println("3333");
                             resultString += "\"" + returnValue + "\"";
+                        }
+
+                    }
+
                     else
                         resultString += "\"" + null + "\"";
                     resultString += "],";
@@ -63,8 +76,9 @@ public class MyFormatter extends Formatter {
         return resultString;
     }
 
-    private void primitiveReturnValue(Class<?> returnType,
-            Object returnValue, String resultString) {
+    private String primitiveReturnValue(Class<?> returnType,
+            Object returnValue) {
+        String resultString = "";
         switch (returnType.getTypeName()) {
             case "boolean":
                 resultString += "\"" + (boolean) returnValue + "\"";
@@ -91,6 +105,22 @@ public class MyFormatter extends Formatter {
                 resultString += "\"" + (double) returnValue + "\"";
                 break;
         }
+        return resultString;
+    }
+
+    private boolean isPrimitiveOrWrapper(Object obj) {
+        return obj.getClass().isPrimitive() || isWrapper(obj);
+    }
+
+    private boolean isWrapper(Object obj) {
+        return obj instanceof Integer ||
+                obj instanceof Double ||
+                obj instanceof Float ||
+                obj instanceof Character ||
+                obj instanceof Boolean ||
+                obj instanceof Short ||
+                obj instanceof Byte ||
+                obj instanceof Long;
     }
 
 }

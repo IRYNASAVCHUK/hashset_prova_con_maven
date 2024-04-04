@@ -3,7 +3,6 @@ package com.example.hashset;
 import com.example.logger.MyLogger;
 import com.example.record.*;
 
-import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
