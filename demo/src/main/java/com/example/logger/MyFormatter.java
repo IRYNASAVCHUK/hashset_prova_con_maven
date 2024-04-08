@@ -11,7 +11,7 @@ public class MyFormatter extends Formatter {
         String event = record.getMessage().contains("ENTRY") ? ConfigLoader.getConfigValue("eventEntry")
                 : record.getMessage().contains("RETURN") ? ConfigLoader.getConfigValue("eventReturn") : "";
 
-        String resultString = "\n\t{\n\t\t\"event\": \"" + event + "\",";
+        String resultString = "{\n\t\t\"event\": \"" + event + "\",";
 
         Object[] params = record.getParameters();
 

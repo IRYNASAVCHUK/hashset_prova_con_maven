@@ -1,6 +1,7 @@
 package com.example.logger;
 
 import java.io.IOException;
+import java.io.RandomAccessFile;
 import java.util.logging.*;
 
 public class MyHandler extends FileHandler {
@@ -26,6 +27,24 @@ public class MyHandler extends FileHandler {
             }
             logger.addHandler(fileHandler);
         } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void publish(LogRecord record) {
+        try {
+            RandomAccessFile file = new RandomAccessFile(LOG_FILE, "rw");
+            if (file.length() == 0) {
+                file.writeBytes("[\n\t");
+            } else {
+                file.seek(file.length()-2);
+                file.writeBytes(",\n\t");
+            }
+            file.writeBytes(new MyFormatter().format(record));
+            file.writeBytes("\n]");
+            file.close();
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
