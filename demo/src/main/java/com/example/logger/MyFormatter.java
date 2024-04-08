@@ -52,19 +52,13 @@ public class MyFormatter extends Formatter {
                 if (!returnType.equals(void.class)) {
                     resultString += "\n\t\t\"result\": [";
                     Object returnValue = ((MyRecordExiting<?>) myRecord).result();
-                    System.out.println("return value: " + returnValue);
                     if (returnValue != null) {
-                        System.out.println("1111");
                         if (returnType.isPrimitive()) {
-                            System.out.println("2222");
                             resultString += primitiveReturnValue(returnType, returnValue);
                         } else {
-                            System.out.println("3333");
                             resultString += "\"" + returnValue + "\"";
                         }
-
                     }
-
                     else
                         resultString += "\"" + null + "\"";
                     resultString += "],";
@@ -81,28 +75,28 @@ public class MyFormatter extends Formatter {
         String resultString = "";
         switch (returnType.getTypeName()) {
             case "boolean":
-                resultString += "\"" + (boolean) returnValue + "\"";
+                resultString += (boolean) returnValue;
                 break;
             case "byte":
-                resultString += "\"" + (byte) returnValue + "\"";
+                resultString +=(byte) returnValue;
                 break;
             case "char":
-                resultString += "\"" + (char) returnValue + "\"";
+                resultString +=(char) returnValue;
                 break;
             case "short":
-                resultString += "\"" + (short) returnValue + "\"";
+                resultString +=(short) returnValue;
                 break;
             case "int":
-                resultString += "\"" + (int) returnValue + "\"";
+                resultString +=(int) returnValue;
                 break;
             case "long":
-                resultString += "\"" + (long) returnValue + "\"";
+                resultString +=(long) returnValue;
                 break;
             case "float":
-                resultString += "\"" + (float) returnValue + "\"";
+                resultString += (float) returnValue;
                 break;
             case "double":
-                resultString += "\"" + (double) returnValue + "\"";
+                resultString +=(double) returnValue;
                 break;
         }
         return resultString;

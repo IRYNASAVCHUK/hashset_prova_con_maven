@@ -29,12 +29,13 @@ public class Main {
         // customer.getName();
         Counter c1, c2;
         c1 = new Counter();
-        c1.inc(); // primo incremento
-        c1.inc(); // secondo incremento
+        c1.inc(); 
+        c1.inc(); 
         c1.getValue();
         c2 = new Counter();
         c2.getValue();
         c1.copy(c2);
+        c1.getValue();
         c1.inc();
         c1.inc();
         c1.inc();

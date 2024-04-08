@@ -16,7 +16,7 @@ public class Counter {
                 new MyRecordEntering(null, this));
         val = 0;
         logger.logp(Level.INFO, getClass().getName(), "reset", "RETURN",
-                new MyRecordExiting<>(void.class, null, new Object[]{val}, this));
+                new MyRecordExiting<>(void.class, null, null, this));
 
     }
 
@@ -34,8 +34,6 @@ public class Counter {
         logger.logp(Level.INFO, getClass().getName(), "getValue", "RETURN",
         new MyRecordExiting<>(int.class, val, null, this));
         return val;
-
-
     }
 
     public void copy(Counter x) {
