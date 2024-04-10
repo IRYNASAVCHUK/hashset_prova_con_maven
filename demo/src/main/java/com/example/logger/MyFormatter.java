@@ -38,8 +38,9 @@ public class MyFormatter extends Formatter {
             if (args != null && args.length > 0) {
                 resultString += "\n\t\t\"args\": [";
                 for (Object arg : args) {
-                    System.out.println(arg);
                     if (isPrimitiveOrWrapper(arg)) {
+                        resultString += arg+ ",";
+                    } else if (arg instanceof String) {
                         resultString += "\"" + arg + "\",";
                     } else
                         resultString += "\"" + System.identityHashCode(arg) + "\",";
@@ -53,13 +54,17 @@ public class MyFormatter extends Formatter {
                     resultString += "\n\t\t\"result\": [";
                     Object returnValue = ((MyRecordExiting<?>) myRecord).result();
                     if (returnValue != null) {
+
                         if (returnType.isPrimitive()) {
                             resultString += primitiveReturnValue(returnType, returnValue);
-                        } else {
+                        } else if (returnValue instanceof String) {
                             resultString += "\"" + returnValue + "\"";
+                        } else if (isWrapper(returnValue)) {
+                            resultString += returnValue;
+                        } else {
+                            resultString += "\"" + System.identityHashCode(returnValue) + "\"";
                         }
-                    }
-                    else
+                    } else
                         resultString += "\"" + null + "\"";
                     resultString += "],";
                 }
@@ -78,25 +83,25 @@ public class MyFormatter extends Formatter {
                 resultString += (boolean) returnValue;
                 break;
             case "byte":
-                resultString +=(byte) returnValue;
+                resultString += (byte) returnValue;
                 break;
             case "char":
-                resultString +=(char) returnValue;
+                resultString += (char) returnValue;
                 break;
             case "short":
-                resultString +=(short) returnValue;
+                resultString += (short) returnValue;
                 break;
             case "int":
-                resultString +=(int) returnValue;
+                resultString += (int) returnValue;
                 break;
             case "long":
-                resultString +=(long) returnValue;
+                resultString += (long) returnValue;
                 break;
             case "float":
                 resultString += (float) returnValue;
                 break;
             case "double":
-                resultString +=(double) returnValue;
+                resultString += (double) returnValue;
                 break;
         }
         return resultString;

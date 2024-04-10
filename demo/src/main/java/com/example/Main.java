@@ -28,7 +28,7 @@ public class Main {
         customer.getId();
         customer.getName();
         
-        // new 
+        // new class Counter
         Counter c1, c2;
         c1 = new Counter();
         c1.inc(); 
