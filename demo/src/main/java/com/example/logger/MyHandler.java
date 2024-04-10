@@ -38,11 +38,11 @@ public class MyHandler extends FileHandler {
             if (file.length() == 0) {
                 file.writeBytes("[\n\t");
             } else {
-                file.seek(file.length() - 2);
+                file.seek(file.length()-2);
                 file.writeBytes(",\n\t");
             }
             file.writeBytes(new MyFormatter().format(record));
-            file.writeBytes("]");
+            file.writeBytes("\n]");
             file.close();
         } catch (IOException e) {
             e.printStackTrace();

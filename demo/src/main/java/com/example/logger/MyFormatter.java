@@ -3,22 +3,23 @@ package com.example.logger;
 import com.example.record.*;
 
 import java.util.logging.*;
-import com.fasterxml.jackson.databind.*;
-import com.fasterxml.jackson.databind.node.*;
 
 public class MyFormatter extends Formatter {
-
-    private static final ObjectMapper objectMapper = new ObjectMapper();
 
     @Override
     public String format(LogRecord record) {
         String event = record.getMessage().contains("ENTRY") ? ConfigLoader.getConfigValue("eventEntry")
                 : record.getMessage().contains("RETURN") ? ConfigLoader.getConfigValue("eventReturn") : "";
-        ObjectNode jsonNode = objectMapper.createObjectNode().put("event", event);
+
+        String resultString = "{\n\t\t\"event\": \"" + event + "\",";
+
         Object[] params = record.getParameters();
+
         Object target = null;
+
         if (params == null || params.length == 0)
             throw new IllegalArgumentException("No parameters found in the record.");
+
         if (params[0] instanceof MyRecord) {
             MyRecord myRecord = (MyRecord) params[0];
             if (myRecord instanceof MyRecordExiting) {
@@ -28,73 +29,97 @@ public class MyFormatter extends Formatter {
                 MyRecordEntering enteringRecord = (MyRecordEntering) myRecord;
                 target = enteringRecord.thisObject();
             }
-            if (target == null)
-                jsonNode.put("target", record.getSourceClassName());
-            else
-                jsonNode.put("target", System.identityHashCode(target));
-            paramsControl(jsonNode, myRecord);
+            // chiamate di hashCode() inaspetatti : addCustomer, removeCustomer,
+            // containsCustomer,
+            resultString += "\n\t\t\"target\": \"";
+            resultString += (target == null) ? record.getSourceClassName() : System.identityHashCode(target);
+            resultString += "\",";
+            Object[] args = myRecord.params();
+            if (args != null && args.length > 0) {
+                resultString += "\n\t\t\"args\": [";
+                for (Object arg : args) {
+                    if (isPrimitiveOrWrapper(arg)) {
+                        resultString += arg+ ",";
+                    } else if (arg instanceof String) {
+                        resultString += "\"" + arg + "\",";
+                    } else
+                        resultString += "\"" + System.identityHashCode(arg) + "\",";
+                }
+                resultString = resultString.substring(0, resultString.length() - 1); // Rimuove l'ultima virgola
+                resultString += "],";
+            }
+            if (myRecord instanceof MyRecordExiting<?>) {
+                Class<?> returnType = ((MyRecordExiting<?>) myRecord).returnType();
+                if (!returnType.equals(void.class)) {
+                    resultString += "\n\t\t\"result\": [";
+                    Object returnValue = ((MyRecordExiting<?>) myRecord).result();
+                    if (returnValue != null) {
+
+                        if (returnType.isPrimitive()) {
+                            resultString += primitiveReturnValue(returnType, returnValue);
+                        } else if (returnValue instanceof String) {
+                            resultString += "\"" + returnValue + "\"";
+                        } else if (isWrapper(returnValue)) {
+                            resultString += returnValue;
+                        } else {
+                            resultString += "\"" + System.identityHashCode(returnValue) + "\"";
+                        }
+                    } else
+                        resultString += "\"" + null + "\"";
+                    resultString += "],";
+                }
+            }
         }
-        jsonNode.put("name", record.getSourceClassName() + "." + record.getSourceMethodName());
-
-        return jsonNode.toString() + System.lineSeparator(); // jsonNode.toString()
+        resultString += "\n\t\t\"name\": \"" + record.getSourceClassName() + "." + record.getSourceMethodName()
+                + "\"\n\t}";
+        return resultString;
     }
 
-    private void paramsControl(ObjectNode jsonNode, MyRecord record) {
-        Object[] args = record.params();
-        addArgsNode(jsonNode, args);
-        if (record instanceof MyRecordExiting)
-            handleExitingRecord(jsonNode, (MyRecordExiting<?>) record);
-    }
-
-    private void handleExitingRecord(ObjectNode jsonNode, MyRecordExiting<?> exitingRecord) {
-        Class<?> returnType = exitingRecord.returnType();
-        if (!returnType.equals(void.class)) {
-            Object returnValue = exitingRecord.result();
-            if (returnValue != null)
-                if (returnType.isPrimitive())
-                    primitiveReturnValue(jsonNode, returnType, returnValue);
-                else
-                    jsonNode.putPOJO("result", returnValue);
-            else
-                jsonNode.putNull("result");
-        }
-    }
-
-    private void addArgsNode(ObjectNode jsonNode, Object[] args) {
-        if (args != null && args.length > 0) {
-            ArrayNode argsNode = objectMapper.createArrayNode();
-            for (Object arg : args)
-                argsNode.addPOJO(arg);
-            jsonNode.set("args", argsNode);
-        }
-    }
-
-    private void primitiveReturnValue(ObjectNode jsonNode, Class<?> returnType, Object returnValue) {
+    private String primitiveReturnValue(Class<?> returnType,
+            Object returnValue) {
+        String resultString = "";
         switch (returnType.getTypeName()) {
             case "boolean":
-                jsonNode.put("result", (boolean) returnValue);
+                resultString += (boolean) returnValue;
                 break;
             case "byte":
-                jsonNode.put("result", (byte) returnValue);
+                resultString += (byte) returnValue;
                 break;
             case "char":
-                jsonNode.put("result", (char) returnValue);
+                resultString += (char) returnValue;
                 break;
             case "short":
-                jsonNode.put("result", (short) returnValue);
+                resultString += (short) returnValue;
                 break;
             case "int":
-                jsonNode.put("result", (int) returnValue);
+                resultString += (int) returnValue;
                 break;
             case "long":
-                jsonNode.put("result", (long) returnValue);
+                resultString += (long) returnValue;
                 break;
             case "float":
-                jsonNode.put("result", (float) returnValue);
+                resultString += (float) returnValue;
                 break;
             case "double":
-                jsonNode.put("result", (double) returnValue);
+                resultString += (double) returnValue;
                 break;
         }
+        return resultString;
     }
+
+    private boolean isPrimitiveOrWrapper(Object obj) {
+        return obj.getClass().isPrimitive() || isWrapper(obj);
+    }
+
+    private boolean isWrapper(Object obj) {
+        return obj instanceof Integer ||
+                obj instanceof Double ||
+                obj instanceof Float ||
+                obj instanceof Character ||
+                obj instanceof Boolean ||
+                obj instanceof Short ||
+                obj instanceof Byte ||
+                obj instanceof Long;
+    }
+
 }
