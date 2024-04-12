@@ -3,6 +3,7 @@ package com.example.hashset;
 import com.example.logger.MyLogger;
 import com.example.record.*;
 
+import java.util.Objects;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -75,23 +76,23 @@ public class Customer {
                 return returnValue;
         }
 
-        // @Override
-        // public int hashCode() {
-        // logger.logp(Level.INFO, getClass().getName(), "hashCode", "ENTRY",
-        // new MyRecordEntering(null, this));
-        // int returnValue = Objects.hash(id);
-        // logger.logp(Level.INFO, getClass().getName(), "hashCode", "RETURN",
-        // new MyRecordExiting<>(int.class, returnValue, null, this));
-        // return returnValue;
-        // }
+        @Override
+        public int hashCode() {
+        logger.logp(Level.INFO, getClass().getName(), "hashCode", "ENTRY",
+        new MyRecordEntering(null, this));
+        int returnValue = Objects.hash(id);
+        logger.logp(Level.INFO, getClass().getName(), "hashCode", "RETURN",
+        new MyRecordExiting<>(int.class, returnValue, null, this));
+        return returnValue;
+        }
 
-        // @Override
-        // public String toString() {
-        // logger.logp(Level.INFO, getClass().getName(), "toString", "ENTRY",
-        // new MyRecordEntering(null, this));
-        // String returnValue = "(" + id + " , " + name + ")";
-        // logger.logp(Level.INFO, getClass().getName(), "toString", "RETURN",
-        // new MyRecordExiting<>(String.class, returnValue, null, this));
-        // return returnValue;
-        // }
+        @Override
+        public String toString() {
+        logger.logp(Level.INFO, getClass().getName(), "toString", "ENTRY",
+        new MyRecordEntering(null, this));
+        String returnValue = "(" + id + " , " + name + ")";
+        logger.logp(Level.INFO, getClass().getName(), "toString", "RETURN",
+        new MyRecordExiting<>(String.class, returnValue, null, this));
+        return returnValue;
+        }
 }

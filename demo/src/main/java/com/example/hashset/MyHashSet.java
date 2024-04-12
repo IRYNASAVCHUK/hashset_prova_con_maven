@@ -64,15 +64,15 @@ public class MyHashSet {
                         new MyRecordExiting<>(void.class, null, null, this));
       }
 
-      // @Override
-      // public String toString() {
-      // logger.logp(Level.INFO, getClass().getName(), "toString", "ENTRY",
-      // new MyRecordEntering(null, this));
-      // String returnValue = "{" + "customers = " + customers + '}';
-      // logger.logp(Level.INFO, getClass().getName(), "toString", "RETURN",
-      // new MyRecordExiting<>(String.class, returnValue, null, this));
-      // return returnValue;
-      // }
+      @Override
+      public String toString() {
+      logger.logp(Level.INFO, getClass().getName(), "toString", "ENTRY",
+      new MyRecordEntering(null, this));
+      String returnValue = "{" + "customers = " + customers + '}';
+      logger.logp(Level.INFO, getClass().getName(), "toString", "RETURN",
+      new MyRecordExiting<>(String.class, returnValue, null, this));
+      return returnValue;
+      }
 
       // metodo statico:
       public static int sum(int num1, int num2) {
