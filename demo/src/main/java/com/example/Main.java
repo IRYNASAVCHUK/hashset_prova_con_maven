@@ -1,12 +1,12 @@
 package com.example;
 
-import com.example.hashset.Counter;
-import com.example.hashset.Customer;
-import com.example.hashset.MyHashSet;
+import com.example.set.Counter;
+import com.example.set.Customer;
+import com.example.set.MySet;
 
 public class Main {
     public static void main(String[] args) {
-        final MyHashSet example = new MyHashSet();
+        final MySet example = new MySet();
         Customer person1 = new Customer(0, "Mario");
         Customer person2 = new Customer(1, "Marco");
         Customer person3 = new Customer(2, "Matteo");
@@ -20,7 +20,7 @@ public class Main {
         example.getSize();
 
         // metodo statico
-        MyHashSet.sum(2, 2);
+        MySet.sum(2, 2);
         example.clearSet();
 
         // Creazione di un oggetto Customer
