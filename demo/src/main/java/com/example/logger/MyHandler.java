@@ -4,19 +4,12 @@ import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.util.logging.*;
 
+import com.example.utils.Constants;
+
 public class MyHandler extends FileHandler {
-    public static final String DEFAULT_LOG_FILE = "logFile.json";
-    private static final String LOG_FILE;
-
     public MyHandler() throws IOException, SecurityException {
-        super(LOG_FILE, false); // false - sovrascrive il file, ogni volta che lanciamo main
+        super(Constants.LOG_FILE, false); // false - sovrascrive il file, ogni volta che lanciamo main
     }
-
-    static {
-        String logFileName = ConfigLoader.getConfigValue("logFile");
-        LOG_FILE = logFileName != null ? logFileName : DEFAULT_LOG_FILE;
-    }
-
     public static void configureHandler(Logger logger) {
         try {
             MyHandler fileHandler = new MyHandler();
@@ -34,7 +27,7 @@ public class MyHandler extends FileHandler {
     @Override
     public void publish(LogRecord record) {
         try {
-            RandomAccessFile file = new RandomAccessFile(LOG_FILE, "rw");
+            RandomAccessFile file = new RandomAccessFile(Constants.LOG_FILE, "rw");
             if (file.length() == 0) {
                 file.writeBytes("[\n\t");
             } else {

@@ -3,15 +3,15 @@ package com.example.logger;
 import com.example.record.*;
 
 import java.util.logging.*;
-
+// provare Gson
+// string bulder o stingFormat
 public class MyFormatter extends Formatter {
 
     @Override
     public String format(LogRecord record) {
-        String event = record.getMessage().contains("ENTRY") ? ConfigLoader.getConfigValue("eventEntry")
-                : record.getMessage().contains("RETURN") ? ConfigLoader.getConfigValue("eventReturn") : "";
+        String event = record.getMessage();
 
-        String resultString = "{\n\t\t\"event\": \"" + event + "\",";
+        String resultString = "{\n\t\t\"event\": \"" + event + "\",";//record.getMessage()  //file di config // fare meno ripetitivo
 
         Object[] params = record.getParameters();
 
