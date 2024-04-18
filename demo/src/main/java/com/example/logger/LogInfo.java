@@ -12,6 +12,7 @@ public class LogInfo {
 
     public LogInfo(LogRecord record) {
         this.event = record.getMessage();
+        this.name = record.getSourceClassName() + "." + record.getSourceMethodName();
         Object[] params = record.getParameters();
         Object targetsObject = null;
         if (params == null || params.length == 0)
@@ -29,7 +30,6 @@ public class LogInfo {
             this.target = (targetsObject == null) ? record.getSourceClassName()
                     : Integer.toString(System.identityHashCode(targetsObject));
             this.args = myRecord.params();
-            this.name = record.getSourceClassName() + "." + record.getSourceMethodName();
         }
     }
 }
