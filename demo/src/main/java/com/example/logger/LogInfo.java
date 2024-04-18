@@ -12,18 +12,16 @@ public class LogInfo {
 
     public LogInfo(LogRecord record) {
         this.event = record.getMessage();
-
         Object[] params = record.getParameters();
         Object targetsObject = null;
-
         if (params == null || params.length == 0)
             throw new IllegalArgumentException("No parameters found in the record.");
-
         if (params[0] instanceof MyRecord) {
             MyRecord myRecord = (MyRecord) params[0];
             if (myRecord instanceof MyRecordExiting) {
                 MyRecordExiting<?> exitingRecord = (MyRecordExiting<?>) myRecord;
                 targetsObject = exitingRecord.thisObject();
+                this.result = exitingRecord.result() == null ? null : exitingRecord.result();
             } else if (myRecord instanceof MyRecordEntering) {
                 MyRecordEntering enteringRecord = (MyRecordEntering) myRecord;
                 targetsObject = enteringRecord.thisObject();
@@ -31,10 +29,6 @@ public class LogInfo {
             this.target = (targetsObject == null) ? record.getSourceClassName()
                     : Integer.toString(System.identityHashCode(targetsObject));
             this.args = myRecord.params();
-            if (myRecord instanceof MyRecordExiting){
-                MyRecordExiting<?> exitingRecord = (MyRecordExiting<?>) myRecord;
-                this.result = exitingRecord.result() == null ? null : exitingRecord.result();
-            }
             this.name = record.getSourceClassName() + "." + record.getSourceMethodName();
         }
     }
