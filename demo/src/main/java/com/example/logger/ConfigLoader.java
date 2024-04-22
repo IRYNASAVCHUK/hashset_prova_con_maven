@@ -1,10 +1,10 @@
 package com.example.logger;
 
 import com.example.utils.Constants;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import java.io.FileReader;
-import java.io.IOException;
+
+import com.google.gson.*;
+import java.io.*;
+
 
 public class ConfigLoader {
     private static JsonObject configObject;

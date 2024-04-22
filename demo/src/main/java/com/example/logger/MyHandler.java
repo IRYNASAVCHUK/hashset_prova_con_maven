@@ -1,10 +1,9 @@
 package com.example.logger;
 
-import java.io.IOException;
-import java.io.RandomAccessFile;
-import java.util.logging.*;
-
 import com.example.utils.Constants;
+
+import java.io.*;
+import java.util.logging.*;
 
 public class MyHandler extends FileHandler {
     public MyHandler() throws IOException, SecurityException {

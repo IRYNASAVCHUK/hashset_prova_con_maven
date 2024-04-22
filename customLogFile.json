@@ -1,74 +1,628 @@
 [
-	{"event":"func_pre","target":"1993134103","name":"com.example.set.MySet.init"},
-	{"event":"func_post","target":"1993134103","result":{"customers":[]},"name":"com.example.set.MySet.init"},
-	{"event":"func_pre","target":"1225616405","args":[0,"Mario"],"name":"com.example.set.Customer.init"},
-	{"event":"func_post","target":"1225616405","args":[0,"Mario"],"result":{"id":0,"name":"Mario"},"name":"com.example.set.Customer.init"},
-	{"event":"func_pre","target":"2080166188","args":[1,"Marco"],"name":"com.example.set.Customer.init"},
-	{"event":"func_post","target":"2080166188","args":[1,"Marco"],"result":{"id":1,"name":"Marco"},"name":"com.example.set.Customer.init"},
-	{"event":"func_pre","target":"1123225098","args":[2,"Matteo"],"name":"com.example.set.Customer.init"},
-	{"event":"func_post","target":"1123225098","args":[2,"Matteo"],"result":{"id":2,"name":"Matteo"},"name":"com.example.set.Customer.init"},
-	{"event":"func_pre","target":"1993134103","args":[{"id":0,"name":"Mario"}],"name":"com.example.set.MySet.addCustomer"},
-	{"event":"func_pre","target":"1225616405","name":"com.example.set.Customer.hashCode"},
-	{"event":"func_post","target":"1225616405","result":31,"name":"com.example.set.Customer.hashCode"},
-	{"event":"func_post","target":"1993134103","args":[{"id":0,"name":"Mario"}],"result":true,"name":"com.example.set.MySet.addCustomer"},
-	{"event":"func_pre","target":"1993134103","args":[{"id":1,"name":"Marco"}],"name":"com.example.set.MySet.addCustomer"},
-	{"event":"func_pre","target":"2080166188","name":"com.example.set.Customer.hashCode"},
-	{"event":"func_post","target":"2080166188","result":32,"name":"com.example.set.Customer.hashCode"},
-	{"event":"func_post","target":"1993134103","args":[{"id":1,"name":"Marco"}],"result":true,"name":"com.example.set.MySet.addCustomer"},
-	{"event":"func_pre","target":"1993134103","args":[{"id":2,"name":"Matteo"}],"name":"com.example.set.MySet.addCustomer"},
-	{"event":"func_pre","target":"1123225098","name":"com.example.set.Customer.hashCode"},
-	{"event":"func_post","target":"1123225098","result":33,"name":"com.example.set.Customer.hashCode"},
-	{"event":"func_post","target":"1993134103","args":[{"id":2,"name":"Matteo"}],"result":true,"name":"com.example.set.MySet.addCustomer"},
-	{"event":"func_pre","target":"1993134103","args":[{"id":2,"name":"Matteo"}],"name":"com.example.set.MySet.addCustomer"},
-	{"event":"func_pre","target":"1123225098","name":"com.example.set.Customer.hashCode"},
-	{"event":"func_post","target":"1123225098","result":33,"name":"com.example.set.Customer.hashCode"},
-	{"event":"func_post","target":"1993134103","args":[{"id":2,"name":"Matteo"}],"result":false,"name":"com.example.set.MySet.addCustomer"},
-	{"event":"func_pre","target":"1993134103","args":[{"id":0,"name":"Mario"}],"name":"com.example.set.MySet.removeCustomer"},
-	{"event":"func_pre","target":"1225616405","name":"com.example.set.Customer.hashCode"},
-	{"event":"func_post","target":"1225616405","result":31,"name":"com.example.set.Customer.hashCode"},
-	{"event":"func_post","target":"1993134103","args":[{"id":0,"name":"Mario"}],"result":true,"name":"com.example.set.MySet.removeCustomer"},
-	{"event":"func_pre","target":"1993134103","args":[{"id":0,"name":"Mario"}],"name":"com.example.set.MySet.removeCustomer"},
-	{"event":"func_pre","target":"1225616405","name":"com.example.set.Customer.hashCode"},
-	{"event":"func_post","target":"1225616405","result":31,"name":"com.example.set.Customer.hashCode"},
-	{"event":"func_post","target":"1993134103","args":[{"id":0,"name":"Mario"}],"result":false,"name":"com.example.set.MySet.removeCustomer"},
-	{"event":"func_pre","target":"1993134103","args":[{"id":2,"name":"Matteo"}],"name":"com.example.set.MySet.containsCustomer"},
-	{"event":"func_pre","target":"1123225098","name":"com.example.set.Customer.hashCode"},
-	{"event":"func_post","target":"1123225098","result":33,"name":"com.example.set.Customer.hashCode"},
-	{"event":"func_post","target":"1993134103","args":[{"id":2,"name":"Matteo"}],"result":true,"name":"com.example.set.MySet.containsCustomer"},
-	{"event":"func_pre","target":"1993134103","name":"com.example.set.MySet.getSize"},
-	{"event":"func_post","target":"1993134103","result":2,"name":"com.example.set.MySet.getSize"},
-	{"event":"func_pre","target":"com.example.set.MySet","args":[2,2],"name":"com.example.set.MySet.sum"},
-	{"event":"func_post","target":"com.example.set.MySet","args":[2,2],"result":4,"name":"com.example.set.MySet.sum"},
-	{"event":"func_pre","target":"1993134103","name":"com.example.set.MySet.clearSet"},
-	{"event":"func_post","target":"1993134103","name":"com.example.set.MySet.clearSet"},
-	{"event":"func_pre","target":"26117480","args":[1,"John Doe"],"name":"com.example.set.Customer.init"},
-	{"event":"func_post","target":"26117480","args":[1,"John Doe"],"result":{"id":1,"name":"John Doe"},"name":"com.example.set.Customer.init"},
-	{"event":"func_pre","target":"26117480","name":"com.example.set.Customer.getId"},
-	{"event":"func_post","target":"26117480","result":1,"name":"com.example.set.Customer.getId"},
-	{"event":"func_pre","target":"26117480","name":"com.example.set.Customer.getName"},
-	{"event":"func_post","target":"26117480","result":"John Doe","name":"com.example.set.Customer.getName"},
-	{"event":"func_pre","target":"1514322932","name":"com.example.set.Counter.inc"},
-	{"event":"func_post","target":"1514322932","name":"com.example.set.Counter.inc"},
-	{"event":"func_pre","target":"1514322932","name":"com.example.set.Counter.inc"},
-	{"event":"func_post","target":"1514322932","name":"com.example.set.Counter.inc"},
-	{"event":"func_pre","target":"1514322932","name":"com.example.set.Counter.getValue"},
-	{"event":"func_post","target":"1514322932","result":2,"name":"com.example.set.Counter.getValue"},
-	{"event":"func_pre","target":"654582261","name":"com.example.set.Counter.getValue"},
-	{"event":"func_post","target":"654582261","result":0,"name":"com.example.set.Counter.getValue"},
-	{"event":"func_pre","target":"1514322932","args":[{"val":0}],"name":"com.example.set.Counter.copy"},
-	{"event":"func_post","target":"1514322932","args":[{"val":0}],"name":"com.example.set.Counter.copy"},
-	{"event":"func_pre","target":"1514322932","name":"com.example.set.Counter.getValue"},
-	{"event":"func_post","target":"1514322932","result":0,"name":"com.example.set.Counter.getValue"},
-	{"event":"func_pre","target":"1514322932","name":"com.example.set.Counter.inc"},
-	{"event":"func_post","target":"1514322932","name":"com.example.set.Counter.inc"},
-	{"event":"func_pre","target":"1514322932","name":"com.example.set.Counter.inc"},
-	{"event":"func_post","target":"1514322932","name":"com.example.set.Counter.inc"},
-	{"event":"func_pre","target":"1514322932","name":"com.example.set.Counter.inc"},
-	{"event":"func_post","target":"1514322932","name":"com.example.set.Counter.inc"},
-	{"event":"func_pre","target":"1514322932","name":"com.example.set.Counter.getValue"},
-	{"event":"func_post","target":"1514322932","result":3,"name":"com.example.set.Counter.getValue"},
-	{"event":"func_pre","target":"1514322932","name":"com.example.set.Counter.reset"},
-	{"event":"func_post","target":"1514322932","name":"com.example.set.Counter.reset"},
-	{"event":"func_pre","target":"1514322932","name":"com.example.set.Counter.getValue"},
-	{"event":"func_post","target":"1514322932","result":0,"name":"com.example.set.Counter.getValue"}
+	{
+  "event": "func_pre",
+  "target": 604107971,
+  "args": null,
+  "result": null,
+  "name": "com.example.set.MySet.init"
+},
+	{
+  "event": "func_post",
+  "target": 604107971,
+  "args": null,
+  "result": {
+    "customers": []
+  },
+  "name": "com.example.set.MySet.init"
+},
+	{
+  "event": "func_pre",
+  "target": 1712536284,
+  "args": [
+    0,
+    "Mario"
+  ],
+  "result": null,
+  "name": "com.example.set.Customer.init"
+},
+	{
+  "event": "func_post",
+  "target": 1712536284,
+  "args": [
+    0,
+    "Mario"
+  ],
+  "result": {
+    "id": 0,
+    "name": "Mario"
+  },
+  "name": "com.example.set.Customer.init"
+},
+	{
+  "event": "func_pre",
+  "target": 472654579,
+  "args": [
+    1,
+    "Marco"
+  ],
+  "result": null,
+  "name": "com.example.set.Customer.init"
+},
+	{
+  "event": "func_post",
+  "target": 472654579,
+  "args": [
+    1,
+    "Marco"
+  ],
+  "result": {
+    "id": 1,
+    "name": "Marco"
+  },
+  "name": "com.example.set.Customer.init"
+},
+	{
+  "event": "func_pre",
+  "target": 26117480,
+  "args": [
+    2,
+    "Matteo"
+  ],
+  "result": null,
+  "name": "com.example.set.Customer.init"
+},
+	{
+  "event": "func_post",
+  "target": 26117480,
+  "args": [
+    2,
+    "Matteo"
+  ],
+  "result": {
+    "id": 2,
+    "name": "Matteo"
+  },
+  "name": "com.example.set.Customer.init"
+},
+	{
+  "event": "func_pre",
+  "target": 604107971,
+  "args": [
+    {
+      "id": 0,
+      "name": "Mario"
+    }
+  ],
+  "result": null,
+  "name": "com.example.set.MySet.addCustomer"
+},
+	{
+  "event": "func_pre",
+  "target": 1712536284,
+  "args": null,
+  "result": null,
+  "name": "com.example.set.Customer.hashCode"
+},
+	{
+  "event": "func_post",
+  "target": 1712536284,
+  "args": null,
+  "result": 31,
+  "name": "com.example.set.Customer.hashCode"
+},
+	{
+  "event": "func_post",
+  "target": 604107971,
+  "args": [
+    {
+      "id": 0,
+      "name": "Mario"
+    }
+  ],
+  "result": true,
+  "name": "com.example.set.MySet.addCustomer"
+},
+	{
+  "event": "func_pre",
+  "target": 604107971,
+  "args": [
+    {
+      "id": 1,
+      "name": "Marco"
+    }
+  ],
+  "result": null,
+  "name": "com.example.set.MySet.addCustomer"
+},
+	{
+  "event": "func_pre",
+  "target": 472654579,
+  "args": null,
+  "result": null,
+  "name": "com.example.set.Customer.hashCode"
+},
+	{
+  "event": "func_post",
+  "target": 472654579,
+  "args": null,
+  "result": 32,
+  "name": "com.example.set.Customer.hashCode"
+},
+	{
+  "event": "func_post",
+  "target": 604107971,
+  "args": [
+    {
+      "id": 1,
+      "name": "Marco"
+    }
+  ],
+  "result": true,
+  "name": "com.example.set.MySet.addCustomer"
+},
+	{
+  "event": "func_pre",
+  "target": 604107971,
+  "args": [
+    {
+      "id": 2,
+      "name": "Matteo"
+    }
+  ],
+  "result": null,
+  "name": "com.example.set.MySet.addCustomer"
+},
+	{
+  "event": "func_pre",
+  "target": 26117480,
+  "args": null,
+  "result": null,
+  "name": "com.example.set.Customer.hashCode"
+},
+	{
+  "event": "func_post",
+  "target": 26117480,
+  "args": null,
+  "result": 33,
+  "name": "com.example.set.Customer.hashCode"
+},
+	{
+  "event": "func_post",
+  "target": 604107971,
+  "args": [
+    {
+      "id": 2,
+      "name": "Matteo"
+    }
+  ],
+  "result": true,
+  "name": "com.example.set.MySet.addCustomer"
+},
+	{
+  "event": "func_pre",
+  "target": 604107971,
+  "args": [
+    {
+      "id": 2,
+      "name": "Matteo"
+    }
+  ],
+  "result": null,
+  "name": "com.example.set.MySet.addCustomer"
+},
+	{
+  "event": "func_pre",
+  "target": 26117480,
+  "args": null,
+  "result": null,
+  "name": "com.example.set.Customer.hashCode"
+},
+	{
+  "event": "func_post",
+  "target": 26117480,
+  "args": null,
+  "result": 33,
+  "name": "com.example.set.Customer.hashCode"
+},
+	{
+  "event": "func_post",
+  "target": 604107971,
+  "args": [
+    {
+      "id": 2,
+      "name": "Matteo"
+    }
+  ],
+  "result": false,
+  "name": "com.example.set.MySet.addCustomer"
+},
+	{
+  "event": "func_pre",
+  "target": 604107971,
+  "args": [
+    {
+      "id": 0,
+      "name": "Mario"
+    }
+  ],
+  "result": null,
+  "name": "com.example.set.MySet.removeCustomer"
+},
+	{
+  "event": "func_pre",
+  "target": 1712536284,
+  "args": null,
+  "result": null,
+  "name": "com.example.set.Customer.hashCode"
+},
+	{
+  "event": "func_post",
+  "target": 1712536284,
+  "args": null,
+  "result": 31,
+  "name": "com.example.set.Customer.hashCode"
+},
+	{
+  "event": "func_post",
+  "target": 604107971,
+  "args": [
+    {
+      "id": 0,
+      "name": "Mario"
+    }
+  ],
+  "result": true,
+  "name": "com.example.set.MySet.removeCustomer"
+},
+	{
+  "event": "func_pre",
+  "target": 604107971,
+  "args": [
+    {
+      "id": 0,
+      "name": "Mario"
+    }
+  ],
+  "result": null,
+  "name": "com.example.set.MySet.removeCustomer"
+},
+	{
+  "event": "func_pre",
+  "target": 1712536284,
+  "args": null,
+  "result": null,
+  "name": "com.example.set.Customer.hashCode"
+},
+	{
+  "event": "func_post",
+  "target": 1712536284,
+  "args": null,
+  "result": 31,
+  "name": "com.example.set.Customer.hashCode"
+},
+	{
+  "event": "func_post",
+  "target": 604107971,
+  "args": [
+    {
+      "id": 0,
+      "name": "Mario"
+    }
+  ],
+  "result": false,
+  "name": "com.example.set.MySet.removeCustomer"
+},
+	{
+  "event": "func_pre",
+  "target": 604107971,
+  "args": [
+    {
+      "id": 2,
+      "name": "Matteo"
+    }
+  ],
+  "result": null,
+  "name": "com.example.set.MySet.containsCustomer"
+},
+	{
+  "event": "func_pre",
+  "target": 26117480,
+  "args": null,
+  "result": null,
+  "name": "com.example.set.Customer.hashCode"
+},
+	{
+  "event": "func_post",
+  "target": 26117480,
+  "args": null,
+  "result": 33,
+  "name": "com.example.set.Customer.hashCode"
+},
+	{
+  "event": "func_post",
+  "target": 604107971,
+  "args": [
+    {
+      "id": 2,
+      "name": "Matteo"
+    }
+  ],
+  "result": true,
+  "name": "com.example.set.MySet.containsCustomer"
+},
+	{
+  "event": "func_pre",
+  "target": 604107971,
+  "args": null,
+  "result": null,
+  "name": "com.example.set.MySet.getSize"
+},
+	{
+  "event": "func_post",
+  "target": 604107971,
+  "args": null,
+  "result": 2,
+  "name": "com.example.set.MySet.getSize"
+},
+	{
+  "event": "func_pre",
+  "target": "com.example.set.MySet",
+  "args": [
+    2,
+    2
+  ],
+  "result": null,
+  "name": "com.example.set.MySet.sum"
+},
+	{
+  "event": "func_post",
+  "target": "com.example.set.MySet",
+  "args": [
+    2,
+    2
+  ],
+  "result": 4,
+  "name": "com.example.set.MySet.sum"
+},
+	{
+  "event": "func_pre",
+  "target": 604107971,
+  "args": null,
+  "result": null,
+  "name": "com.example.set.MySet.clearSet"
+},
+	{
+  "event": "func_post",
+  "target": 604107971,
+  "args": null,
+  "result": null,
+  "name": "com.example.set.MySet.clearSet"
+},
+	{
+  "event": "func_pre",
+  "target": 1330278544,
+  "args": [
+    1,
+    "John Doe"
+  ],
+  "result": null,
+  "name": "com.example.set.Customer.init"
+},
+	{
+  "event": "func_post",
+  "target": 1330278544,
+  "args": [
+    1,
+    "John Doe"
+  ],
+  "result": {
+    "id": 1,
+    "name": "John Doe"
+  },
+  "name": "com.example.set.Customer.init"
+},
+	{
+  "event": "func_pre",
+  "target": 1330278544,
+  "args": null,
+  "result": null,
+  "name": "com.example.set.Customer.getId"
+},
+	{
+  "event": "func_post",
+  "target": 1330278544,
+  "args": null,
+  "result": 1,
+  "name": "com.example.set.Customer.getId"
+},
+	{
+  "event": "func_pre",
+  "target": 1330278544,
+  "args": null,
+  "result": null,
+  "name": "com.example.set.Customer.getName"
+},
+	{
+  "event": "func_post",
+  "target": 1330278544,
+  "args": null,
+  "result": "John Doe",
+  "name": "com.example.set.Customer.getName"
+},
+	{
+  "event": "func_pre",
+  "target": 110456297,
+  "args": null,
+  "result": null,
+  "name": "com.example.set.Counter.inc"
+},
+	{
+  "event": "func_post",
+  "target": 110456297,
+  "args": null,
+  "result": null,
+  "name": "com.example.set.Counter.inc"
+},
+	{
+  "event": "func_pre",
+  "target": 110456297,
+  "args": null,
+  "result": null,
+  "name": "com.example.set.Counter.inc"
+},
+	{
+  "event": "func_post",
+  "target": 110456297,
+  "args": null,
+  "result": null,
+  "name": "com.example.set.Counter.inc"
+},
+	{
+  "event": "func_pre",
+  "target": 110456297,
+  "args": null,
+  "result": null,
+  "name": "com.example.set.Counter.getValue"
+},
+	{
+  "event": "func_post",
+  "target": 110456297,
+  "args": null,
+  "result": 2,
+  "name": "com.example.set.Counter.getValue"
+},
+	{
+  "event": "func_pre",
+  "target": 1989972246,
+  "args": null,
+  "result": null,
+  "name": "com.example.set.Counter.getValue"
+},
+	{
+  "event": "func_post",
+  "target": 1989972246,
+  "args": null,
+  "result": 0,
+  "name": "com.example.set.Counter.getValue"
+},
+	{
+  "event": "func_pre",
+  "target": 110456297,
+  "args": [
+    {
+      "val": 0
+    }
+  ],
+  "result": null,
+  "name": "com.example.set.Counter.copy"
+},
+	{
+  "event": "func_post",
+  "target": 110456297,
+  "args": [
+    {
+      "val": 0
+    }
+  ],
+  "result": null,
+  "name": "com.example.set.Counter.copy"
+},
+	{
+  "event": "func_pre",
+  "target": 110456297,
+  "args": null,
+  "result": null,
+  "name": "com.example.set.Counter.getValue"
+},
+	{
+  "event": "func_post",
+  "target": 110456297,
+  "args": null,
+  "result": 0,
+  "name": "com.example.set.Counter.getValue"
+},
+	{
+  "event": "func_pre",
+  "target": 110456297,
+  "args": null,
+  "result": null,
+  "name": "com.example.set.Counter.inc"
+},
+	{
+  "event": "func_post",
+  "target": 110456297,
+  "args": null,
+  "result": null,
+  "name": "com.example.set.Counter.inc"
+},
+	{
+  "event": "func_pre",
+  "target": 110456297,
+  "args": null,
+  "result": null,
+  "name": "com.example.set.Counter.inc"
+},
+	{
+  "event": "func_post",
+  "target": 110456297,
+  "args": null,
+  "result": null,
+  "name": "com.example.set.Counter.inc"
+},
+	{
+  "event": "func_pre",
+  "target": 110456297,
+  "args": null,
+  "result": null,
+  "name": "com.example.set.Counter.inc"
+},
+	{
+  "event": "func_post",
+  "target": 110456297,
+  "args": null,
+  "result": null,
+  "name": "com.example.set.Counter.inc"
+},
+	{
+  "event": "func_pre",
+  "target": 110456297,
+  "args": null,
+  "result": null,
+  "name": "com.example.set.Counter.getValue"
+},
+	{
+  "event": "func_post",
+  "target": 110456297,
+  "args": null,
+  "result": 3,
+  "name": "com.example.set.Counter.getValue"
+},
+	{
+  "event": "func_pre",
+  "target": 110456297,
+  "args": null,
+  "result": null,
+  "name": "com.example.set.Counter.reset"
+},
+	{
+  "event": "func_post",
+  "target": 110456297,
+  "args": null,
+  "result": null,
+  "name": "com.example.set.Counter.reset"
+},
+	{
+  "event": "func_pre",
+  "target": 110456297,
+  "args": null,
+  "result": null,
+  "name": "com.example.set.Counter.getValue"
+},
+	{
+  "event": "func_post",
+  "target": 110456297,
+  "args": null,
+  "result": 0,
+  "name": "com.example.set.Counter.getValue"
+}
 ]

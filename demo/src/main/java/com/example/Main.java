@@ -1,8 +1,6 @@
 package com.example;
 
-import com.example.set.Counter;
-import com.example.set.Customer;
-import com.example.set.MySet;
+import com.example.set.*;
 
 public class Main {
     public static void main(String[] args) {

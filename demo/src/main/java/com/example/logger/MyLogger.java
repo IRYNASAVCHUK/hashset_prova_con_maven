@@ -1,5 +1,8 @@
 package com.example.logger;
 
+import com.example.record.*;
+import com.example.utils.Constants;
+
 import java.util.logging.*;
 
 public class MyLogger extends Logger {
@@ -22,4 +25,25 @@ public class MyLogger extends Logger {
     public static Logger getLogger() {
         return logger;
     }
+
+    public static void logMethodEntry(String methodName, Object thiObject, Object... args) {
+        logger.logp(Level.INFO, thiObject.getClass().getName(), methodName, Constants.ENTRY,
+                new MyRecordEntering(args, thiObject));
+    }
+
+    public static <T> void logMethodExit(String methodName,Object thiObject, Class<T> returnType, T result, Object... args) {
+        logger.logp(Level.INFO, thiObject.getClass().getName(), methodName, Constants.RETURN,
+                new MyRecordExiting<>(returnType, result, args,thiObject));
+    }
+
+    public static void logStaticMethodEntry(String className,String methodName, Object... args) {
+        logger.logp(Level.INFO,className , methodName, Constants.ENTRY,
+                new MyRecordEntering(args, null));
+    }
+
+    public static <T> void logStaticMethodExit(String className, String methodName, Class<T> returnType, T result, Object... args) {
+        logger.logp(Level.INFO, className, methodName, Constants.RETURN,
+                new MyRecordExiting<>(returnType, result, args, null));
+    }
+
 }

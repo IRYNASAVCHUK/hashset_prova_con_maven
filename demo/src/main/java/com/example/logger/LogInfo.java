@@ -1,11 +1,13 @@
 package com.example.logger;
 
-import java.util.logging.LogRecord;
 import com.example.record.*;
+
+import java.util.logging.LogRecord;
+
 
 public class LogInfo {
     private String event;
-    private String target;
+    private Object target;
     private Object[] args;
     private Object result;
     private String name;
@@ -28,7 +30,7 @@ public class LogInfo {
                 targetsObject = enteringRecord.thisObject();
             }
             this.target = (targetsObject == null) ? record.getSourceClassName()
-                    : Integer.toString(System.identityHashCode(targetsObject));
+                    : System.identityHashCode(targetsObject);
             this.args = myRecord.params();
         }
     }
