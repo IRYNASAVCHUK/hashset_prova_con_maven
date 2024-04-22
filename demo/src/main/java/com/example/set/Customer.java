@@ -12,7 +12,7 @@ public class Customer {
                 MyLogger.logMethodEntry("init", this, new Object[] { id, name });
                 this.id = id;
                 this.name = name;
-                MyLogger.logMethodExit("init", this, Customer.class, this, new Object[] { id, name });
+                MyLogger.logMethodExit("init", this, Customer.class, null, new Object[] { id, name });
         }
 
         public int getId() {

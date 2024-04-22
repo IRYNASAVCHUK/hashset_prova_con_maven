@@ -11,7 +11,7 @@ public class MySet {
       public MySet() {
             MyLogger.logMethodEntry("init", this, (Object[]) null);
             this.customers = new HashSet<>();
-            MyLogger.logMethodExit("init", this, MySet.class, this, (Object[]) null);
+            MyLogger.logMethodExit("init", this, MySet.class, null, (Object[]) null);
       }
 
       public boolean addCustomer(Customer person) {

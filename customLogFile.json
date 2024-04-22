@@ -10,14 +10,12 @@
   "event": "func_post",
   "target": 604107971,
   "args": null,
-  "result": {
-    "customers": []
-  },
+  "result": null,
   "name": "com.example.set.MySet.init"
 },
 	{
   "event": "func_pre",
-  "target": 1712536284,
+  "target": 783286238,
   "args": [
     0,
     "Mario"
@@ -27,20 +25,17 @@
 },
 	{
   "event": "func_post",
-  "target": 1712536284,
+  "target": 783286238,
   "args": [
     0,
     "Mario"
   ],
-  "result": {
-    "id": 0,
-    "name": "Mario"
-  },
+  "result": null,
   "name": "com.example.set.Customer.init"
 },
 	{
   "event": "func_pre",
-  "target": 472654579,
+  "target": 1500056228,
   "args": [
     1,
     "Marco"
@@ -50,20 +45,17 @@
 },
 	{
   "event": "func_post",
-  "target": 472654579,
+  "target": 1500056228,
   "args": [
     1,
     "Marco"
   ],
-  "result": {
-    "id": 1,
-    "name": "Marco"
-  },
+  "result": null,
   "name": "com.example.set.Customer.init"
 },
 	{
   "event": "func_pre",
-  "target": 26117480,
+  "target": 1749186397,
   "args": [
     2,
     "Matteo"
@@ -73,39 +65,33 @@
 },
 	{
   "event": "func_post",
-  "target": 26117480,
+  "target": 1749186397,
   "args": [
     2,
     "Matteo"
   ],
-  "result": {
-    "id": 2,
-    "name": "Matteo"
-  },
+  "result": null,
   "name": "com.example.set.Customer.init"
 },
 	{
   "event": "func_pre",
   "target": 604107971,
   "args": [
-    {
-      "id": 0,
-      "name": "Mario"
-    }
+    783286238
   ],
   "result": null,
   "name": "com.example.set.MySet.addCustomer"
 },
 	{
   "event": "func_pre",
-  "target": 1712536284,
+  "target": 783286238,
   "args": null,
   "result": null,
   "name": "com.example.set.Customer.hashCode"
 },
 	{
   "event": "func_post",
-  "target": 1712536284,
+  "target": 783286238,
   "args": null,
   "result": 31,
   "name": "com.example.set.Customer.hashCode"
@@ -114,10 +100,7 @@
   "event": "func_post",
   "target": 604107971,
   "args": [
-    {
-      "id": 0,
-      "name": "Mario"
-    }
+    783286238
   ],
   "result": true,
   "name": "com.example.set.MySet.addCustomer"
@@ -126,24 +109,21 @@
   "event": "func_pre",
   "target": 604107971,
   "args": [
-    {
-      "id": 1,
-      "name": "Marco"
-    }
+    1500056228
   ],
   "result": null,
   "name": "com.example.set.MySet.addCustomer"
 },
 	{
   "event": "func_pre",
-  "target": 472654579,
+  "target": 1500056228,
   "args": null,
   "result": null,
   "name": "com.example.set.Customer.hashCode"
 },
 	{
   "event": "func_post",
-  "target": 472654579,
+  "target": 1500056228,
   "args": null,
   "result": 32,
   "name": "com.example.set.Customer.hashCode"
@@ -152,10 +132,7 @@
   "event": "func_post",
   "target": 604107971,
   "args": [
-    {
-      "id": 1,
-      "name": "Marco"
-    }
+    1500056228
   ],
   "result": true,
   "name": "com.example.set.MySet.addCustomer"
@@ -164,24 +141,21 @@
   "event": "func_pre",
   "target": 604107971,
   "args": [
-    {
-      "id": 2,
-      "name": "Matteo"
-    }
+    1749186397
   ],
   "result": null,
   "name": "com.example.set.MySet.addCustomer"
 },
 	{
   "event": "func_pre",
-  "target": 26117480,
+  "target": 1749186397,
   "args": null,
   "result": null,
   "name": "com.example.set.Customer.hashCode"
 },
 	{
   "event": "func_post",
-  "target": 26117480,
+  "target": 1749186397,
   "args": null,
   "result": 33,
   "name": "com.example.set.Customer.hashCode"
@@ -190,10 +164,7 @@
   "event": "func_post",
   "target": 604107971,
   "args": [
-    {
-      "id": 2,
-      "name": "Matteo"
-    }
+    1749186397
   ],
   "result": true,
   "name": "com.example.set.MySet.addCustomer"
@@ -202,24 +173,21 @@
   "event": "func_pre",
   "target": 604107971,
   "args": [
-    {
-      "id": 2,
-      "name": "Matteo"
-    }
+    1749186397
   ],
   "result": null,
   "name": "com.example.set.MySet.addCustomer"
 },
 	{
   "event": "func_pre",
-  "target": 26117480,
+  "target": 1749186397,
   "args": null,
   "result": null,
   "name": "com.example.set.Customer.hashCode"
 },
 	{
   "event": "func_post",
-  "target": 26117480,
+  "target": 1749186397,
   "args": null,
   "result": 33,
   "name": "com.example.set.Customer.hashCode"
@@ -228,10 +196,7 @@
   "event": "func_post",
   "target": 604107971,
   "args": [
-    {
-      "id": 2,
-      "name": "Matteo"
-    }
+    1749186397
   ],
   "result": false,
   "name": "com.example.set.MySet.addCustomer"
@@ -240,24 +205,21 @@
   "event": "func_pre",
   "target": 604107971,
   "args": [
-    {
-      "id": 0,
-      "name": "Mario"
-    }
+    783286238
   ],
   "result": null,
   "name": "com.example.set.MySet.removeCustomer"
 },
 	{
   "event": "func_pre",
-  "target": 1712536284,
+  "target": 783286238,
   "args": null,
   "result": null,
   "name": "com.example.set.Customer.hashCode"
 },
 	{
   "event": "func_post",
-  "target": 1712536284,
+  "target": 783286238,
   "args": null,
   "result": 31,
   "name": "com.example.set.Customer.hashCode"
@@ -266,10 +228,7 @@
   "event": "func_post",
   "target": 604107971,
   "args": [
-    {
-      "id": 0,
-      "name": "Mario"
-    }
+    783286238
   ],
   "result": true,
   "name": "com.example.set.MySet.removeCustomer"
@@ -278,24 +237,21 @@
   "event": "func_pre",
   "target": 604107971,
   "args": [
-    {
-      "id": 0,
-      "name": "Mario"
-    }
+    783286238
   ],
   "result": null,
   "name": "com.example.set.MySet.removeCustomer"
 },
 	{
   "event": "func_pre",
-  "target": 1712536284,
+  "target": 783286238,
   "args": null,
   "result": null,
   "name": "com.example.set.Customer.hashCode"
 },
 	{
   "event": "func_post",
-  "target": 1712536284,
+  "target": 783286238,
   "args": null,
   "result": 31,
   "name": "com.example.set.Customer.hashCode"
@@ -304,10 +260,7 @@
   "event": "func_post",
   "target": 604107971,
   "args": [
-    {
-      "id": 0,
-      "name": "Mario"
-    }
+    783286238
   ],
   "result": false,
   "name": "com.example.set.MySet.removeCustomer"
@@ -316,24 +269,21 @@
   "event": "func_pre",
   "target": 604107971,
   "args": [
-    {
-      "id": 2,
-      "name": "Matteo"
-    }
+    1749186397
   ],
   "result": null,
   "name": "com.example.set.MySet.containsCustomer"
 },
 	{
   "event": "func_pre",
-  "target": 26117480,
+  "target": 1749186397,
   "args": null,
   "result": null,
   "name": "com.example.set.Customer.hashCode"
 },
 	{
   "event": "func_post",
-  "target": 26117480,
+  "target": 1749186397,
   "args": null,
   "result": 33,
   "name": "com.example.set.Customer.hashCode"
@@ -342,10 +292,7 @@
   "event": "func_post",
   "target": 604107971,
   "args": [
-    {
-      "id": 2,
-      "name": "Matteo"
-    }
+    1749186397
   ],
   "result": true,
   "name": "com.example.set.MySet.containsCustomer"
@@ -400,7 +347,7 @@
 },
 	{
   "event": "func_pre",
-  "target": 1330278544,
+  "target": 1590550415,
   "args": [
     1,
     "John Doe"
@@ -410,217 +357,210 @@
 },
 	{
   "event": "func_post",
-  "target": 1330278544,
+  "target": 1590550415,
   "args": [
     1,
     "John Doe"
   ],
-  "result": {
-    "id": 1,
-    "name": "John Doe"
-  },
+  "result": null,
   "name": "com.example.set.Customer.init"
 },
 	{
   "event": "func_pre",
-  "target": 1330278544,
+  "target": 1590550415,
   "args": null,
   "result": null,
   "name": "com.example.set.Customer.getId"
 },
 	{
   "event": "func_post",
-  "target": 1330278544,
+  "target": 1590550415,
   "args": null,
   "result": 1,
   "name": "com.example.set.Customer.getId"
 },
 	{
   "event": "func_pre",
-  "target": 1330278544,
+  "target": 1590550415,
   "args": null,
   "result": null,
   "name": "com.example.set.Customer.getName"
 },
 	{
   "event": "func_post",
-  "target": 1330278544,
+  "target": 1590550415,
   "args": null,
   "result": "John Doe",
   "name": "com.example.set.Customer.getName"
 },
 	{
   "event": "func_pre",
-  "target": 110456297,
+  "target": 665576141,
   "args": null,
   "result": null,
   "name": "com.example.set.Counter.inc"
 },
 	{
   "event": "func_post",
-  "target": 110456297,
+  "target": 665576141,
   "args": null,
   "result": null,
   "name": "com.example.set.Counter.inc"
 },
 	{
   "event": "func_pre",
-  "target": 110456297,
+  "target": 665576141,
   "args": null,
   "result": null,
   "name": "com.example.set.Counter.inc"
 },
 	{
   "event": "func_post",
-  "target": 110456297,
+  "target": 665576141,
   "args": null,
   "result": null,
   "name": "com.example.set.Counter.inc"
 },
 	{
   "event": "func_pre",
-  "target": 110456297,
+  "target": 665576141,
   "args": null,
   "result": null,
   "name": "com.example.set.Counter.getValue"
 },
 	{
   "event": "func_post",
-  "target": 110456297,
+  "target": 665576141,
   "args": null,
   "result": 2,
   "name": "com.example.set.Counter.getValue"
 },
 	{
   "event": "func_pre",
-  "target": 1989972246,
+  "target": 1599771323,
   "args": null,
   "result": null,
   "name": "com.example.set.Counter.getValue"
 },
 	{
   "event": "func_post",
-  "target": 1989972246,
+  "target": 1599771323,
   "args": null,
   "result": 0,
   "name": "com.example.set.Counter.getValue"
 },
 	{
   "event": "func_pre",
-  "target": 110456297,
+  "target": 665576141,
   "args": [
-    {
-      "val": 0
-    }
+    1599771323
   ],
   "result": null,
   "name": "com.example.set.Counter.copy"
 },
 	{
   "event": "func_post",
-  "target": 110456297,
+  "target": 665576141,
   "args": [
-    {
-      "val": 0
-    }
+    1599771323
   ],
   "result": null,
   "name": "com.example.set.Counter.copy"
 },
 	{
   "event": "func_pre",
-  "target": 110456297,
+  "target": 665576141,
   "args": null,
   "result": null,
   "name": "com.example.set.Counter.getValue"
 },
 	{
   "event": "func_post",
-  "target": 110456297,
+  "target": 665576141,
   "args": null,
   "result": 0,
   "name": "com.example.set.Counter.getValue"
 },
 	{
   "event": "func_pre",
-  "target": 110456297,
+  "target": 665576141,
   "args": null,
   "result": null,
   "name": "com.example.set.Counter.inc"
 },
 	{
   "event": "func_post",
-  "target": 110456297,
+  "target": 665576141,
   "args": null,
   "result": null,
   "name": "com.example.set.Counter.inc"
 },
 	{
   "event": "func_pre",
-  "target": 110456297,
+  "target": 665576141,
   "args": null,
   "result": null,
   "name": "com.example.set.Counter.inc"
 },
 	{
   "event": "func_post",
-  "target": 110456297,
+  "target": 665576141,
   "args": null,
   "result": null,
   "name": "com.example.set.Counter.inc"
 },
 	{
   "event": "func_pre",
-  "target": 110456297,
+  "target": 665576141,
   "args": null,
   "result": null,
   "name": "com.example.set.Counter.inc"
 },
 	{
   "event": "func_post",
-  "target": 110456297,
+  "target": 665576141,
   "args": null,
   "result": null,
   "name": "com.example.set.Counter.inc"
 },
 	{
   "event": "func_pre",
-  "target": 110456297,
+  "target": 665576141,
   "args": null,
   "result": null,
   "name": "com.example.set.Counter.getValue"
 },
 	{
   "event": "func_post",
-  "target": 110456297,
+  "target": 665576141,
   "args": null,
   "result": 3,
   "name": "com.example.set.Counter.getValue"
 },
 	{
   "event": "func_pre",
-  "target": 110456297,
+  "target": 665576141,
   "args": null,
   "result": null,
   "name": "com.example.set.Counter.reset"
 },
 	{
   "event": "func_post",
-  "target": 110456297,
+  "target": 665576141,
   "args": null,
   "result": null,
   "name": "com.example.set.Counter.reset"
 },
 	{
   "event": "func_pre",
-  "target": 110456297,
+  "target": 665576141,
   "args": null,
   "result": null,
   "name": "com.example.set.Counter.getValue"
 },
 	{
   "event": "func_post",
-  "target": 110456297,
+  "target": 665576141,
   "args": null,
   "result": 0,
   "name": "com.example.set.Counter.getValue"
