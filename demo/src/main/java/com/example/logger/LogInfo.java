@@ -19,48 +19,47 @@ public class LogInfo {
         Object targetsObject = null;
         if (params == null || params.length == 0)
             throw new IllegalArgumentException("No parameters found in the record.");
-        if (params[0] instanceof MyRecord) {
-            MyRecord myRecord = (MyRecord) params[0];
-            if (myRecord instanceof MyRecordExiting) {
-                MyRecordExiting<?> exitingRecord = (MyRecordExiting<?>) myRecord;
-                targetsObject = exitingRecord.thisObject();
+        MyRecord myRecord = (MyRecord) params[0];
+        extracted(record, targetsObject, myRecord);
+        getArgObjects(myRecord);
+    }
 
-                Class<?> returnType = ((MyRecordExiting<?>) myRecord).returnType();
-                if (!returnType.equals(void.class)) {
-                    Object returnValue = ((MyRecordExiting<?>) myRecord).result();
-                    if (returnValue != null) {
-                        if (isPrimitiveOrWrapper(returnValue)||returnValue instanceof String) {
-                            this.result = exitingRecord.result();
-                        } else {
-                            this.result = System.identityHashCode(returnValue);
-                        }
-                    }
-                }
-                this.result = exitingRecord.result() == null ? null : exitingRecord.result();
-            } else if (myRecord instanceof MyRecordEntering) {
-                MyRecordEntering enteringRecord = (MyRecordEntering) myRecord;
-                targetsObject = enteringRecord.thisObject();
-            }
-            this.target = (targetsObject == null) ? record.getSourceClassName()
-                    : System.identityHashCode(targetsObject);
+    private void extracted(LogRecord record, Object targetsObject, MyRecord myRecord) {
+        if (myRecord instanceof MyRecordExiting) {
+            targetsObject = ((MyRecordExiting<?>) myRecord).thisObject();
+            getReturnType(myRecord, (MyRecordExiting<?>) myRecord);
+        } else if (myRecord instanceof MyRecordEntering) {
+            targetsObject = ((MyRecordEntering) myRecord).thisObject();
+        }
+        this.target = (targetsObject == null) ? record.getSourceClassName()
+                : System.identityHashCode(targetsObject);
+    }
 
-            Object[] argObjects = myRecord.params();
-            if (argObjects != null && argObjects.length > 0) {
-                ArrayList<Object> argsList = new ArrayList<>();
-                for (Object arg : argObjects) {
-                    if (isPrimitiveOrWrapper(arg)||arg instanceof String) {
-                        argsList.add(arg);
-                    } else {
-                        argsList.add(System.identityHashCode(arg));
-                    }
-                }
-                this.args = argsList.toArray();
-            }
+    private void getReturnType(MyRecord myRecord, MyRecordExiting<?> exitingRecord) {
+        Class<?> returnType = ((MyRecordExiting<?>) myRecord).returnType();
+        if (!returnType.equals(void.class)) {
+            Object returnValue = ((MyRecordExiting<?>) myRecord).result();
+            if (returnValue != null)
+                this.result = (isPrimitiveOrWrapperOrString(returnValue)) ? exitingRecord.result()
+                        : System.identityHashCode(returnValue);
         }
     }
 
-    private boolean isPrimitiveOrWrapper(Object obj) {
-        return obj.getClass().isPrimitive() || isWrapper(obj);
+    private void getArgObjects(MyRecord myRecord) {
+        Object[] argObjects = myRecord.params();
+        if (argObjects != null && argObjects.length > 0) {
+            ArrayList<Object> argsList = new ArrayList<>();
+            for (Object arg : argObjects)
+                argsList.add((isPrimitiveOrWrapperOrString(arg)) ? arg
+                        : System.identityHashCode(arg));
+            this.args = argsList.toArray();
+        }
+    }
+
+    private boolean isPrimitiveOrWrapperOrString(Object obj) {
+        return obj.getClass().isPrimitive() ||
+                isWrapper(obj) ||
+                obj instanceof String;
     }
 
     private boolean isWrapper(Object obj) {
@@ -73,33 +72,4 @@ public class LogInfo {
                 obj instanceof Byte ||
                 obj instanceof Long;
     }
-
 }
-
-/*
- * 
- *
- * 
- * if (myRecord instanceof MyRecordExiting<?>) {
- * Class<?> returnType = ((MyRecordExiting<?>) myRecord).returnType();
- * if (!returnType.equals(void.class)) {
- * resultString += "\n\t\t\"result\": [";
- * Object returnValue = ((MyRecordExiting<?>) myRecord).result();
- * if (returnValue != null) {
- * 
- * if (returnType.isPrimitive()) {
- * resultString += primitiveReturnValue(returnType, returnValue);
- * } else if (returnValue instanceof String) {
- * resultString += "\"" + returnValue + "\"";
- * } else if (isWrapper(returnValue)) {
- * resultString += returnValue;
- * } else {
- * resultString += "\"" + System.identityHashCode(returnValue) + "\"";
- * }
- * } else
- * resultString += "\"" + null + "\"";
- * resultString += "],";
- * }
- * }
- * }
- */
