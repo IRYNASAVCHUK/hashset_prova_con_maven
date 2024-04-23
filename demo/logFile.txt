@@ -1,0 +1,16 @@
+{
+  "event" : "func_pre",
+  "target" : 1726150205,
+  "name" : "com.example.hashset.MyHashSet.MyHashSet"
+}
+{
+  "event" : "func_pre",
+  "target" : 1726150205,
+  "name" : "com.example.hashset.MyHashSet.getSize"
+}
+{
+  "event" : "func_post",
+  "target" : 1726150205,
+  "result" : 0,
+  "name" : "com.example.hashset.MyHashSet.getSize"
+}
