@@ -9,10 +9,12 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 
 class C {
-	C f;
+	C f1;
+	C f2;
 
-	C(C f) {
-		this.f = f;
+	C(C f1, C f2) {
+		this.f1 = f1;
+		this.f2 = f2;
 	}
 
 }
@@ -20,6 +22,7 @@ class C {
 class CAdapter extends TypeAdapter<C> {
 
 	int level;
+	Gson gson;
 
 	CAdapter(int level) {
 		this.level = level;
@@ -27,6 +30,10 @@ class CAdapter extends TypeAdapter<C> {
 
 	@Override
 	public void write(JsonWriter out, C value) throws IOException {
+//		if (value == null) {
+//			out.jsonValue(null);
+//			return;
+//		}
 		out.beginObject();
 		out.name("@");
 		out.value(System.identityHashCode(value));
@@ -34,11 +41,10 @@ class CAdapter extends TypeAdapter<C> {
 		out.value(value.getClass().getCanonicalName());
 		if (level > 0) {
 			level--;
-			out.name("f");
-			var builder = new GsonBuilder();
-			builder.registerTypeAdapter(C.class, new CAdapter(level));
-			var gson = builder.create();
-			out.jsonValue(gson.toJson(value.f));
+			out.name("f1");
+			out.jsonValue(gson.toJson(value.f1));
+			out.name("f2");
+			out.jsonValue(gson.toJson(value.f2));
 			level++;
 		}
 		out.endObject();
@@ -54,11 +60,12 @@ class CAdapter extends TypeAdapter<C> {
 public class Test {
 
 	public static void main(String[] args) {
-		var c = new C(new C(new C(null)));
+		var c = new C(new C(new C(null, null), new C(null, null)), new C(new C(null, null), new C(null, null)));
 		var builder = new GsonBuilder();
-		builder.registerTypeAdapter(C.class, new CAdapter(4));
-		var gson = builder.create();
-		System.out.println(gson.toJson(c));
+		var adapter = new CAdapter(4);
+		builder.registerTypeAdapter(C.class, adapter).setPrettyPrinting();
+		adapter.gson = builder.create();
+		System.out.println(adapter.gson.toJson(c));
 	}
 
 }
