@@ -61,4 +61,16 @@ public class MySet {
             MyLogger.logMethodExit(methodName, this, boolean.class, result, new Object[] { person });
             return result;
       }
+
+      public Set<Customer> getCustomers() {
+            MyLogger.logMethodEntry("getCustomers", this, (Object[]) null);
+            MyLogger.logMethodExit("getCustomers", this, Set.class, customers, (Object[]) null);
+            return customers;
+      }
+
+      public void setCustomers(Set<Customer> customers) {
+            MyLogger.logMethodEntry(" setCustomers", this, new Object[] {customers});
+            this.customers = customers;
+            MyLogger.logMethodExit(" setCustomers", this, void.class, null,  new Object[] {customers});
+      }
 }

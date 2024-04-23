@@ -58,18 +58,14 @@ public class LogInfo {
 
     private boolean isPrimitiveOrWrapperOrString(Object obj) {
         return obj.getClass().isPrimitive() ||
-                isWrapper(obj) ||
-                obj instanceof String;
-    }
-
-    private boolean isWrapper(Object obj) {
-        return obj instanceof Integer ||
+                obj instanceof Integer ||
                 obj instanceof Double ||
                 obj instanceof Float ||
                 obj instanceof Character ||
                 obj instanceof Boolean ||
                 obj instanceof Short ||
                 obj instanceof Byte ||
-                obj instanceof Long;
+                obj instanceof Long||
+                obj instanceof String;
     }
 }

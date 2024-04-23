@@ -17,10 +17,16 @@ public class Counter {
         MyLogger.logMethodExit("inc", this, void.class, null, (Object[]) null);
     }
 
-    public int getValue() {
-        MyLogger.logMethodEntry("getValue", this, (Object[]) null);
-        MyLogger.logMethodExit("getValue", this, int.class, val, (Object[]) null);
+    public int getVal() {
+        MyLogger.logMethodEntry("getVal", this, (Object[]) null);
+        MyLogger.logMethodExit("getVal", this, int.class, val, (Object[]) null);
         return val;
+    }
+
+    public void setVal(int val) {
+        MyLogger.logMethodEntry("setVal", this, new Object[]{val});
+        this.val = val;
+        MyLogger.logMethodExit("setVal", this, void.class, null, new Object[]{val});
     }
 
     public void copy(Counter x) {
