@@ -53,6 +53,8 @@ public class LogInfo {
                 argsList.add((isPrimitiveOrWrapperOrString(arg)) ? arg
                         : System.identityHashCode(arg));
             this.args = argsList.toArray();
+        } else {
+            this.args = new Object[0];
         }
     }
 
@@ -65,7 +67,7 @@ public class LogInfo {
                 obj instanceof Boolean ||
                 obj instanceof Short ||
                 obj instanceof Byte ||
-                obj instanceof Long||
+                obj instanceof Long ||
                 obj instanceof String;
     }
 }
