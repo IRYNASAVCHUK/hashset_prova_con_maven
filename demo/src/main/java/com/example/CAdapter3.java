@@ -9,17 +9,21 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 
 /* 
- * less efficient and more involved version
- * which allows the use of all options of the builder, although some
- * some of them are only partially effective (for instance PrettyPri)
+ * even less efficient and much more involved version
+ * the only advantage is that the adapter is stateless
  */
 
-class CAdapter2 extends TypeAdapter<C> {
+class CAdapter3 extends TypeAdapter<C> {
 
-	private int level;
+	private final int level;
+	                    /*
+						 * it would be better to directly store a builder, 
+						 * but the only way to get a copy of a builder 
+						 * is through a Gson object with newBuilder() 
+						 */
 	private Gson gson;
 
-	CAdapter2(int level) {
+	CAdapter3(int level) {
 		this.level = level;
 	}
 
@@ -31,12 +35,15 @@ class CAdapter2 extends TypeAdapter<C> {
 		out.name("class");
 		out.value(value.getClass().getCanonicalName());
 		if (level > 0) {
-			level--;
+			var builder = gson.newBuilder();
+			var newAdapter = new CAdapter3(level-1);
+			builder.registerTypeAdapter(C.class, newAdapter);
+			newAdapter.setGson(builder);
+			var gson = newAdapter.getGson();
 			out.name("f1");
 			out.jsonValue(gson.toJson(value.f1));
 			out.name("f2");
 			out.jsonValue(gson.toJson(value.f2));
-			level++;
 		}
 		out.endObject();
 	}

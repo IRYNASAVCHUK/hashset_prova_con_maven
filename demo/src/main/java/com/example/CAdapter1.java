@@ -6,9 +6,14 @@ import com.google.gson.TypeAdapter;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 
-// more efficient and simpler version
-// but TypeAdapter.json is strict, therefore 
-// some options of the builder are not effective (for instance)
+/* 
+ * efficient and simple version
+ * but 
+ * - the adapter is stateful
+ * - TypeAdapter.json is strict, therefore 
+ *   some options of the builder are not effective (for instance PrettyPrinting)
+ */
+
 class CAdapter1 extends TypeAdapter<C> {
 
 	private int level;
