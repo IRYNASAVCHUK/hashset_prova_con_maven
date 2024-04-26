@@ -18,9 +18,18 @@ public class ConfigLoader {
     }
 
     public static String getConfigStringValue(String key) {
-        return configObject.get(key).getAsString();
+        JsonElement element = configObject.get(key);
+        if (element != null && !element.isJsonNull()) {
+            return element.getAsString();
+        }
+        return null;
     }
-    public static int getConfigIntValue(String key) {
-        return configObject.get(key).getAsInt();
+    
+    public static Integer getConfigIntValue(String key) {
+        JsonElement element = configObject.get(key);
+        if (element != null && !element.isJsonNull()) {
+            return element.getAsInt();
+        }
+        return null;
     }
 }

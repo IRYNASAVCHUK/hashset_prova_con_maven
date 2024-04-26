@@ -13,8 +13,8 @@ public class Constants {
         public static final String LOG_FILE = (ConfigLoader.getConfigStringValue("logFile") != null)
                         ? ConfigLoader.getConfigStringValue("logFile")
                         : "logFile.json";
-        public static final int LEVEL = (ConfigLoader.getConfigStringValue("level") == null
+        public static final int LEVEL = (ConfigLoader.getConfigIntValue("level") == null
                         || ConfigLoader.getConfigIntValue("level") <= 0)
-                                ? 0
-                                : ConfigLoader.getConfigIntValue("level");
+                                        ? 0
+                                        : ConfigLoader.getConfigIntValue("level");
 }

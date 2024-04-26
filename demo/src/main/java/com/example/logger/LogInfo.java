@@ -41,7 +41,7 @@ public class LogInfo {
         if (!returnType.equals(void.class)) {
             Object returnValue = ((MyRecordExiting<?>) myRecord).result();
             if (returnValue != null) {
-                this.result = (returnValue.getClass().isPrimitive()) ? returnValue : getMap(returnValue);
+                this.result = (returnType.getClass().isPrimitive()) ? returnValue : getMap(returnValue);
             }
         }
     }
