@@ -15,6 +15,26 @@ public class LogInfo {
     private Object result;
     private String name;
 
+    public String getEvent() {
+        return event;
+    }
+
+    public Object getTarget() {
+        return target;
+    }
+
+    public Object[] getArgs() {
+        return args;
+    }
+
+    public Object getResult() {
+        return result;
+    }
+
+    public String getName() {
+        return name;
+    }
+
     public LogInfo(LogRecord record) {
         this.event = record.getMessage();
         this.name = record.getSourceClassName() + "." + record.getSourceMethodName();
@@ -47,7 +67,7 @@ public class LogInfo {
             }else{
                 //this.result = JsonNull.INSTANCE; 
 
-                this.result=new Object(); // se null  "result": {}
+                this.result=new Object(); // se this.result = null ->  "result": {}
                 System.out.println("CCCCCCCCcccccccccccccccccccccccccccccccccccccccccccc");
             }
         }
