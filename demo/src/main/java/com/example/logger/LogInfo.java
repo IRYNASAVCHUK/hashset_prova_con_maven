@@ -78,8 +78,12 @@ public class LogInfo {
         if (argObjects != null && argObjects.length > 0) {
             ArrayList<Object> argsList = new ArrayList<>();
             for (Object arg : argObjects){
-                System.out.println("arg: "+arg.getClass().getSimpleName());
-                argsList.add((arg.getClass().isPrimitive()) ? arg : getMap(arg));
+                if (arg != null){
+                    System.out.println("arg: "+arg.getClass().getSimpleName());
+                    argsList.add((arg.getClass().isPrimitive()) ? arg : getMap(arg));
+                }else{ //se args è null
+                    argsList.add(new Object());
+                }               
             }
                
             this.args = argsList.toArray();
