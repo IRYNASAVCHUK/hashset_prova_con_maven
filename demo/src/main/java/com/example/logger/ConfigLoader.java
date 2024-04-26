@@ -17,7 +17,10 @@ public class ConfigLoader {
         }
     }
 
-    public static String getConfigValue(String key) {
+    public static String getConfigStringValue(String key) {
         return configObject.get(key).getAsString();
+    }
+    public static int getConfigIntValue(String key) {
+        return configObject.get(key).getAsInt();
     }
 }
