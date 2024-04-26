@@ -1,6 +1,7 @@
 package com.example.logger;
 
 import com.example.record.*;
+import com.google.gson.JsonNull;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -38,10 +39,16 @@ public class LogInfo {
 
     private void getResultValue(MyRecord myRecord, MyRecordExiting<?> exitingRecord) {
         Class<?> returnType = ((MyRecordExiting<?>) myRecord).returnType();
+        System.out.println("returnType: \t"+returnType);
         if (!returnType.equals(void.class)) {
             Object returnValue = ((MyRecordExiting<?>) myRecord).result();
             if (returnValue != null) {
                 this.result = (returnType.getClass().isPrimitive()) ? returnValue : getMap(returnValue);
+            }else{
+                //this.result = JsonNull.INSTANCE; 
+
+                this.result=new Object(); // se null  "result": {}
+                System.out.println("CCCCCCCCcccccccccccccccccccccccccccccccccccccccccccc");
             }
         }
     }
