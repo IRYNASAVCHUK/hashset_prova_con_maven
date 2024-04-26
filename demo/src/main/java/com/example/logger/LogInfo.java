@@ -3,6 +3,8 @@ package com.example.logger;
 import com.example.record.*;
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.Map;
 import java.util.logging.LogRecord;
 
 public class LogInfo {
@@ -27,21 +29,20 @@ public class LogInfo {
     private void extracted(LogRecord record, Object targetsObject, MyRecord myRecord) {
         if (myRecord instanceof MyRecordExiting) {
             targetsObject = ((MyRecordExiting<?>) myRecord).thisObject();
-            getReturnType(myRecord, (MyRecordExiting<?>) myRecord);
+            getResultValue(myRecord, (MyRecordExiting<?>) myRecord);
         } else if (myRecord instanceof MyRecordEntering) {
             targetsObject = ((MyRecordEntering) myRecord).thisObject();
         }
-        this.target = (targetsObject == null) ? record.getSourceClassName()
-                : System.identityHashCode(targetsObject);
+        this.target = (targetsObject == null) ? record.getSourceClassName() : getMap(targetsObject);
     }
 
-    private void getReturnType(MyRecord myRecord, MyRecordExiting<?> exitingRecord) {
+    private void getResultValue(MyRecord myRecord, MyRecordExiting<?> exitingRecord) {
         Class<?> returnType = ((MyRecordExiting<?>) myRecord).returnType();
         if (!returnType.equals(void.class)) {
             Object returnValue = ((MyRecordExiting<?>) myRecord).result();
-            if (returnValue != null)
-                this.result = (isPrimitiveOrWrapperOrString(returnValue)) ? exitingRecord.result()
-                        : System.identityHashCode(returnValue);
+            if (returnValue != null) {
+                this.result = (returnValue.getClass().isPrimitive()) ? returnValue : getMap(returnValue);
+            }
         }
     }
 
@@ -49,25 +50,29 @@ public class LogInfo {
         Object[] argObjects = myRecord.params();
         if (argObjects != null && argObjects.length > 0) {
             ArrayList<Object> argsList = new ArrayList<>();
-            for (Object arg : argObjects)
-                argsList.add((isPrimitiveOrWrapperOrString(arg)) ? arg
-                        : System.identityHashCode(arg));
+            for (Object arg : argObjects){
+                System.out.println("arg: "+arg.getClass().getSimpleName());
+                argsList.add((arg.getClass().isPrimitive()) ? arg : getMap(arg));
+            }
+               
             this.args = argsList.toArray();
         } else {
             this.args = new Object[0];
         }
     }
 
-    private boolean isPrimitiveOrWrapperOrString(Object obj) {
-        return obj.getClass().isPrimitive() ||
-                obj instanceof Integer ||
-                obj instanceof Double ||
-                obj instanceof Float ||
-                obj instanceof Character ||
-                obj instanceof Boolean ||
-                obj instanceof Short ||
-                obj instanceof Byte ||
-                obj instanceof Long ||
-                obj instanceof String;
+    private Map<String, Object> getMap(Object val) {
+        Map<String, Object> resultMap = new LinkedHashMap<>();
+        resultMap.put("@", System.identityHashCode(val));
+        resultMap.put("class", val.getClass().getName());
+        if (isWrapperOrString(val))
+            resultMap.put("const", val);
+        return resultMap;
+    }
+
+    private boolean isWrapperOrString(Object obj) {
+        return obj instanceof Integer || obj instanceof Double || obj instanceof Float ||
+                obj instanceof Character || obj instanceof Boolean || obj instanceof Short ||
+                obj instanceof Byte || obj instanceof Long || obj instanceof String;
     }
 }

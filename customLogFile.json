@@ -1,484 +1,896 @@
 [
 	{
   "event": "func_pre",
-  "target": 604107971,
+  "target": {
+    "@": 604107971,
+    "class": "com.example.set.Customer"
+  },
   "args": [
-    0,
-    "Mario"
+    {
+      "@": 694875168,
+      "class": "java.lang.Integer",
+      "const": 0
+    },
+    {
+      "@": 1227229563,
+      "class": "java.lang.String",
+      "const": "Mario"
+    }
   ],
   "name": "com.example.set.Customer.init"
 },
 	{
   "event": "func_post",
-  "target": 604107971,
+  "target": {
+    "@": 604107971,
+    "class": "com.example.set.Customer"
+  },
   "args": [
-    0,
-    "Mario"
+    {
+      "@": 694875168,
+      "class": "java.lang.Integer",
+      "const": 0
+    },
+    {
+      "@": 1227229563,
+      "class": "java.lang.String",
+      "const": "Mario"
+    }
   ],
   "name": "com.example.set.Customer.init"
 },
 	{
   "event": "func_pre",
-  "target": 604107971,
+  "target": {
+    "@": 604107971,
+    "class": "com.example.set.Customer"
+  },
   "args": [],
   "name": "com.example.set.Customer.getId"
 },
 	{
   "event": "func_post",
-  "target": 604107971,
+  "target": {
+    "@": 604107971,
+    "class": "com.example.set.Customer"
+  },
   "args": [],
-  "result": 0,
+  "result": {
+    "@": 694875168,
+    "class": "java.lang.Integer",
+    "const": 0
+  },
   "name": "com.example.set.Customer.getId"
 },
 	{
   "event": "func_pre",
-  "target": 604107971,
+  "target": {
+    "@": 604107971,
+    "class": "com.example.set.Customer"
+  },
   "args": [],
   "name": "com.example.set.Customer.getName"
 },
 	{
   "event": "func_post",
-  "target": 604107971,
+  "target": {
+    "@": 604107971,
+    "class": "com.example.set.Customer"
+  },
   "args": [],
-  "result": "Mario",
+  "result": {
+    "@": 1227229563,
+    "class": "java.lang.String",
+    "const": "Mario"
+  },
   "name": "com.example.set.Customer.getName"
 },
 	{
   "event": "func_pre",
-  "target": 1451043227,
+  "target": {
+    "@": 184966243,
+    "class": "com.example.set.Customer"
+  },
   "args": [
-    1,
-    "Marco"
+    {
+      "@": 112023002,
+      "class": "java.lang.Integer",
+      "const": 1
+    },
+    {
+      "@": 124313277,
+      "class": "java.lang.String",
+      "const": "Marco"
+    }
   ],
   "name": "com.example.set.Customer.init"
 },
 	{
   "event": "func_post",
-  "target": 1451043227,
+  "target": {
+    "@": 184966243,
+    "class": "com.example.set.Customer"
+  },
   "args": [
-    1,
-    "Marco"
+    {
+      "@": 112023002,
+      "class": "java.lang.Integer",
+      "const": 1
+    },
+    {
+      "@": 124313277,
+      "class": "java.lang.String",
+      "const": "Marco"
+    }
   ],
   "name": "com.example.set.Customer.init"
 },
 	{
   "event": "func_pre",
-  "target": 1451043227,
+  "target": {
+    "@": 184966243,
+    "class": "com.example.set.Customer"
+  },
   "args": [],
   "name": "com.example.set.Customer.getId"
 },
 	{
   "event": "func_post",
-  "target": 1451043227,
+  "target": {
+    "@": 184966243,
+    "class": "com.example.set.Customer"
+  },
   "args": [],
-  "result": 1,
+  "result": {
+    "@": 112023002,
+    "class": "java.lang.Integer",
+    "const": 1
+  },
   "name": "com.example.set.Customer.getId"
 },
 	{
   "event": "func_pre",
-  "target": 1451043227,
+  "target": {
+    "@": 184966243,
+    "class": "com.example.set.Customer"
+  },
   "args": [],
   "name": "com.example.set.Customer.getName"
 },
 	{
   "event": "func_post",
-  "target": 1451043227,
+  "target": {
+    "@": 184966243,
+    "class": "com.example.set.Customer"
+  },
   "args": [],
-  "result": "Marco",
+  "result": {
+    "@": 124313277,
+    "class": "java.lang.String",
+    "const": "Marco"
+  },
   "name": "com.example.set.Customer.getName"
 },
 	{
   "event": "func_pre",
-  "target": 783286238,
+  "target": {
+    "@": 1225616405,
+    "class": "com.example.set.Customer"
+  },
   "args": [
-    2,
-    "Matteo"
+    {
+      "@": 879505317,
+      "class": "java.lang.Integer",
+      "const": 2
+    },
+    {
+      "@": 2101842856,
+      "class": "java.lang.String",
+      "const": "Matteo"
+    }
   ],
   "name": "com.example.set.Customer.init"
 },
 	{
   "event": "func_post",
-  "target": 783286238,
+  "target": {
+    "@": 1225616405,
+    "class": "com.example.set.Customer"
+  },
   "args": [
-    2,
-    "Matteo"
+    {
+      "@": 879505317,
+      "class": "java.lang.Integer",
+      "const": 2
+    },
+    {
+      "@": 2101842856,
+      "class": "java.lang.String",
+      "const": "Matteo"
+    }
   ],
   "name": "com.example.set.Customer.init"
 },
 	{
   "event": "func_pre",
-  "target": 783286238,
+  "target": {
+    "@": 1225616405,
+    "class": "com.example.set.Customer"
+  },
   "args": [],
   "name": "com.example.set.Customer.getId"
 },
 	{
   "event": "func_post",
-  "target": 783286238,
+  "target": {
+    "@": 1225616405,
+    "class": "com.example.set.Customer"
+  },
   "args": [],
-  "result": 2,
+  "result": {
+    "@": 879505317,
+    "class": "java.lang.Integer",
+    "const": 2
+  },
   "name": "com.example.set.Customer.getId"
 },
 	{
   "event": "func_pre",
-  "target": 783286238,
+  "target": {
+    "@": 1225616405,
+    "class": "com.example.set.Customer"
+  },
   "args": [],
   "name": "com.example.set.Customer.getName"
 },
 	{
   "event": "func_post",
-  "target": 783286238,
+  "target": {
+    "@": 1225616405,
+    "class": "com.example.set.Customer"
+  },
   "args": [],
-  "result": "Matteo",
+  "result": {
+    "@": 2101842856,
+    "class": "java.lang.String",
+    "const": "Matteo"
+  },
   "name": "com.example.set.Customer.getName"
 },
 	{
   "event": "func_pre",
-  "target": 1749186397,
+  "target": {
+    "@": 88579647,
+    "class": "com.example.set.MySet"
+  },
   "args": [],
   "name": "com.example.set.MySet.init"
 },
 	{
   "event": "func_post",
-  "target": 1749186397,
+  "target": {
+    "@": 88579647,
+    "class": "com.example.set.MySet"
+  },
   "args": [],
   "name": "com.example.set.MySet.init"
 },
 	{
   "event": "func_pre",
-  "target": 1749186397,
+  "target": {
+    "@": 88579647,
+    "class": "com.example.set.MySet"
+  },
   "args": [
-    604107971
+    {
+      "@": 604107971,
+      "class": "com.example.set.Customer"
+    }
   ],
   "name": "com.example.set.MySet.addCustomer"
 },
 	{
   "event": "func_pre",
-  "target": 604107971,
+  "target": {
+    "@": 604107971,
+    "class": "com.example.set.Customer"
+  },
   "args": [],
   "name": "com.example.set.Customer.hashCode"
 },
 	{
   "event": "func_post",
-  "target": 604107971,
+  "target": {
+    "@": 604107971,
+    "class": "com.example.set.Customer"
+  },
   "args": [],
-  "result": 31,
+  "result": {
+    "@": 907073375,
+    "class": "java.lang.Integer",
+    "const": 31
+  },
   "name": "com.example.set.Customer.hashCode"
 },
 	{
   "event": "func_post",
-  "target": 1749186397,
+  "target": {
+    "@": 88579647,
+    "class": "com.example.set.MySet"
+  },
   "args": [
-    604107971
+    {
+      "@": 604107971,
+      "class": "com.example.set.Customer"
+    }
   ],
-  "result": true,
+  "result": {
+    "@": 2080166188,
+    "class": "java.lang.Boolean",
+    "const": true
+  },
   "name": "com.example.set.MySet.addCustomer"
 },
 	{
   "event": "func_pre",
-  "target": 1749186397,
+  "target": {
+    "@": 88579647,
+    "class": "com.example.set.MySet"
+  },
   "args": [
-    1451043227
-  ],
-  "name": "com.example.set.MySet.addCustomer"
-},
-	{
-  "event": "func_pre",
-  "target": 1451043227,
-  "args": [],
-  "name": "com.example.set.Customer.hashCode"
-},
-	{
-  "event": "func_post",
-  "target": 1451043227,
-  "args": [],
-  "result": 32,
-  "name": "com.example.set.Customer.hashCode"
-},
-	{
-  "event": "func_post",
-  "target": 1749186397,
-  "args": [
-    1451043227
-  ],
-  "result": true,
-  "name": "com.example.set.MySet.addCustomer"
-},
-	{
-  "event": "func_pre",
-  "target": 1749186397,
-  "args": [
-    783286238
+    {
+      "@": 184966243,
+      "class": "com.example.set.Customer"
+    }
   ],
   "name": "com.example.set.MySet.addCustomer"
 },
 	{
   "event": "func_pre",
-  "target": 783286238,
+  "target": {
+    "@": 184966243,
+    "class": "com.example.set.Customer"
+  },
   "args": [],
   "name": "com.example.set.Customer.hashCode"
 },
 	{
   "event": "func_post",
-  "target": 783286238,
+  "target": {
+    "@": 184966243,
+    "class": "com.example.set.Customer"
+  },
   "args": [],
-  "result": 33,
+  "result": {
+    "@": 1529972215,
+    "class": "java.lang.Integer",
+    "const": 32
+  },
   "name": "com.example.set.Customer.hashCode"
 },
 	{
   "event": "func_post",
-  "target": 1749186397,
+  "target": {
+    "@": 88579647,
+    "class": "com.example.set.MySet"
+  },
   "args": [
-    783286238
+    {
+      "@": 184966243,
+      "class": "com.example.set.Customer"
+    }
   ],
-  "result": true,
+  "result": {
+    "@": 2080166188,
+    "class": "java.lang.Boolean",
+    "const": true
+  },
   "name": "com.example.set.MySet.addCustomer"
 },
 	{
   "event": "func_pre",
-  "target": 1749186397,
+  "target": {
+    "@": 88579647,
+    "class": "com.example.set.MySet"
+  },
   "args": [
-    783286238
+    {
+      "@": 1225616405,
+      "class": "com.example.set.Customer"
+    }
   ],
   "name": "com.example.set.MySet.addCustomer"
 },
 	{
   "event": "func_pre",
-  "target": 783286238,
+  "target": {
+    "@": 1225616405,
+    "class": "com.example.set.Customer"
+  },
   "args": [],
   "name": "com.example.set.Customer.hashCode"
 },
 	{
   "event": "func_post",
-  "target": 783286238,
+  "target": {
+    "@": 1225616405,
+    "class": "com.example.set.Customer"
+  },
   "args": [],
-  "result": 33,
+  "result": {
+    "@": 992259287,
+    "class": "java.lang.Integer",
+    "const": 33
+  },
   "name": "com.example.set.Customer.hashCode"
 },
 	{
   "event": "func_post",
-  "target": 1749186397,
+  "target": {
+    "@": 88579647,
+    "class": "com.example.set.MySet"
+  },
   "args": [
-    783286238
+    {
+      "@": 1225616405,
+      "class": "com.example.set.Customer"
+    }
   ],
-  "result": false,
+  "result": {
+    "@": 2080166188,
+    "class": "java.lang.Boolean",
+    "const": true
+  },
   "name": "com.example.set.MySet.addCustomer"
 },
 	{
   "event": "func_pre",
-  "target": 1749186397,
+  "target": {
+    "@": 88579647,
+    "class": "com.example.set.MySet"
+  },
+  "args": [
+    {
+      "@": 1225616405,
+      "class": "com.example.set.Customer"
+    }
+  ],
+  "name": "com.example.set.MySet.addCustomer"
+},
+	{
+  "event": "func_pre",
+  "target": {
+    "@": 1225616405,
+    "class": "com.example.set.Customer"
+  },
+  "args": [],
+  "name": "com.example.set.Customer.hashCode"
+},
+	{
+  "event": "func_post",
+  "target": {
+    "@": 1225616405,
+    "class": "com.example.set.Customer"
+  },
+  "args": [],
+  "result": {
+    "@": 992259287,
+    "class": "java.lang.Integer",
+    "const": 33
+  },
+  "name": "com.example.set.Customer.hashCode"
+},
+	{
+  "event": "func_post",
+  "target": {
+    "@": 88579647,
+    "class": "com.example.set.MySet"
+  },
+  "args": [
+    {
+      "@": 1225616405,
+      "class": "com.example.set.Customer"
+    }
+  ],
+  "result": {
+    "@": 1123225098,
+    "class": "java.lang.Boolean",
+    "const": false
+  },
+  "name": "com.example.set.MySet.addCustomer"
+},
+	{
+  "event": "func_pre",
+  "target": {
+    "@": 88579647,
+    "class": "com.example.set.MySet"
+  },
   "args": [],
   "name": "com.example.set.MySet.getCustomers"
 },
 	{
   "event": "func_post",
-  "target": 1749186397,
+  "target": {
+    "@": 88579647,
+    "class": "com.example.set.MySet"
+  },
   "args": [],
-  "result": 392292416,
+  "result": {
+    "@": 606548741,
+    "class": "java.util.HashSet"
+  },
   "name": "com.example.set.MySet.getCustomers"
 },
 	{
   "event": "func_pre",
-  "target": 604107971,
+  "target": {
+    "@": 604107971,
+    "class": "com.example.set.Customer"
+  },
   "args": [],
   "name": "com.example.set.Customer.hashCode"
 },
 	{
   "event": "func_post",
-  "target": 604107971,
+  "target": {
+    "@": 604107971,
+    "class": "com.example.set.Customer"
+  },
   "args": [],
-  "result": 31,
+  "result": {
+    "@": 907073375,
+    "class": "java.lang.Integer",
+    "const": 31
+  },
   "name": "com.example.set.Customer.hashCode"
 },
 	{
   "event": "func_pre",
-  "target": 1451043227,
+  "target": {
+    "@": 184966243,
+    "class": "com.example.set.Customer"
+  },
   "args": [],
   "name": "com.example.set.Customer.hashCode"
 },
 	{
   "event": "func_post",
-  "target": 1451043227,
+  "target": {
+    "@": 184966243,
+    "class": "com.example.set.Customer"
+  },
   "args": [],
-  "result": 32,
+  "result": {
+    "@": 1529972215,
+    "class": "java.lang.Integer",
+    "const": 32
+  },
   "name": "com.example.set.Customer.hashCode"
 },
 	{
   "event": "func_pre",
-  "target": 783286238,
+  "target": {
+    "@": 1225616405,
+    "class": "com.example.set.Customer"
+  },
   "args": [],
   "name": "com.example.set.Customer.hashCode"
 },
 	{
   "event": "func_post",
-  "target": 783286238,
+  "target": {
+    "@": 1225616405,
+    "class": "com.example.set.Customer"
+  },
   "args": [],
-  "result": 33,
+  "result": {
+    "@": 992259287,
+    "class": "java.lang.Integer",
+    "const": 33
+  },
   "name": "com.example.set.Customer.hashCode"
 },
 	{
   "event": "func_pre",
-  "target": 783286238,
+  "target": {
+    "@": 1225616405,
+    "class": "com.example.set.Customer"
+  },
   "args": [],
   "name": "com.example.set.Customer.hashCode"
 },
 	{
   "event": "func_post",
-  "target": 783286238,
+  "target": {
+    "@": 1225616405,
+    "class": "com.example.set.Customer"
+  },
   "args": [],
-  "result": 33,
+  "result": {
+    "@": 992259287,
+    "class": "java.lang.Integer",
+    "const": 33
+  },
   "name": "com.example.set.Customer.hashCode"
 },
 	{
   "event": "func_pre",
-  "target": 1749186397,
+  "target": {
+    "@": 88579647,
+    "class": "com.example.set.MySet"
+  },
   "args": [
-    1818402158
+    {
+      "@": 1528637575,
+      "class": "java.util.HashSet"
+    }
   ],
   "name": "com.example.set.MySet. setCustomers"
 },
 	{
   "event": "func_post",
-  "target": 1749186397,
+  "target": {
+    "@": 88579647,
+    "class": "com.example.set.MySet"
+  },
   "args": [
-    1818402158
+    {
+      "@": 1528637575,
+      "class": "java.util.HashSet"
+    }
   ],
   "name": "com.example.set.MySet. setCustomers"
 },
 	{
   "event": "func_pre",
-  "target": 1749186397,
+  "target": {
+    "@": 88579647,
+    "class": "com.example.set.MySet"
+  },
   "args": [],
   "name": "com.example.set.MySet.getCustomers"
 },
 	{
   "event": "func_post",
-  "target": 1749186397,
+  "target": {
+    "@": 88579647,
+    "class": "com.example.set.MySet"
+  },
   "args": [],
-  "result": 1818402158,
+  "result": {
+    "@": 1528637575,
+    "class": "java.util.HashSet"
+  },
   "name": "com.example.set.MySet.getCustomers"
 },
 	{
   "event": "func_pre",
-  "target": 1749186397,
+  "target": {
+    "@": 88579647,
+    "class": "com.example.set.MySet"
+  },
   "args": [],
   "name": "com.example.set.MySet.getSize"
 },
 	{
   "event": "func_post",
-  "target": 1749186397,
+  "target": {
+    "@": 88579647,
+    "class": "com.example.set.MySet"
+  },
   "args": [],
-  "result": 3,
+  "result": {
+    "@": 1464462612,
+    "class": "java.lang.Integer",
+    "const": 3
+  },
   "name": "com.example.set.MySet.getSize"
 },
 	{
   "event": "func_pre",
-  "target": 1749186397,
+  "target": {
+    "@": 88579647,
+    "class": "com.example.set.MySet"
+  },
   "args": [
-    604107971
+    {
+      "@": 604107971,
+      "class": "com.example.set.Customer"
+    }
   ],
   "name": "com.example.set.MySet.removeCustomer"
 },
 	{
   "event": "func_pre",
-  "target": 604107971,
+  "target": {
+    "@": 604107971,
+    "class": "com.example.set.Customer"
+  },
   "args": [],
   "name": "com.example.set.Customer.hashCode"
 },
 	{
   "event": "func_post",
-  "target": 604107971,
+  "target": {
+    "@": 604107971,
+    "class": "com.example.set.Customer"
+  },
   "args": [],
-  "result": 31,
+  "result": {
+    "@": 907073375,
+    "class": "java.lang.Integer",
+    "const": 31
+  },
   "name": "com.example.set.Customer.hashCode"
 },
 	{
   "event": "func_post",
-  "target": 1749186397,
+  "target": {
+    "@": 88579647,
+    "class": "com.example.set.MySet"
+  },
   "args": [
-    604107971
+    {
+      "@": 604107971,
+      "class": "com.example.set.Customer"
+    }
   ],
-  "result": true,
+  "result": {
+    "@": 2080166188,
+    "class": "java.lang.Boolean",
+    "const": true
+  },
   "name": "com.example.set.MySet.removeCustomer"
 },
 	{
   "event": "func_pre",
-  "target": 1749186397,
+  "target": {
+    "@": 88579647,
+    "class": "com.example.set.MySet"
+  },
   "args": [
-    604107971
+    {
+      "@": 604107971,
+      "class": "com.example.set.Customer"
+    }
   ],
   "name": "com.example.set.MySet.removeCustomer"
 },
 	{
   "event": "func_pre",
-  "target": 604107971,
+  "target": {
+    "@": 604107971,
+    "class": "com.example.set.Customer"
+  },
   "args": [],
   "name": "com.example.set.Customer.hashCode"
 },
 	{
   "event": "func_post",
-  "target": 604107971,
+  "target": {
+    "@": 604107971,
+    "class": "com.example.set.Customer"
+  },
   "args": [],
-  "result": 31,
+  "result": {
+    "@": 907073375,
+    "class": "java.lang.Integer",
+    "const": 31
+  },
   "name": "com.example.set.Customer.hashCode"
 },
 	{
   "event": "func_post",
-  "target": 1749186397,
+  "target": {
+    "@": 88579647,
+    "class": "com.example.set.MySet"
+  },
   "args": [
-    604107971
+    {
+      "@": 604107971,
+      "class": "com.example.set.Customer"
+    }
   ],
-  "result": false,
+  "result": {
+    "@": 1123225098,
+    "class": "java.lang.Boolean",
+    "const": false
+  },
   "name": "com.example.set.MySet.removeCustomer"
 },
 	{
   "event": "func_pre",
-  "target": 1749186397,
+  "target": {
+    "@": 88579647,
+    "class": "com.example.set.MySet"
+  },
   "args": [
-    783286238
+    {
+      "@": 1225616405,
+      "class": "com.example.set.Customer"
+    }
   ],
   "name": "com.example.set.MySet.containsCustomer"
 },
 	{
   "event": "func_pre",
-  "target": 783286238,
+  "target": {
+    "@": 1225616405,
+    "class": "com.example.set.Customer"
+  },
   "args": [],
   "name": "com.example.set.Customer.hashCode"
 },
 	{
   "event": "func_post",
-  "target": 783286238,
+  "target": {
+    "@": 1225616405,
+    "class": "com.example.set.Customer"
+  },
   "args": [],
-  "result": 33,
+  "result": {
+    "@": 992259287,
+    "class": "java.lang.Integer",
+    "const": 33
+  },
   "name": "com.example.set.Customer.hashCode"
 },
 	{
   "event": "func_post",
-  "target": 1749186397,
+  "target": {
+    "@": 88579647,
+    "class": "com.example.set.MySet"
+  },
   "args": [
-    783286238
+    {
+      "@": 1225616405,
+      "class": "com.example.set.Customer"
+    }
   ],
-  "result": true,
+  "result": {
+    "@": 2080166188,
+    "class": "java.lang.Boolean",
+    "const": true
+  },
   "name": "com.example.set.MySet.containsCustomer"
 },
 	{
   "event": "func_pre",
-  "target": 1749186397,
+  "target": {
+    "@": 88579647,
+    "class": "com.example.set.MySet"
+  },
   "args": [],
   "name": "com.example.set.MySet.getSize"
 },
 	{
   "event": "func_post",
-  "target": 1749186397,
+  "target": {
+    "@": 88579647,
+    "class": "com.example.set.MySet"
+  },
   "args": [],
-  "result": 2,
+  "result": {
+    "@": 879505317,
+    "class": "java.lang.Integer",
+    "const": 2
+  },
   "name": "com.example.set.MySet.getSize"
 },
 	{
   "event": "func_pre",
   "target": "com.example.set.MySet",
   "args": [
-    2,
-    2
+    {
+      "@": 879505317,
+      "class": "java.lang.Integer",
+      "const": 2
+    },
+    {
+      "@": 879505317,
+      "class": "java.lang.Integer",
+      "const": 2
+    }
   ],
   "name": "com.example.set.MySet.sum"
 },
@@ -486,142 +898,244 @@
   "event": "func_post",
   "target": "com.example.set.MySet",
   "args": [
-    2,
-    2
+    {
+      "@": 879505317,
+      "class": "java.lang.Integer",
+      "const": 2
+    },
+    {
+      "@": 879505317,
+      "class": "java.lang.Integer",
+      "const": 2
+    }
   ],
-  "result": 4,
+  "result": {
+    "@": 696043561,
+    "class": "java.lang.Integer",
+    "const": 4
+  },
   "name": "com.example.set.MySet.sum"
 },
 	{
   "event": "func_pre",
-  "target": 1749186397,
+  "target": {
+    "@": 88579647,
+    "class": "com.example.set.MySet"
+  },
   "args": [],
   "name": "com.example.set.MySet.clearSet"
 },
 	{
   "event": "func_post",
-  "target": 1749186397,
+  "target": {
+    "@": 88579647,
+    "class": "com.example.set.MySet"
+  },
   "args": [],
   "name": "com.example.set.MySet.clearSet"
 },
 	{
   "event": "func_pre",
-  "target": 1599771323,
+  "target": {
+    "@": 870698190,
+    "class": "com.example.set.Counter"
+  },
   "args": [],
   "name": "com.example.set.Counter.inc"
 },
 	{
   "event": "func_post",
-  "target": 1599771323,
+  "target": {
+    "@": 870698190,
+    "class": "com.example.set.Counter"
+  },
   "args": [],
   "name": "com.example.set.Counter.inc"
 },
 	{
   "event": "func_pre",
-  "target": 1599771323,
+  "target": {
+    "@": 870698190,
+    "class": "com.example.set.Counter"
+  },
   "args": [],
   "name": "com.example.set.Counter.inc"
 },
 	{
   "event": "func_post",
-  "target": 1599771323,
+  "target": {
+    "@": 870698190,
+    "class": "com.example.set.Counter"
+  },
   "args": [],
   "name": "com.example.set.Counter.inc"
 },
 	{
   "event": "func_pre",
-  "target": 1599771323,
+  "target": {
+    "@": 870698190,
+    "class": "com.example.set.Counter"
+  },
   "args": [],
   "name": "com.example.set.Counter.getVal"
 },
 	{
   "event": "func_post",
-  "target": 1599771323,
+  "target": {
+    "@": 870698190,
+    "class": "com.example.set.Counter"
+  },
   "args": [],
-  "result": 2,
+  "result": {
+    "@": 879505317,
+    "class": "java.lang.Integer",
+    "const": 2
+  },
   "name": "com.example.set.Counter.getVal"
 },
 	{
   "event": "func_pre",
-  "target": 1876631416,
+  "target": {
+    "@": 1514322932,
+    "class": "com.example.set.Counter"
+  },
   "args": [],
   "name": "com.example.set.Counter.getVal"
 },
 	{
   "event": "func_post",
-  "target": 1876631416,
+  "target": {
+    "@": 1514322932,
+    "class": "com.example.set.Counter"
+  },
   "args": [],
-  "result": 0,
+  "result": {
+    "@": 694875168,
+    "class": "java.lang.Integer",
+    "const": 0
+  },
   "name": "com.example.set.Counter.getVal"
 },
 	{
   "event": "func_pre",
-  "target": 1599771323,
+  "target": {
+    "@": 870698190,
+    "class": "com.example.set.Counter"
+  },
   "args": [
-    1876631416
+    {
+      "@": 1514322932,
+      "class": "com.example.set.Counter"
+    }
   ],
   "name": "com.example.set.Counter.copy"
 },
 	{
   "event": "func_post",
-  "target": 1599771323,
+  "target": {
+    "@": 870698190,
+    "class": "com.example.set.Counter"
+  },
   "args": [
-    1876631416
+    {
+      "@": 1514322932,
+      "class": "com.example.set.Counter"
+    }
   ],
   "name": "com.example.set.Counter.copy"
 },
 	{
   "event": "func_pre",
-  "target": 1599771323,
+  "target": {
+    "@": 870698190,
+    "class": "com.example.set.Counter"
+  },
   "args": [],
   "name": "com.example.set.Counter.getVal"
 },
 	{
   "event": "func_post",
-  "target": 1599771323,
+  "target": {
+    "@": 870698190,
+    "class": "com.example.set.Counter"
+  },
   "args": [],
-  "result": 0,
+  "result": {
+    "@": 694875168,
+    "class": "java.lang.Integer",
+    "const": 0
+  },
   "name": "com.example.set.Counter.getVal"
 },
 	{
   "event": "func_pre",
-  "target": 1599771323,
+  "target": {
+    "@": 870698190,
+    "class": "com.example.set.Counter"
+  },
   "args": [],
   "name": "com.example.set.Counter.reset"
 },
 	{
   "event": "func_post",
-  "target": 1599771323,
+  "target": {
+    "@": 870698190,
+    "class": "com.example.set.Counter"
+  },
   "args": [],
   "name": "com.example.set.Counter.reset"
 },
 	{
   "event": "func_pre",
-  "target": 1599771323,
+  "target": {
+    "@": 870698190,
+    "class": "com.example.set.Counter"
+  },
   "args": [
-    100
+    {
+      "@": 534118977,
+      "class": "java.lang.Integer",
+      "const": 100
+    }
   ],
   "name": "com.example.set.Counter.setVal"
 },
 	{
   "event": "func_post",
-  "target": 1599771323,
+  "target": {
+    "@": 870698190,
+    "class": "com.example.set.Counter"
+  },
   "args": [
-    100
+    {
+      "@": 534118977,
+      "class": "java.lang.Integer",
+      "const": 100
+    }
   ],
   "name": "com.example.set.Counter.setVal"
 },
 	{
   "event": "func_pre",
-  "target": 1599771323,
+  "target": {
+    "@": 870698190,
+    "class": "com.example.set.Counter"
+  },
   "args": [],
   "name": "com.example.set.Counter.getVal"
 },
 	{
   "event": "func_post",
-  "target": 1599771323,
+  "target": {
+    "@": 870698190,
+    "class": "com.example.set.Counter"
+  },
   "args": [],
-  "result": 100,
+  "result": {
+    "@": 534118977,
+    "class": "java.lang.Integer",
+    "const": 100
+  },
   "name": "com.example.set.Counter.getVal"
 }
 ]
