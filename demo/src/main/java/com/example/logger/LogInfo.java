@@ -1,7 +1,6 @@
 package com.example.logger;
 
 import com.example.record.*;
-import com.google.gson.JsonNull;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -59,33 +58,29 @@ public class LogInfo {
 
     private void getResultValue(MyRecord myRecord, MyRecordExiting<?> exitingRecord) {
         Class<?> returnType = ((MyRecordExiting<?>) myRecord).returnType();
-        System.out.println("returnType: \t"+returnType);
+        System.out.println("returnType: \t" + returnType);
         if (!returnType.equals(void.class)) {
             Object returnValue = ((MyRecordExiting<?>) myRecord).result();
-            if (returnValue != null) {
-                this.result = (returnValue.getClass().isPrimitive()) ? returnValue : getMap(returnValue); // CONVERSIONE arg e result!!!!!!
-            }else{
-                //this.result = JsonNull.INSTANCE; 
-
-                this.result=new Object(); // se this.result = null ->  "result": {}
-                System.out.println("CCCCCCCCcccccccccccccccccccccccccccccccccccccccccccc");
-            }
+            if (returnValue != null)
+                this.result = (returnType.isPrimitive()) ? primitiveType(returnType, returnValue) : getMap(returnValue);
+            else
+                this.result = new Object[0];
         }
     }
 
     private void getArgObjects(MyRecord myRecord) {
         Object[] argObjects = myRecord.params();
+        Class<?>[] argsType = myRecord.paramsType();
+        ArrayList<Object> argsList = new ArrayList<>();
         if (argObjects != null && argObjects.length > 0) {
-            ArrayList<Object> argsList = new ArrayList<>();
-            for (Object arg : argObjects){
-                if (arg != null){
-                    System.out.println("arg: "+arg.getClass().getSimpleName());
-                    argsList.add((arg.getClass().isPrimitive()) ? arg : getMap(arg));
-                }else{ //se args è null
+            if (argObjects.length != argsType.length)
+                throw new IllegalArgumentException("Mismatched array lengths.");
+            for (int i = 0; i < argObjects.length; i++)
+                if (argObjects[i] != null)
+                    argsList.add((argsType[i].isPrimitive()) ? primitiveType(argsType[i], argObjects[i])
+                            : getMap(argObjects[i]));
+                else
                     argsList.add(new Object());
-                }               
-            }
-               
             this.args = argsList.toArray();
         } else {
             this.args = new Object[0];
@@ -105,5 +100,35 @@ public class LogInfo {
         return obj instanceof Integer || obj instanceof Double || obj instanceof Float ||
                 obj instanceof Character || obj instanceof Boolean || obj instanceof Short ||
                 obj instanceof Byte || obj instanceof Long || obj instanceof String;
+    }
+
+    private Object primitiveType(Class<?> type, Object value) {
+        switch (type.getTypeName()) {
+            case "boolean":
+                value = (boolean) value;
+                break;
+            case "byte":
+                value = (byte) value;
+                break;
+            case "char":
+                value = (char) value;
+                break;
+            case "short":
+                value = (short) value;
+                break;
+            case "int":
+                value = (int) value;
+                break;
+            case "long":
+                value = (long) value;
+                break;
+            case "float":
+                value = (float) value;
+                break;
+            case "double":
+                value = (double) value;
+                break;
+        }
+        return value;
     }
 }
