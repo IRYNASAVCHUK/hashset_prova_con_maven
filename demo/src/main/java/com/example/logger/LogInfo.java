@@ -63,7 +63,7 @@ public class LogInfo {
         if (!returnType.equals(void.class)) {
             Object returnValue = ((MyRecordExiting<?>) myRecord).result();
             if (returnValue != null) {
-                this.result = (returnType.getClass().isPrimitive()) ? returnValue : getMap(returnValue);
+                this.result = (returnValue.getClass().isPrimitive()) ? returnValue : getMap(returnValue); // CONVERSIONE arg e result!!!!!!
             }else{
                 //this.result = JsonNull.INSTANCE; 
 

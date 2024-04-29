@@ -26,24 +26,24 @@ public class MyLogger extends Logger {
         return logger;
     }
 
-    public static void logMethodEntry(String methodName, Object thiObject, Object... args) {
-        logger.logp(Level.INFO, thiObject.getClass().getName(), methodName, Constants.ENTRY,
-                new MyRecordEntering(args, thiObject));
+    public static void logMethodEntry(String methodName, Object thisObject, Object[] params, Class<?>[] paramsType) {
+        logger.logp(Level.INFO, thisObject.getClass().getName(), methodName, Constants.ENTRY,
+                new MyRecordEntering(params,paramsType, thisObject));
     }
 
-    public static <T> void logMethodExit(String methodName,Object thiObject, Class<T> returnType, T result, Object... args) {
-        logger.logp(Level.INFO, thiObject.getClass().getName(), methodName, Constants.RETURN,
-                new MyRecordExiting<>(returnType, result, args,thiObject));
+    public static <T> void logMethodExit(String methodName,Object thisObject, Class<T> returnType, T result, Object[] params,  Class<?>[] paramsType) {
+        logger.logp(Level.INFO, thisObject.getClass().getName(), methodName, Constants.RETURN,
+                new MyRecordExiting<>(returnType, result, params, paramsType, thisObject));
     }
 
-    public static void logStaticMethodEntry(String className,String methodName, Object... args) {
+    public static void logStaticMethodEntry(String className,String methodName, Object[] params, Class<?>[] paramsType) {
         logger.logp(Level.INFO,className , methodName, Constants.ENTRY,
-                new MyRecordEntering(args, null));
+                new MyRecordEntering(params, paramsType, null));
     }
 
-    public static <T> void logStaticMethodExit(String className, String methodName, Class<T> returnType, T result, Object... args) {
+    public static <T> void logStaticMethodExit(String className, String methodName, Class<T> returnType, T result, Object[] params,  Class<?>[] paramsType) {
         logger.logp(Level.INFO, className, methodName, Constants.RETURN,
-                new MyRecordExiting<>(returnType, result, args, null));
+                new MyRecordExiting<>(returnType, result, params, paramsType, null));
     }
 
 }
