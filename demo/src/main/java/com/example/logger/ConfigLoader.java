@@ -19,17 +19,15 @@ public class ConfigLoader {
 
     public static String getConfigStringValue(String key) {
         JsonElement element = configObject.get(key);
-        if (element != null && !element.isJsonNull()) {
+        if (element != null && !element.isJsonNull())
             return element.getAsString();
-        }
         return null;
     }
     
     public static Integer getConfigIntValue(String key) {
         JsonElement element = configObject.get(key);
-        if (element != null && !element.isJsonNull()) {
+        if (element != null && !element.isJsonNull())
             return element.getAsInt();
-        }
         return null;
     }
 }

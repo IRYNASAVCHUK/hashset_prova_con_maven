@@ -22,12 +22,7 @@
     "class": "com.example.set.Customer"
   },
   "args": [
-    0,
-    {
-      "@": 1227229563,
-      "class": "java.lang.String",
-      "const": "Mario"
-    }
+    0
   ],
   "name": "com.example.set.Customer.init"
 },
@@ -76,13 +71,13 @@
 	{
   "event": "func_pre",
   "target": {
-    "@": 1639622804,
+    "@": 1205044462,
     "class": "com.example.set.Customer"
   },
   "args": [
     1,
     {
-      "@": 184966243,
+      "@": 761960786,
       "class": "java.lang.String",
       "const": "Marco"
     }
@@ -92,13 +87,13 @@
 	{
   "event": "func_post",
   "target": {
-    "@": 1639622804,
+    "@": 1205044462,
     "class": "com.example.set.Customer"
   },
   "args": [
     1,
     {
-      "@": 184966243,
+      "@": 761960786,
       "class": "java.lang.String",
       "const": "Marco"
     }
@@ -108,7 +103,7 @@
 	{
   "event": "func_pre",
   "target": {
-    "@": 1639622804,
+    "@": 1205044462,
     "class": "com.example.set.Customer"
   },
   "args": [],
@@ -117,7 +112,7 @@
 	{
   "event": "func_post",
   "target": {
-    "@": 1639622804,
+    "@": 1205044462,
     "class": "com.example.set.Customer"
   },
   "args": [],
@@ -127,7 +122,7 @@
 	{
   "event": "func_pre",
   "target": {
-    "@": 1639622804,
+    "@": 1205044462,
     "class": "com.example.set.Customer"
   },
   "args": [],
@@ -136,12 +131,12 @@
 	{
   "event": "func_post",
   "target": {
-    "@": 1639622804,
+    "@": 1205044462,
     "class": "com.example.set.Customer"
   },
   "args": [],
   "result": {
-    "@": 184966243,
+    "@": 761960786,
     "class": "java.lang.String",
     "const": "Marco"
   },
@@ -150,13 +145,13 @@
 	{
   "event": "func_pre",
   "target": {
-    "@": 124313277,
+    "@": 581374081,
     "class": "com.example.set.Customer"
   },
   "args": [
     2,
     {
-      "@": 1225616405,
+      "@": 959447386,
       "class": "java.lang.String",
       "const": "Matteo"
     }
@@ -166,13 +161,13 @@
 	{
   "event": "func_post",
   "target": {
-    "@": 124313277,
+    "@": 581374081,
     "class": "com.example.set.Customer"
   },
   "args": [
     2,
     {
-      "@": 1225616405,
+      "@": 959447386,
       "class": "java.lang.String",
       "const": "Matteo"
     }
@@ -182,7 +177,7 @@
 	{
   "event": "func_pre",
   "target": {
-    "@": 124313277,
+    "@": 581374081,
     "class": "com.example.set.Customer"
   },
   "args": [],
@@ -191,7 +186,7 @@
 	{
   "event": "func_post",
   "target": {
-    "@": 124313277,
+    "@": 581374081,
     "class": "com.example.set.Customer"
   },
   "args": [],
@@ -201,7 +196,7 @@
 	{
   "event": "func_pre",
   "target": {
-    "@": 124313277,
+    "@": 581374081,
     "class": "com.example.set.Customer"
   },
   "args": [],
@@ -210,12 +205,12 @@
 	{
   "event": "func_post",
   "target": {
-    "@": 124313277,
+    "@": 581374081,
     "class": "com.example.set.Customer"
   },
   "args": [],
   "result": {
-    "@": 1225616405,
+    "@": 959447386,
     "class": "java.lang.String",
     "const": "Matteo"
   },
@@ -224,7 +219,7 @@
 	{
   "event": "func_pre",
   "target": {
-    "@": 1151020327,
+    "@": 466002798,
     "class": "com.example.set.MySet"
   },
   "args": [],
@@ -233,7 +228,7 @@
 	{
   "event": "func_post",
   "target": {
-    "@": 1151020327,
+    "@": 466002798,
     "class": "com.example.set.MySet"
   },
   "args": [],
@@ -242,7 +237,7 @@
 	{
   "event": "func_pre",
   "target": {
-    "@": 1151020327,
+    "@": 466002798,
     "class": "com.example.set.MySet"
   },
   "args": [
@@ -275,7 +270,7 @@
 	{
   "event": "func_post",
   "target": {
-    "@": 1151020327,
+    "@": 466002798,
     "class": "com.example.set.MySet"
   },
   "args": [
@@ -290,12 +285,12 @@
 	{
   "event": "func_pre",
   "target": {
-    "@": 1151020327,
+    "@": 466002798,
     "class": "com.example.set.MySet"
   },
   "args": [
     {
-      "@": 1639622804,
+      "@": 1205044462,
       "class": "com.example.set.Customer"
     }
   ],
@@ -304,7 +299,7 @@
 	{
   "event": "func_pre",
   "target": {
-    "@": 1639622804,
+    "@": 1205044462,
     "class": "com.example.set.Customer"
   },
   "args": [],
@@ -313,7 +308,7 @@
 	{
   "event": "func_post",
   "target": {
-    "@": 1639622804,
+    "@": 1205044462,
     "class": "com.example.set.Customer"
   },
   "args": [],
@@ -323,12 +318,12 @@
 	{
   "event": "func_post",
   "target": {
-    "@": 1151020327,
+    "@": 466002798,
     "class": "com.example.set.MySet"
   },
   "args": [
     {
-      "@": 1639622804,
+      "@": 1205044462,
       "class": "com.example.set.Customer"
     }
   ],
@@ -338,12 +333,12 @@
 	{
   "event": "func_pre",
   "target": {
-    "@": 1151020327,
+    "@": 466002798,
     "class": "com.example.set.MySet"
   },
   "args": [
     {
-      "@": 124313277,
+      "@": 581374081,
       "class": "com.example.set.Customer"
     }
   ],
@@ -352,7 +347,7 @@
 	{
   "event": "func_pre",
   "target": {
-    "@": 124313277,
+    "@": 581374081,
     "class": "com.example.set.Customer"
   },
   "args": [],
@@ -361,7 +356,7 @@
 	{
   "event": "func_post",
   "target": {
-    "@": 124313277,
+    "@": 581374081,
     "class": "com.example.set.Customer"
   },
   "args": [],
@@ -371,12 +366,12 @@
 	{
   "event": "func_post",
   "target": {
-    "@": 1151020327,
+    "@": 466002798,
     "class": "com.example.set.MySet"
   },
   "args": [
     {
-      "@": 124313277,
+      "@": 581374081,
       "class": "com.example.set.Customer"
     }
   ],
@@ -386,12 +381,12 @@
 	{
   "event": "func_pre",
   "target": {
-    "@": 1151020327,
+    "@": 466002798,
     "class": "com.example.set.MySet"
   },
   "args": [
     {
-      "@": 124313277,
+      "@": 581374081,
       "class": "com.example.set.Customer"
     }
   ],
@@ -400,7 +395,7 @@
 	{
   "event": "func_pre",
   "target": {
-    "@": 124313277,
+    "@": 581374081,
     "class": "com.example.set.Customer"
   },
   "args": [],
@@ -409,7 +404,7 @@
 	{
   "event": "func_post",
   "target": {
-    "@": 124313277,
+    "@": 581374081,
     "class": "com.example.set.Customer"
   },
   "args": [],
@@ -419,12 +414,12 @@
 	{
   "event": "func_post",
   "target": {
-    "@": 1151020327,
+    "@": 466002798,
     "class": "com.example.set.MySet"
   },
   "args": [
     {
-      "@": 124313277,
+      "@": 581374081,
       "class": "com.example.set.Customer"
     }
   ],
@@ -434,7 +429,7 @@
 	{
   "event": "func_pre",
   "target": {
-    "@": 1151020327,
+    "@": 466002798,
     "class": "com.example.set.MySet"
   },
   "args": [],
@@ -443,12 +438,12 @@
 	{
   "event": "func_post",
   "target": {
-    "@": 1151020327,
+    "@": 466002798,
     "class": "com.example.set.MySet"
   },
   "args": [],
   "result": {
-    "@": 1712536284,
+    "@": 717356484,
     "class": "java.util.HashSet"
   },
   "name": "com.example.set.MySet.getCustomers"
@@ -475,7 +470,7 @@
 	{
   "event": "func_pre",
   "target": {
-    "@": 1639622804,
+    "@": 1205044462,
     "class": "com.example.set.Customer"
   },
   "args": [],
@@ -484,7 +479,7 @@
 	{
   "event": "func_post",
   "target": {
-    "@": 1639622804,
+    "@": 1205044462,
     "class": "com.example.set.Customer"
   },
   "args": [],
@@ -494,7 +489,7 @@
 	{
   "event": "func_pre",
   "target": {
-    "@": 124313277,
+    "@": 581374081,
     "class": "com.example.set.Customer"
   },
   "args": [],
@@ -503,7 +498,7 @@
 	{
   "event": "func_post",
   "target": {
-    "@": 124313277,
+    "@": 581374081,
     "class": "com.example.set.Customer"
   },
   "args": [],
@@ -513,7 +508,7 @@
 	{
   "event": "func_pre",
   "target": {
-    "@": 124313277,
+    "@": 581374081,
     "class": "com.example.set.Customer"
   },
   "args": [],
@@ -522,7 +517,7 @@
 	{
   "event": "func_post",
   "target": {
-    "@": 124313277,
+    "@": 581374081,
     "class": "com.example.set.Customer"
   },
   "args": [],
@@ -532,12 +527,12 @@
 	{
   "event": "func_pre",
   "target": {
-    "@": 1151020327,
+    "@": 466002798,
     "class": "com.example.set.MySet"
   },
   "args": [
     {
-      "@": 2080166188,
+      "@": 1595212853,
       "class": "java.util.HashSet"
     }
   ],
@@ -546,12 +541,12 @@
 	{
   "event": "func_post",
   "target": {
-    "@": 1151020327,
+    "@": 466002798,
     "class": "com.example.set.MySet"
   },
   "args": [
     {
-      "@": 2080166188,
+      "@": 1595212853,
       "class": "java.util.HashSet"
     }
   ],
@@ -560,7 +555,7 @@
 	{
   "event": "func_pre",
   "target": {
-    "@": 1151020327,
+    "@": 466002798,
     "class": "com.example.set.MySet"
   },
   "args": [],
@@ -569,12 +564,12 @@
 	{
   "event": "func_post",
   "target": {
-    "@": 1151020327,
+    "@": 466002798,
     "class": "com.example.set.MySet"
   },
   "args": [],
   "result": {
-    "@": 2080166188,
+    "@": 1595212853,
     "class": "java.util.HashSet"
   },
   "name": "com.example.set.MySet.getCustomers"
@@ -582,7 +577,7 @@
 	{
   "event": "func_pre",
   "target": {
-    "@": 1151020327,
+    "@": 466002798,
     "class": "com.example.set.MySet"
   },
   "args": [],
@@ -591,7 +586,7 @@
 	{
   "event": "func_post",
   "target": {
-    "@": 1151020327,
+    "@": 466002798,
     "class": "com.example.set.MySet"
   },
   "args": [],
@@ -601,7 +596,7 @@
 	{
   "event": "func_pre",
   "target": {
-    "@": 1151020327,
+    "@": 466002798,
     "class": "com.example.set.MySet"
   },
   "args": [
@@ -634,7 +629,7 @@
 	{
   "event": "func_post",
   "target": {
-    "@": 1151020327,
+    "@": 466002798,
     "class": "com.example.set.MySet"
   },
   "args": [
@@ -649,7 +644,7 @@
 	{
   "event": "func_pre",
   "target": {
-    "@": 1151020327,
+    "@": 466002798,
     "class": "com.example.set.MySet"
   },
   "args": [
@@ -682,7 +677,7 @@
 	{
   "event": "func_post",
   "target": {
-    "@": 1151020327,
+    "@": 466002798,
     "class": "com.example.set.MySet"
   },
   "args": [
@@ -697,12 +692,12 @@
 	{
   "event": "func_pre",
   "target": {
-    "@": 1151020327,
+    "@": 466002798,
     "class": "com.example.set.MySet"
   },
   "args": [
     {
-      "@": 124313277,
+      "@": 581374081,
       "class": "com.example.set.Customer"
     }
   ],
@@ -711,7 +706,7 @@
 	{
   "event": "func_pre",
   "target": {
-    "@": 124313277,
+    "@": 581374081,
     "class": "com.example.set.Customer"
   },
   "args": [],
@@ -720,7 +715,7 @@
 	{
   "event": "func_post",
   "target": {
-    "@": 124313277,
+    "@": 581374081,
     "class": "com.example.set.Customer"
   },
   "args": [],
@@ -730,12 +725,12 @@
 	{
   "event": "func_post",
   "target": {
-    "@": 1151020327,
+    "@": 466002798,
     "class": "com.example.set.MySet"
   },
   "args": [
     {
-      "@": 124313277,
+      "@": 581374081,
       "class": "com.example.set.Customer"
     }
   ],
@@ -745,7 +740,7 @@
 	{
   "event": "func_pre",
   "target": {
-    "@": 1151020327,
+    "@": 466002798,
     "class": "com.example.set.MySet"
   },
   "args": [],
@@ -754,7 +749,7 @@
 	{
   "event": "func_post",
   "target": {
-    "@": 1151020327,
+    "@": 466002798,
     "class": "com.example.set.MySet"
   },
   "args": [],
@@ -783,7 +778,7 @@
 	{
   "event": "func_pre",
   "target": {
-    "@": 1151020327,
+    "@": 466002798,
     "class": "com.example.set.MySet"
   },
   "args": [],
@@ -792,7 +787,7 @@
 	{
   "event": "func_post",
   "target": {
-    "@": 1151020327,
+    "@": 466002798,
     "class": "com.example.set.MySet"
   },
   "args": [],
@@ -801,7 +796,7 @@
 	{
   "event": "func_pre",
   "target": {
-    "@": 1190524793,
+    "@": 257895351,
     "class": "com.example.set.Counter"
   },
   "args": [],
@@ -810,7 +805,7 @@
 	{
   "event": "func_post",
   "target": {
-    "@": 1190524793,
+    "@": 257895351,
     "class": "com.example.set.Counter"
   },
   "args": [],
@@ -819,7 +814,7 @@
 	{
   "event": "func_pre",
   "target": {
-    "@": 1190524793,
+    "@": 257895351,
     "class": "com.example.set.Counter"
   },
   "args": [],
@@ -828,7 +823,7 @@
 	{
   "event": "func_post",
   "target": {
-    "@": 1190524793,
+    "@": 257895351,
     "class": "com.example.set.Counter"
   },
   "args": [],
@@ -837,7 +832,7 @@
 	{
   "event": "func_pre",
   "target": {
-    "@": 1190524793,
+    "@": 257895351,
     "class": "com.example.set.Counter"
   },
   "args": [],
@@ -846,7 +841,7 @@
 	{
   "event": "func_post",
   "target": {
-    "@": 1190524793,
+    "@": 257895351,
     "class": "com.example.set.Counter"
   },
   "args": [],
@@ -856,7 +851,7 @@
 	{
   "event": "func_pre",
   "target": {
-    "@": 472654579,
+    "@": 1929600551,
     "class": "com.example.set.Counter"
   },
   "args": [],
@@ -865,7 +860,7 @@
 	{
   "event": "func_post",
   "target": {
-    "@": 472654579,
+    "@": 1929600551,
     "class": "com.example.set.Counter"
   },
   "args": [],
@@ -875,12 +870,12 @@
 	{
   "event": "func_pre",
   "target": {
-    "@": 1190524793,
+    "@": 257895351,
     "class": "com.example.set.Counter"
   },
   "args": [
     {
-      "@": 472654579,
+      "@": 1929600551,
       "class": "com.example.set.Counter"
     }
   ],
@@ -889,12 +884,12 @@
 	{
   "event": "func_post",
   "target": {
-    "@": 1190524793,
+    "@": 257895351,
     "class": "com.example.set.Counter"
   },
   "args": [
     {
-      "@": 472654579,
+      "@": 1929600551,
       "class": "com.example.set.Counter"
     }
   ],
@@ -903,7 +898,7 @@
 	{
   "event": "func_pre",
   "target": {
-    "@": 1190524793,
+    "@": 257895351,
     "class": "com.example.set.Counter"
   },
   "args": [],
@@ -912,7 +907,7 @@
 	{
   "event": "func_post",
   "target": {
-    "@": 1190524793,
+    "@": 257895351,
     "class": "com.example.set.Counter"
   },
   "args": [],
@@ -922,7 +917,7 @@
 	{
   "event": "func_pre",
   "target": {
-    "@": 1190524793,
+    "@": 257895351,
     "class": "com.example.set.Counter"
   },
   "args": [],
@@ -931,7 +926,7 @@
 	{
   "event": "func_post",
   "target": {
-    "@": 1190524793,
+    "@": 257895351,
     "class": "com.example.set.Counter"
   },
   "args": [],
@@ -940,7 +935,7 @@
 	{
   "event": "func_pre",
   "target": {
-    "@": 1190524793,
+    "@": 257895351,
     "class": "com.example.set.Counter"
   },
   "args": [
@@ -951,7 +946,7 @@
 	{
   "event": "func_post",
   "target": {
-    "@": 1190524793,
+    "@": 257895351,
     "class": "com.example.set.Counter"
   },
   "args": [
@@ -962,7 +957,7 @@
 	{
   "event": "func_pre",
   "target": {
-    "@": 1190524793,
+    "@": 257895351,
     "class": "com.example.set.Counter"
   },
   "args": [],
@@ -971,7 +966,7 @@
 	{
   "event": "func_post",
   "target": {
-    "@": 1190524793,
+    "@": 257895351,
     "class": "com.example.set.Counter"
   },
   "args": [],

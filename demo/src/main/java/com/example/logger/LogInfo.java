@@ -1,93 +1,70 @@
 package com.example.logger;
 
-import com.example.record.*;
+import com.example.record.enteringexiting.*;
+import com.example.record.loginfo.*;
 
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.Map;
+import java.util.*;
 import java.util.logging.LogRecord;
 
 public class LogInfo {
-    private String event;
-    private Object target;
-    private Object[] args;
-    private Object result;
-    private String name;
-
-    public String getEvent() {
-        return event;
+    public static LogInfoRecordInterface create(String event, Object target, Object[] args, Object result, String name,
+            Class<?> returnType, EnteringExitingRecordInterface myRecord) {
+        return (myRecord instanceof ExitingRecord && !returnType.equals(void.class))
+                ? new LogInfoWithResultRecord(event, target, args, result, name)
+                : new LogInfoWithOutResultRecord(event, target, args, name);
     }
 
-    public Object getTarget() {
-        return target;
-    }
-
-    public Object[] getArgs() {
-        return args;
-    }
-
-    public Object getResult() {
-        return result;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public LogInfo(LogRecord record) {
-        this.event = record.getMessage();
-        this.name = record.getSourceClassName() + "." + record.getSourceMethodName();
+    public static LogInfoRecordInterface create(LogRecord record) {
         Object[] params = record.getParameters();
-        Object targetsObject = null;
         if (params == null || params.length == 0)
             throw new IllegalArgumentException("No parameters found in the record.");
-        MyRecord myRecord = (MyRecord) params[0];
-        extracted(record, targetsObject, myRecord);
-        getArgObjects(myRecord);
-    }
-
-    private void extracted(LogRecord record, Object targetsObject, MyRecord myRecord) {
-        if (myRecord instanceof MyRecordExiting) {
-            targetsObject = ((MyRecordExiting<?>) myRecord).thisObject();
-            getResultValue(myRecord, (MyRecordExiting<?>) myRecord);
-        } else if (myRecord instanceof MyRecordEntering) {
-            targetsObject = ((MyRecordEntering) myRecord).thisObject();
+        String event = record.getMessage();
+        String className = record.getSourceClassName();
+        String name = className + "." + record.getSourceMethodName();
+        EnteringExitingRecordInterface myRecord = (EnteringExitingRecordInterface) params[0];
+        Object target = getTargetObject(className, myRecord);
+        Object[] args = getArgObjects(myRecord);
+        Object result = null;
+        Class<?> returnType = null;
+        if (myRecord instanceof ExitingRecord) {
+            returnType = ((ExitingRecord<?>) myRecord).returnType();
+            if (!returnType.equals(void.class))
+                result = getResultValue(myRecord, (ExitingRecord<?>) myRecord, returnType);
         }
-        this.target = (targetsObject == null) ? record.getSourceClassName() : getMap(targetsObject);
+        return LogInfo.create(event, target, args, result, name, returnType, myRecord);
     }
 
-    private void getResultValue(MyRecord myRecord, MyRecordExiting<?> exitingRecord) {
-        Class<?> returnType = ((MyRecordExiting<?>) myRecord).returnType();
-        System.out.println("returnType: \t" + returnType);
-        if (!returnType.equals(void.class)) {
-            Object returnValue = ((MyRecordExiting<?>) myRecord).result();
-            if (returnValue != null)
-                this.result = (returnType.isPrimitive()) ? primitiveType(returnType, returnValue) : getMap(returnValue);
-            else
-                this.result = new Object[0];
-        }
+    private static Object getTargetObject(String className, EnteringExitingRecordInterface myRecord) {
+        Object targetsObject = (myRecord instanceof ExitingRecord) ? ((ExitingRecord<?>) myRecord).thisObject()
+                : (myRecord instanceof EnteringRecord) ? ((EnteringRecord) myRecord).thisObject()
+                        : null;
+        return (targetsObject == null) ? className : getMap(targetsObject);
     }
 
-    private void getArgObjects(MyRecord myRecord) {
+    private static Object getResultValue(EnteringExitingRecordInterface myRecord, ExitingRecord<?> exitingRecord,
+            Class<?> returnType) {
+        Object returnValue = ((ExitingRecord<?>) myRecord).result();
+        return (returnValue == null) ? new Object[0]
+                : (returnType.isPrimitive()) ? primitiveType(returnType, returnValue)
+                        : getMap(returnValue);
+    }
+
+    private static Object[] getArgObjects(EnteringExitingRecordInterface myRecord) {
         Object[] argObjects = myRecord.params();
         Class<?>[] argsType = myRecord.paramsType();
         ArrayList<Object> argsList = new ArrayList<>();
-        if (argObjects != null && argObjects.length > 0) {
-            if (argObjects.length != argsType.length)
-                throw new IllegalArgumentException("Mismatched array lengths.");
-            for (int i = 0; i < argObjects.length; i++)
-                if (argObjects[i] != null)
-                    argsList.add((argsType[i].isPrimitive()) ? primitiveType(argsType[i], argObjects[i])
+        if (argObjects == null || argObjects.length == 0)
+            return new Object[0];
+        if (argObjects.length != argsType.length)
+            throw new IllegalArgumentException("Mismatched array lengths.");
+        for (int i = 0; i < argObjects.length; i++)
+            argsList.add((argObjects[i] == null) ? new Object()
+                    : (argsType[i].isPrimitive()) ? primitiveType(argsType[i], argObjects[i])
                             : getMap(argObjects[i]));
-                else
-                    argsList.add(new Object());
-            this.args = argsList.toArray();
-        } else {
-            this.args = new Object[0];
-        }
+        return argsList.toArray();
     }
 
-    private Map<String, Object> getMap(Object val) {
+    private static Map<String, Object> getMap(Object val) {
         Map<String, Object> resultMap = new LinkedHashMap<>();
         resultMap.put("@", System.identityHashCode(val));
         resultMap.put("class", val.getClass().getName());
@@ -96,39 +73,23 @@ public class LogInfo {
         return resultMap;
     }
 
-    private boolean isWrapperOrString(Object obj) {
+    private static boolean isWrapperOrString(Object obj) {
         return obj instanceof Integer || obj instanceof Double || obj instanceof Float ||
                 obj instanceof Character || obj instanceof Boolean || obj instanceof Short ||
                 obj instanceof Byte || obj instanceof Long || obj instanceof String;
     }
 
-    private Object primitiveType(Class<?> type, Object value) {
-        switch (type.getTypeName()) {
-            case "boolean":
-                value = (boolean) value;
-                break;
-            case "byte":
-                value = (byte) value;
-                break;
-            case "char":
-                value = (char) value;
-                break;
-            case "short":
-                value = (short) value;
-                break;
-            case "int":
-                value = (int) value;
-                break;
-            case "long":
-                value = (long) value;
-                break;
-            case "float":
-                value = (float) value;
-                break;
-            case "double":
-                value = (double) value;
-                break;
-        }
-        return value;
+    private static Object primitiveType(Class<?> type, Object value) {
+        return value = switch (type.getTypeName()) {
+            case "boolean"->(boolean) value;
+            case "byte"->(byte) value;
+            case "char"->(char) value;
+            case "short"->(short) value;
+            case "int"->(int) value;
+            case "long"->(long) value;
+            case "float"->(float) value;
+            case "double"-> (double) value;
+            default->value;
+        };
     }
 }
