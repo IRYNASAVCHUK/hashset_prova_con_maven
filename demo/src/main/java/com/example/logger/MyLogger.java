@@ -1,6 +1,5 @@
 package com.example.logger;
 
-import com.example.record.*;
 import com.example.record.enteringexiting.EnteringRecord;
 import com.example.record.enteringexiting.ExitingRecord;
 import com.example.utils.Constants;
