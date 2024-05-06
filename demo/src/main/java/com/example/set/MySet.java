@@ -14,21 +14,21 @@ public class MySet {
             MyLogger.logMethodExit("init", this, void.class, null, (Object[]) null, new Class<?>[0]);
       }
 
-      public boolean addCustomer(Customer person) {
+      public Boolean addCustomer(Customer person) {
             return performSetOperation("addCustomer", person, c -> customers.add(c));
       }
 
-      public boolean removeCustomer(Customer person) {
+      public Boolean removeCustomer(Customer person) {
             return performSetOperation("removeCustomer", person, c -> customers.remove(c));
       }
 
-      public boolean containsCustomer(Customer person) {
+      public Boolean containsCustomer(Customer person) {
             return performSetOperation("containsCustomer", person, c -> customers.contains(c));
       }
 
       public int getSize() {
             MyLogger.logMethodEntry("getSize", this, (Object[]) null, new Class<?>[0]);
-            int returnValue = customers.size();
+            var returnValue = customers.size();
             MyLogger.logMethodExit("getSize", this, int.class, returnValue, (Object[]) null, new Class<?>[0]);
             return returnValue;
       }
@@ -42,25 +42,25 @@ public class MySet {
       @Override
       public String toString() {
             MyLogger.logMethodEntry("toString", this, (Object[]) null, new Class<?>[0]);
-            String returnValue = "{" + "customers = " + customers + '}';
+            var returnValue = "{" + "customers = " + customers + '}';
             MyLogger.logMethodExit("toString", this, String.class, returnValue, (Object[]) null, new Class<?>[0]);
             return returnValue;
       }
 
       // metodo statico:
-      public static int sum(int num1, int num2) {
+      public static int sum(Integer num1, Integer num2) {
             MyLogger.logStaticMethodEntry(MySet.class.getName(), "sum", new Object[] { num1, num2 },
-                        new Class<?>[] { int.class, int.class });
-            int returnValue = num1 + num2;
+                        new Class<?>[] { Integer.class, Integer.class });
+            var returnValue = num1 + num2;
             MyLogger.logStaticMethodExit(MySet.class.getName(), "sum", int.class, returnValue,
-                        new Object[] { num1, num2 }, new Class<?>[] { int.class, int.class });
+                        new Object[] { num1, num2 }, new Class<?>[] { Integer.class, Integer.class });
             return returnValue;
       }
 
-      private <T> boolean performSetOperation(String methodName, Customer person, Predicate<Customer> operation) {
+      private <T> Boolean performSetOperation(String methodName, Customer person, Predicate<Customer> operation) {
             MyLogger.logMethodEntry(methodName, this, new Object[] { person }, new Class<?>[] { Customer.class });
-            boolean result = operation.test(person);
-            MyLogger.logMethodExit(methodName, this, boolean.class, result, new Object[] { person },
+            var result = operation.test(person);
+            MyLogger.logMethodExit(methodName, this, Boolean.class, result, new Object[] { person },
                         new Class<?>[] { Customer.class });
             return result;
       }
@@ -72,9 +72,9 @@ public class MySet {
       }
 
       public void setCustomers(Set<Customer> customers) {
-            MyLogger.logMethodEntry(" setCustomers", this, new Object[] { customers }, new Class<?>[] { Set.class });
+            MyLogger.logMethodEntry("setCustomers", this, new Object[] { customers }, new Class<?>[] { Set.class });
             this.customers = customers;
-            MyLogger.logMethodExit(" setCustomers", this, void.class, null, new Object[] { customers },
+            MyLogger.logMethodExit("setCustomers", this, void.class, null, new Object[] { customers },
                         new Class<?>[] { Set.class });
       }
 }

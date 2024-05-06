@@ -12,7 +12,7 @@ public class MyHandler extends FileHandler {
 
     public static void configureHandler(Logger logger) {
         try {
-            MyHandler fileHandler = new MyHandler();
+            var fileHandler = new MyHandler();
             fileHandler.setLevel(Level.ALL);
             fileHandler.setFormatter(new MyFormatter());
             for (Handler existingHandler : logger.getHandlers())

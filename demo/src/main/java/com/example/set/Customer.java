@@ -58,8 +58,8 @@ public class Customer {
                                         new Class<?>[] { Object.class });
                         return false;
                 }
-                Customer customer = (Customer) o;
-                boolean returnValue = (id == customer.id && name == customer.name);
+                var customer = (Customer) o;
+                var returnValue = (id == customer.id && name == customer.name);
                 MyLogger.logMethodExit("equals", this, boolean.class, returnValue, new Object[] { o },
                                 new Class<?>[] { Object.class });
                 return returnValue;
@@ -68,7 +68,7 @@ public class Customer {
         @Override
         public int hashCode() {
                 MyLogger.logMethodEntry("hashCode", this, (Object[]) null, new Class<?>[0]);
-                int returnValue = Objects.hash(id);
+                var returnValue = Objects.hash(id);
                 MyLogger.logMethodExit("hashCode", this, int.class, returnValue, (Object[]) null, new Class<?>[0]);
                 return returnValue;
         }

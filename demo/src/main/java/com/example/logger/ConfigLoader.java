@@ -4,6 +4,7 @@ import com.example.utils.Constants;
 
 import com.google.gson.*;
 import java.io.*;
+import java.util.function.Function;
 
 
 public class ConfigLoader {
@@ -17,17 +18,11 @@ public class ConfigLoader {
         }
     }
 
-    public static String getConfigStringValue(String key) {
-        JsonElement element = configObject.get(key);
-        if (element != null && !element.isJsonNull())
-            return element.getAsString();
-        return null;
+    public static <T> T getConfigValue(String key, Function<JsonElement, T> mapper) {
+    var element = configObject.get(key);
+    if (element != null && !element.isJsonNull()) {
+        return mapper.apply(element);
     }
-    
-    public static Integer getConfigIntValue(String key) {
-        JsonElement element = configObject.get(key);
-        if (element != null && !element.isJsonNull())
-            return element.getAsInt();
-        return null;
-    }
+    return null;
+}
 }

@@ -1,8 +1,13 @@
 package com.example.record.loginfo;
 
+import java.util.List;
+
 public interface LogInfoRecordInterface {
     String event();
-     Object target();
-      Object[] args();
-      String name();
+
+    Object target();
+
+    List<Object[]>  args();
+
+    String name();
 }
