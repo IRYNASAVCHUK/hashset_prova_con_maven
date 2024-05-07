@@ -16,6 +16,7 @@ public class Main {
         person3.getId();
         person3.getName();
         final MySet example = new MySet();
+        example.getCustomers();
         example.addCustomer(person1);
         example.addCustomer(person2);
         example.addCustomer(person3);
