@@ -23,12 +23,9 @@ public class ObjectAdapter extends TypeAdapter<Object> {
             out.nullValue();
             return;
         }
-
-        insideObject = false; // Resetta lo stato dell'oggetto
-
+        insideObject = false;
         out.beginObject();
-        insideObject = true; // Indica che siamo all'interno di un oggetto
-
+        insideObject = true;
         try {
             Field[] fields = value.getClass().getDeclaredFields();
             for (Field field : fields) {
@@ -62,7 +59,7 @@ public class ObjectAdapter extends TypeAdapter<Object> {
                         var val = pair[1];
                         if (!key.equals(void.class)) {
                             out.name(fieldName);
-                            writeJsonValue(out, key, (val==null)?null:val, fieldName);
+                            writeJsonValue(out, key, (val == null) ? null : val, fieldName);
                         }
                         break;
                     default:
@@ -85,7 +82,7 @@ public class ObjectAdapter extends TypeAdapter<Object> {
                 obj instanceof Byte || obj instanceof Long || obj instanceof String;
     }
 
-    private void wraperValue(JsonWriter out, Object val) throws IOException {
+    private void wrapsValue(JsonWriter out, Object val) throws IOException {
         if (val instanceof Number)
             out.value((Number) val);
         else if (val instanceof Boolean)
@@ -95,44 +92,43 @@ public class ObjectAdapter extends TypeAdapter<Object> {
         else
             out.value(String.valueOf(val));
     }
+
     private boolean isInternalClass(Class<?> clazz) {
         Package pkg = clazz.getPackage();
         return pkg != null && pkg.getName().startsWith("com.example");
     }
-    
-    private void exploreObject(JsonWriter out, Object obj, int currentLevel) throws IOException {
+
+    private void exploreObject(JsonWriter out, Object obj, int currentLevel)
+            throws IOException, IllegalArgumentException, IllegalAccessException {
         if (currentLevel <= 0 || obj == null)
             return;
         Class<?> clazz = obj.getClass();
         Field[] fields = clazz.getDeclaredFields();
-    System.out.println("clazz\t"+clazz);
-    System.out.println("fields\t"+fields);
+        System.out.println("clazz\t" + clazz);
+        System.out.println("fields\t" + fields);
         if (isInternalClass(clazz)) {
             for (Field field : fields) {
                 System.out.println("**********************");
                 field.setAccessible(true);
-                String fieldName = field.getName();
-                System.out.println("fieldName\t"+fieldName);
+                var fieldName = field.getName();
+                System.out.println("fieldName\t" + fieldName);
                 Object fieldValue = null;
-                Object typeValue = field.getType();
-                System.out.println("typeValue\t"+typeValue);
-                try {
-                    fieldValue = field.get(obj);
-                    System.out.println("FieldValue\t"+fieldValue);
-                } catch (IllegalAccessException e) {
-                    System.out.println("ecezione");
-                    e.printStackTrace();
-                }
+                var typeValue = field.getType();
+                System.out.println("typeValue\t" + typeValue);
+
+                fieldValue = field.get(obj);
+                System.out.println("FieldValue\t" + fieldValue);
+
                 out.name(fieldName);
-                writeJsonValue(out, typeValue, (fieldValue==null)?null:fieldValue, fieldName);
+                writeJsonValue(out, typeValue, (fieldValue == null) ? null : fieldValue, fieldName);
                 System.out.println("**********************");
             }
             System.out.println();
         }
         System.out.println();
     }
-    
-    private void valueInfo(JsonWriter out, Object val, String fieldName) throws IOException {
+
+    private void valueInfo(JsonWriter out, Object val, String fieldName) throws IOException, IllegalArgumentException, IllegalAccessException {
         out.beginObject();
         out.name("@");
         out.value(System.identityHashCode(val));
@@ -140,8 +136,8 @@ public class ObjectAdapter extends TypeAdapter<Object> {
         out.value(val.getClass().getName());
         if (isWrapperOrString(val) && !fieldName.equals("target")) {
             out.name("const");
-            wraperValue(out, val);
-        }else{
+            wrapsValue(out, val);
+        } else {
             exploreObject(out, val, level);
         }
         out.endObject();
@@ -161,7 +157,7 @@ public class ObjectAdapter extends TypeAdapter<Object> {
         }
     }
 
-    private void writeJsonValue(JsonWriter out, Object key, Object val, String fieldName) throws IOException {
+    private void writeJsonValue(JsonWriter out, Object key, Object val, String fieldName) throws IOException, IllegalArgumentException, IllegalAccessException {
         if (val == null)
             out.nullValue();
         else if (((Class<?>) key).isPrimitive())
@@ -172,7 +168,6 @@ public class ObjectAdapter extends TypeAdapter<Object> {
 
     @Override
     public Object read(JsonReader in) throws IOException {
-        // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'read'");
     }
 }

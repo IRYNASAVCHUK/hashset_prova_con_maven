@@ -4,6 +4,8 @@ import com.example.logger.MyLogger;
 
 public class Counter {
     private int val;
+    private Counter  z = null;
+    //private Customer x = new Customer(val, null);
 
     public void reset() {
         MyLogger.logMethodEntry("reset", this, (Object[]) null, new Class<?>[0]);
