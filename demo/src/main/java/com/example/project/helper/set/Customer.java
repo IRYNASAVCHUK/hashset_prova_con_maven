@@ -1,7 +1,5 @@
 package com.example.project.helper.set;
 
-import java.util.Objects;
-
 import com.example.project.logic.logger.MyLogger;
 
 public class Customer {
