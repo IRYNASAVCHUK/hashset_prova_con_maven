@@ -23,11 +23,6 @@ public class ObjectAdapter extends TypeAdapter<Object> {
             out.nullValue();
             return;
         }
-        System.out.println("\nThe class of is :\t" + value.getClass().getName());
-        // Stampa il nome della superclasse dell'oggetto
-        Class<?> superClass = value.getClass().getSuperclass();
-        System.out.println("SUPER class of is :\t" + (superClass != null ? superClass.getName() : "No superclass"));
-        System.out.println(superClass.getSuperclass().getName());
         insideObject = false;
         out.beginObject();
         insideObject = true;
@@ -138,7 +133,6 @@ public class ObjectAdapter extends TypeAdapter<Object> {
         if (currentLevel <= 0 || obj == null)
             return;
         Class<?> clazz = obj.getClass();
-        System.out.println("\nClass: \t"+clazz);
         while (clazz != null && clazz != Object.class) {
             Field[] fields = clazz.getDeclaredFields();
             if (isInternalClass(clazz)) {
@@ -154,7 +148,6 @@ public class ObjectAdapter extends TypeAdapter<Object> {
             }
             if (allFields){
                 clazz = clazz.getSuperclass();
-                System.out.println("\nSuper class: \t"+clazz);
             }    
             else
                 break;
