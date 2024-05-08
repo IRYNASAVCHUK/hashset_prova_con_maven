@@ -3,5 +3,5 @@
   "eventEntry": "func_pre",
   "eventReturn": "func_post",
   "objectLevel": 4,
-  "allFields": false
+  "allFields": true
 }

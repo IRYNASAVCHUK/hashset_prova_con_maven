@@ -1,6 +1,6 @@
 package com.example.project.logic.utils;
 
-import com.example.project.logic.logger.ConfigLoader;
+import com.example.project.logic.gson.ConfigLoader;
 import com.google.gson.JsonElement;
 
 public class Constants {

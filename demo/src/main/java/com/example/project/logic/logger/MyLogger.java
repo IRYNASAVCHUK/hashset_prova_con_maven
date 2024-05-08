@@ -1,7 +1,7 @@
 package com.example.project.logic.logger;
 
-import com.example.project.logic.enteringexiting.EnteringRecord;
-import com.example.project.logic.enteringexiting.ExitingRecord;
+import com.example.project.logic.log_record.record.enteringexiting.EnteringRecord;
+import com.example.project.logic.log_record.record.enteringexiting.ExitingRecord;
 import com.example.project.logic.utils.Constants;
 
 import java.util.logging.*;

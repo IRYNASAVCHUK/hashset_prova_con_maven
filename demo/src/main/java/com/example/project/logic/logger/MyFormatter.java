@@ -1,6 +1,8 @@
 package com.example.project.logic.logger;
 
-import com.example.project.logic.record.loginfo.*;
+import com.example.project.logic.gson.ObjectAdapter;
+import com.example.project.logic.log_record.LogInfo;
+import com.example.project.logic.log_record.record.loginfo.*;
 import com.example.project.logic.utils.Constants;
 
 import java.util.logging.*;

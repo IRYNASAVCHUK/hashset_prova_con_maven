@@ -1,4 +1,4 @@
-package com.example.project.logic.logger;
+package com.example.project.logic.gson;
 
 import com.example.project.logic.utils.Constants;
 import com.google.gson.*;

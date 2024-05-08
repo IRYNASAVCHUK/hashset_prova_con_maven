@@ -1,4 +1,4 @@
-package com.example.project.logic.record.loginfo;
+package com.example.project.logic.log_record.record.loginfo;
 
 import java.util.List;
 

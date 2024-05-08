@@ -1,10 +1,10 @@
-package com.example.project.logic.logger;
-
-import com.example.project.logic.enteringexiting.*;
-import com.example.project.logic.record.loginfo.*;
+package com.example.project.logic.log_record;
 
 import java.util.*;
 import java.util.logging.LogRecord;
+
+import com.example.project.logic.log_record.record.enteringexiting.*;
+import com.example.project.logic.log_record.record.loginfo.*;
 
 public class LogInfo {
     public static LogInfoRecordInterface create(String event, Object target, List<Object[]> args, Object[] result,
