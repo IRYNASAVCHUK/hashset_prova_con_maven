@@ -13,11 +13,8 @@
 # Ignora la cartella .metadata
 .metadata/
 
-# Ignora i file temporanei che terminano con ~
-*~
-
 # Ignora la cartella target
-target/
+demo/target/
 
 # Ignora i file specifici nella cartella demo
 demo/.classpath
@@ -25,3 +22,5 @@ demo/.project
 demo/.settings/
 demo/bin/
 
+# Ignora il file customLogFile.json
+customLogFile.json
