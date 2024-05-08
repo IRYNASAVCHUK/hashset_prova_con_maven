@@ -1,6 +1,7 @@
 package com.example;
 
-import com.example.set.*;
+import com.example.c_adapter.C;
+import com.example.project.helper.set.*;
 
 import java.util.*;
 
@@ -15,30 +16,30 @@ public class Main {
         var person3 = new Customer(2, "Matteo");
         person3.getId();
         person3.getName();
-        // var example = new MySet();
-        // example.getCustomers();
-        // example.addCustomer(person1);
-        // example.addCustomer(person2);
-        // example.addCustomer(person3);
-        // example.addCustomer(person3);
-        // example.getCustomers();
+        var example = new MyList();
+        example.getCustomers();
+        example.addCustomer(person1);
+        example.addCustomer(person2);
+        example.addCustomer(person3);
+        example.addCustomer(person3);
+        example.getCustomers();
 
-        // Set<Customer> customers = new HashSet<>();
-        // customers.add(person1);
-        // customers.add(person2);
-        // customers.add(person3);
-        // customers.add(person3);
-        // example.setCustomers(customers);
-        // example.getCustomers();
-        // example.getSize();
+        List<Customer> customers = new ArrayList<>();
+        customers.add(person1);
+        customers.add(person2);
+        customers.add(person3);
+        customers.add(person3);
+        example.setCustomers(customers);
+        example.getCustomers();
+        example.getSize();
 
-        // example.removeCustomer(person1);
-        // example.removeCustomer(person1);
-        // example.containsCustomer(person3);
-        // example.getSize();
-        // example.clearSet();
-        // metodo statico
-        MySet.sum(2, 2);
+        example.removeCustomer(person1);
+        example.removeCustomer(person1);
+        example.containsCustomer(person3);
+        example.getSize();
+        example.clearSet();
+        //metodo statico
+        MyList.sum(2, 2);
 
         // new class Counter
         var c1 = new Counter();
@@ -52,8 +53,8 @@ public class Main {
         c1.reset();
         c1.setVal(100);
         c1.getVal();
-        // var c = new C(
-        // new C(new C(null, null), new C(null, null)),
-        // new C(new C(null, null), new C(null, null)));
+        var c = new C(
+        new C(new C(null, null), new C(null, null)),
+        new C(new C(null, null), new C(null, null)));
     }
 }

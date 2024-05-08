@@ -1,9 +1,27 @@
-/.DS_Store
-/.vscode
-/.metadata/
+# Ignora la cartella .vscode
+.vscode/
+
+# Ignora la cartella .git (cartella di controllo di Git)
+.git/
+
+# Ignora i file .DS_Store generati da macOS
+.DS_Store
+
+# Ignora la cartella .vscode
+.vscode
+
+# Ignora la cartella .metadata
+.metadata/
+
+# Ignora i file temporanei che terminano con ~
 *~
+
+# Ignora la cartella target
 target/
+
+# Ignora i file specifici nella cartella demo
 demo/.classpath
 demo/.project
 demo/.settings/
 demo/bin/
+
