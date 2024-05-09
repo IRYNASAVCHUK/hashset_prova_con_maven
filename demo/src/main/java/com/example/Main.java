@@ -41,7 +41,8 @@ public class Main {
         // example.containsCustomer(person3);
         // example.getSize();
         // example.clearSet();
-        // //metodo statico
+        
+        // static method
         // MyList.sum(2, 2);
 
         // // new class Counter
