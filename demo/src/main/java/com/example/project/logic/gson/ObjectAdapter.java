@@ -35,13 +35,7 @@ public class ObjectAdapter extends TypeAdapter<Object> {
                 out.endObject();
         }
     }
-    // qualdo imposto allFields == TRUE -> reflection: CLASS.java...-> Class<T>
-    // GETSUPERClass()!!!!
-    // loop che finisce quando arrivo a Object....(Ricorsivo o iterativo)
-    // R _> campi classe ... finche un classe diversa da Object
-    // classe che estende
-    // sooto classe della mia classe per testare , livello 1 in poi....
-
+    
     private void writeFields(JsonWriter out, Object value) throws IllegalAccessException, IOException {
         Field[] fields = value.getClass().getDeclaredFields();
         for (Field field : fields) {
