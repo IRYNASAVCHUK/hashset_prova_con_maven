@@ -23,6 +23,4 @@ public class CustomerWithAddress extends Customer {
         MyLogger.logMethodExit("setAddress", this, void.class, null, new Object[] { address },
                         new Class<?>[] { String.class });
     }
-
-    // Additional methods or overrides can be added here
 }
