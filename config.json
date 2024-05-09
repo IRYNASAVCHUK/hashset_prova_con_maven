@@ -3,5 +3,6 @@
   "eventEntry": "func_pre",
   "eventReturn": "func_post",
   "objectLevel": 4,
-  "allFields": true
+  "allFields": true, 
+  "formatJSON": true
 }

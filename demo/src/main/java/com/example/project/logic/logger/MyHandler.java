@@ -24,8 +24,9 @@ public class MyHandler extends FileHandler {
     }
 
     @Override
-    public void publish(LogRecord record) {
-        try {
+public void publish(LogRecord record) {
+    try {
+        if (Constants.FORMAT_JSON) {
             RandomAccessFile file = new RandomAccessFile(Constants.LOG_FILE, "rw");
             if (file.length() == 0)
                 file.writeBytes("[\n\t");
@@ -36,8 +37,12 @@ public class MyHandler extends FileHandler {
             file.writeBytes(new MyFormatter().format(record));
             file.writeBytes("\n]");
             file.close();
-        } catch (IOException e) {
-            e.printStackTrace();
+        } else {
+            super.publish(record);
         }
+    } catch (IOException e) {
+        e.printStackTrace();
     }
+}
+
 }

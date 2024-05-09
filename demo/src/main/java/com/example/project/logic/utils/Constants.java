@@ -22,4 +22,7 @@ public class Constants {
         public static final boolean ALL_FIELDS = (ConfigLoader.getConfigValue("allFields",JsonElement::getAsBoolean) != null)
                         ? ConfigLoader.getConfigValue("allFields", JsonElement::getAsBoolean)
                         : false;
+        public static final boolean FORMAT_JSON = (ConfigLoader.getConfigValue("formatJSON",JsonElement::getAsBoolean) != null)
+                        ? ConfigLoader.getConfigValue("formatJSON", JsonElement::getAsBoolean)
+                        : false;
 }
