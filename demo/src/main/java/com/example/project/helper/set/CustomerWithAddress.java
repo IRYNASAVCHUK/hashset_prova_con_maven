@@ -8,7 +8,11 @@ public class CustomerWithAddress extends Customer {
 
     public CustomerWithAddress(int id, String name, String address) {
         super(id, name);
+        MyLogger.logMethodEntry("init", this, new Object[] { id, name, address },
+                new Class<?>[] { int.class, String.class, String.class });
         this.address = address;
+        MyLogger.logMethodExit("init", this, void.class, null, new Object[] { id, name, address },
+                new Class<?>[] { int.class, String.class, String.class });
     }
 
     public String getAddress() {
@@ -21,6 +25,6 @@ public class CustomerWithAddress extends Customer {
         MyLogger.logMethodEntry("setAddress", this, new Object[] { address }, new Class<?>[] { String.class });
         this.address = address;
         MyLogger.logMethodExit("setAddress", this, void.class, null, new Object[] { address },
-                        new Class<?>[] { String.class });
+                new Class<?>[] { String.class });
     }
 }

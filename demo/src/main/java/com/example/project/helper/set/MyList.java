@@ -40,6 +40,13 @@ public class MyList {
       }
 
       @Override
+      public int hashCode() {
+          MyLogger.logMethodEntry("hashCode", this, (Object[]) null, new Class<?>[0]);
+          var result =  customers.hashCode();
+          MyLogger.logMethodExit("hashCode", this, int.class, result, (Object[]) null, new Class<?>[0]);
+          return result;
+      }
+      @Override
       public String toString() {
             MyLogger.logMethodEntry("toString", this, (Object[]) null, new Class<?>[0]);
             StringJoiner stringJoiner = new StringJoiner(", ", "{ customers = [", "] }");

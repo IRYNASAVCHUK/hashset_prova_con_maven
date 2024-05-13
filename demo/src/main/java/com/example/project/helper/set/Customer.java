@@ -1,5 +1,7 @@
 package com.example.project.helper.set;
 
+import java.util.Objects;
+
 import com.example.project.logic.logger.MyLogger;
 
 public class Customer {
@@ -63,19 +65,19 @@ public class Customer {
                 return returnValue;
         }
 
-        // @Override
-        // public int hashCode() {
-        //         MyLogger.logMethodEntry("hashCode", this, (Object[]) null, new Class<?>[0]);
-        //         var returnValue = Objects.hash(id, name);
-        //         MyLogger.logMethodExit("hashCode", this, int.class, returnValue, (Object[]) null, new Class<?>[0]);
-        //         return returnValue;
-        // }
+        @Override
+        public int hashCode() {
+                MyLogger.logMethodEntry("hashCode", this, (Object[]) null, new Class<?>[0]);
+                var returnValue = Objects.hash(id, name);
+                MyLogger.logMethodExit("hashCode", this, int.class, returnValue, (Object[]) null, new Class<?>[0]);
+                return returnValue;
+        }
 
-        // @Override
-        // public String toString() {
-        //         MyLogger.logMethodEntry("toString", this, (Object[]) null, new Class<?>[0]);
-        //         var returnValue = String.format("(%d, %s)", id, name);
-        //         MyLogger.logMethodExit("toString", this, String.class, returnValue, (Object[]) null, new Class<?>[0]);
-        //         return returnValue;
-        // }
+        @Override
+        public String toString() {
+                MyLogger.logMethodEntry("toString", this, (Object[]) null, new Class<?>[0]);
+                var returnValue = String.format("(%d, %s)", id, name);
+                MyLogger.logMethodExit("toString", this, String.class, returnValue, (Object[]) null, new Class<?>[0]);
+                return returnValue;
+        }
 }

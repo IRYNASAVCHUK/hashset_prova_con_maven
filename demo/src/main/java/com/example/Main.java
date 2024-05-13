@@ -16,7 +16,7 @@ public class Main {
         var person2 = new Customer(1, "Marco");
         person2.getId();
         person2.getName();
-        var person3 = new Customer(2, "Matteo");
+        var person3 = new CustomerWithAddress(2, "Matteo","via XX Settembre 20");
         person3.getId();
         person3.getName();
         var example = new MyList();
@@ -58,11 +58,10 @@ public class Main {
         c1.setVal(100);
         c1.getVal();
         
-        // 
         var c = new C(
         new C(new C(null, null), new C(null, null)),
         new C(new C(null, null), new C(null, null)));
-       
+
         // Inheritance Class
         Animal animal = new Animal(true, "vegetables", 4);
         animal.isVegetarian();
