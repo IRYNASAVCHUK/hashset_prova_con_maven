@@ -2,7 +2,11 @@
   "logFile": "customLogFile.json",
   "eventEntry": "func_pre",
   "eventReturn": "func_post",
-  "objectLevel": 4,
+  "objectLevel": {
+    "target":4,
+    "args":4,
+    "result":4 
+  },
   "allFields": true, 
   "formatJSON": true
 }

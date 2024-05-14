@@ -5,7 +5,6 @@ import com.google.gson.*;
 import java.io.*;
 import java.util.function.Function;
 
-
 public class ConfigLoader {
     private static JsonObject configObject;
 
@@ -18,10 +17,15 @@ public class ConfigLoader {
     }
 
     public static <T> T getConfigValue(String key, Function<JsonElement, T> mapper) {
-    var element = configObject.get(key);
-    if (element != null && !element.isJsonNull()) {
-        return mapper.apply(element);
+        var element = configObject.get(key);
+        if (element != null && !element.isJsonNull()) {
+            return mapper.apply(element);
+        }
+        return null;
     }
-    return null;
-}
+
+    public static <T> T getConfigConstants(String key, T defaultValue, Function<JsonElement, T> mapper) {
+        T value = getConfigValue(key, mapper);
+        return (value != null) ? value : defaultValue;
+    }
 }
