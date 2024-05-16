@@ -1,5 +1,6 @@
 package com.example.project.logic.gson;
 
+import com.example.project.logic.log_record.record.Levels;
 import com.example.project.logic.utils.Constants;
 import com.google.gson.*;
 import java.io.*;
@@ -27,5 +28,20 @@ public class ConfigLoader {
     public static <T> T getConfigConstants(String key, T defaultValue, Function<JsonElement, T> mapper) {
         T value = getConfigValue(key, mapper);
         return (value != null) ? value : defaultValue;
+    }
+
+    public static Levels parseJsonObjectLevels(JsonObject objectLevel) {
+        int target = getIntFromJsonObject(objectLevel, "target", 0);
+        int args = getIntFromJsonObject(objectLevel, "args", 0);
+        int result = getIntFromJsonObject(objectLevel, "result", 0);
+        return new Levels(target, args, result);
+    }
+
+    private static int getIntFromJsonObject(JsonObject object, String key, int defaultValue) {
+        if (object.has(key)) {
+            int value = object.get(key).getAsInt();
+            return (value > 0) ? value : defaultValue;
+        }
+        return defaultValue;
     }
 }

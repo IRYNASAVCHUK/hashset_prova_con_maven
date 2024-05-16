@@ -9,7 +9,7 @@ import java.util.logging.*;
 import com.google.gson.*;
 
 public class MyFormatter extends Formatter {
-    private static final ObjectAdapter adapter = new ObjectAdapter(Constants.LEVEL, Constants.ALL_FIELDS);
+    private static final ObjectAdapter adapter = new ObjectAdapter(Constants.LEVELS, Constants.ALL_FIELDS);
     private static final Gson gson;
 
     static {

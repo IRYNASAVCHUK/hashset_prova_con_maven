@@ -3,16 +3,18 @@ package com.example.project.logic.gson;
 import java.io.IOException;
 import java.lang.reflect.Field;
 import java.util.List;
+
+import com.example.project.logic.log_record.record.Levels;
 import com.google.gson.TypeAdapter;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 
 public class ObjectAdapter extends TypeAdapter<Object> {
-    private int level;
+    private Levels level;
     private boolean allFields;
     private boolean insideObject = false;
 
-    public ObjectAdapter(int level, boolean allFields) {
+    public ObjectAdapter(Levels level, boolean allFields) {
         this.level = level;
         this.allFields = allFields;
     }
@@ -35,7 +37,7 @@ public class ObjectAdapter extends TypeAdapter<Object> {
                 out.endObject();
         }
     }
-    
+
     private void writeFields(JsonWriter out, Object value) throws IllegalAccessException, IOException {
         Field[] fields = value.getClass().getDeclaredFields();
         for (Field field : fields) {
@@ -72,7 +74,7 @@ public class ObjectAdapter extends TypeAdapter<Object> {
         var val = pair[1];
         if (!key.equals(void.class)) {
             out.name(fieldName);
-            writeJsonValue(out, key, (val == null) ? null : val, fieldName);
+            writeJsonValue(out, key, (val == null) ? null : val, fieldName, level.result());
         }
     }
 
@@ -86,7 +88,7 @@ public class ObjectAdapter extends TypeAdapter<Object> {
             var key = pair[0];
             var val = pair[1];
             if (key instanceof Class)
-                writeJsonValue(out, key, val, fieldName);
+                writeJsonValue(out, key, val, fieldName, level.args());
         }
         out.endArray();
     }
@@ -97,7 +99,7 @@ public class ObjectAdapter extends TypeAdapter<Object> {
         if (fieldValue instanceof String)
             out.value((String) fieldValue);
         else
-            valueInfo(out, fieldValue, fieldName);
+            valueInfo(out, fieldValue, fieldName, level.target());
     }
 
     private static boolean isWrapperOrString(Object obj) {
@@ -124,7 +126,7 @@ public class ObjectAdapter extends TypeAdapter<Object> {
 
     private void exploreObject(JsonWriter out, Object obj, int currentLevel)
             throws IOException, IllegalArgumentException, IllegalAccessException {
-        if (currentLevel <= 0 || obj == null)
+        if (currentLevel < 0 || obj == null)
             return;
         Class<?> clazz = obj.getClass();
         while (clazz != null && clazz != Object.class) {
@@ -137,19 +139,18 @@ public class ObjectAdapter extends TypeAdapter<Object> {
                     var typeValue = field.getType();
                     fieldValue = field.get(obj);
                     out.name(fieldName);
-                    writeJsonValue(out, typeValue, (fieldValue == null) ? null : fieldValue, fieldName);
+                    writeJsonValue(out, typeValue, (fieldValue == null) ? null : fieldValue, fieldName, currentLevel);
                 }
             }
-            if (allFields){
+            if (allFields) {
                 clazz = clazz.getSuperclass();
-            }    
-            else
+            } else
                 break;
         }
 
     }
 
-    private void valueInfo(JsonWriter out, Object val, String fieldName)
+    private void valueInfo(JsonWriter out, Object val, String fieldName, int currentLevel)
             throws IOException, IllegalArgumentException, IllegalAccessException {
         out.beginObject();
         out.name("@");
@@ -160,8 +161,9 @@ public class ObjectAdapter extends TypeAdapter<Object> {
             out.name("const");
             wrapsValue(out, val);
         } else {
-            exploreObject(out, val, level);
+            exploreObject(out, val, currentLevel - 1);
         }
+
         out.endObject();
     }
 
@@ -179,14 +181,14 @@ public class ObjectAdapter extends TypeAdapter<Object> {
         }
     }
 
-    private void writeJsonValue(JsonWriter out, Object key, Object val, String fieldName)
+    private void writeJsonValue(JsonWriter out, Object key, Object val, String fieldName, int currentLevel)
             throws IOException, IllegalArgumentException, IllegalAccessException {
         if (val == null)
             out.nullValue();
         else if (((Class<?>) key).isPrimitive())
             primitiveValue(out, key, val);
         else
-            valueInfo(out, val, fieldName);
+            valueInfo(out, val, fieldName, currentLevel);
     }
 
     @Override

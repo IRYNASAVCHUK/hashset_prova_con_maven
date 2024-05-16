@@ -5,6 +5,7 @@ import com.example.project.logic.logger.MyLogger;
 public class CustomerWithAddress extends Customer {
 
     private String address;
+    private Customer newCustomer = new Customer(99, "Ivan");
 
     public CustomerWithAddress(int id, String name, String address) {
         super(id, name);

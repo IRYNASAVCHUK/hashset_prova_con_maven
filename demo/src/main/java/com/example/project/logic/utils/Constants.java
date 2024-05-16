@@ -1,6 +1,9 @@
 package com.example.project.logic.utils;
 
 import com.example.project.logic.gson.ConfigLoader;
+import com.example.project.logic.log_record.record.Levels;
+
+import java.util.function.Function;
 import com.google.gson.JsonElement;
 
 public class Constants {
@@ -15,14 +18,16 @@ public class Constants {
                         JsonElement::getAsBoolean);
         public static final boolean FORMAT_JSON = ConfigLoader.getConfigConstants("formatJSON", false,
                         JsonElement::getAsBoolean);
-        public static final int LEVEL = 2;
-        // public static final int LEVEL = (ConfigLoader.getConfigValue("objectLevel",
-        // JsonElement::getAsInt) == null
-        // || ConfigLoader.getConfigValue("objectLevel", JsonElement::getAsInt) <= 0)
-        // ? 0
-        // : ConfigLoader.getConfigValue("objectLevel", JsonElement::getAsInt);
+        public static final Levels LEVELS;
 
-        public record Level(int target, int args, int result) {
+        static {
+                JsonElement objectLevelElement = ConfigLoader.getConfigValue("objectLevel", Function.identity());
+                if (objectLevelElement != null && objectLevelElement.isJsonObject()) 
+                        LEVELS = ConfigLoader.parseJsonObjectLevels(objectLevelElement.getAsJsonObject());
+                else if (objectLevelElement != null && objectLevelElement.isJsonPrimitive()) {
+                        int value = (objectLevelElement.getAsInt()) > 0 ? objectLevelElement.getAsInt() : 0;
+                        LEVELS = new Levels(value, value, value);
+                } else
+                        LEVELS = new Levels(0, 0, 0);
         }
-
 }
