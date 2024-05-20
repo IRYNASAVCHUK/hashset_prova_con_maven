@@ -20,7 +20,7 @@ public class MyLogger extends Logger {
 
     private static void configureLogger() {
         logger.setLevel(Level.ALL);
-        MyHandler.configureHandler(logger);
+        MyFileHandler.configureHandler(logger);
     }
 
     public static Logger getLogger() {
