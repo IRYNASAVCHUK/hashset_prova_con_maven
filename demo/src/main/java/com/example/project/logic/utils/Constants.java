@@ -18,11 +18,17 @@ public class Constants {
                         JsonElement::getAsBoolean);
         public static final boolean FORMAT_JSON = ConfigLoader.getConfigConstants("formatJSON", false,
                         JsonElement::getAsBoolean);
+        public static final boolean ONLINE = ConfigLoader.getConfigConstants("onlineMode", false,
+                        JsonElement::getAsBoolean);
+        public static final String URL = ConfigLoader.getConfigConstants("url", "localhost",
+                        JsonElement::getAsString);
+        public static final int PORT = ConfigLoader.getConfigConstants("port", 8080,
+                        JsonElement::getAsInt);
         public static final Levels LEVELS;
 
         static {
                 JsonElement objectLevelElement = ConfigLoader.getConfigValue("objectLevel", Function.identity());
-                if (objectLevelElement != null && objectLevelElement.isJsonObject()) 
+                if (objectLevelElement != null && objectLevelElement.isJsonObject())
                         LEVELS = ConfigLoader.parseJsonObjectLevels(objectLevelElement.getAsJsonObject());
                 else if (objectLevelElement != null && objectLevelElement.isJsonPrimitive()) {
                         int value = (objectLevelElement.getAsInt()) > 0 ? objectLevelElement.getAsInt() : 0;
