@@ -37,7 +37,8 @@ public class MyFileHandler extends FileHandler {
                 file.writeBytes(new MyFormatter().format(record));
                 file.writeBytes("\n]");
                 file.close();
-            } else {
+            }
+            else {
                 super.publish(record);
             }
         } catch (IOException e) {
