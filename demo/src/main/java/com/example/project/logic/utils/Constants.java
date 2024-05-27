@@ -7,12 +7,12 @@ import java.util.function.Function;
 import com.google.gson.JsonElement;
 
 public class Constants {
-        public static final String ENTRY = ConfigLoader.getConfigConstants("eventEntry", "eventEntry",
+        public static final String ENTRY = ConfigLoader.getConfigConstants("eventEntry", "entry",
                         JsonElement::getAsString);
-        public static final String RETURN = ConfigLoader.getConfigConstants("eventReturn", "eventReturn",
+        public static final String RETURN = ConfigLoader.getConfigConstants("eventReturn", "return",
                         JsonElement::getAsString);
         public static final String CONFIG_FILE = "config.json";
-        public static final String LOG_FILE = ConfigLoader.getConfigConstants("logFile", "logFile",
+        public static final String LOG_FILE = ConfigLoader.getConfigConstants("logFileName", "logFile",
                         JsonElement::getAsString);
         public static final boolean ALL_FIELDS = ConfigLoader.getConfigConstants("allFields", false,
                         JsonElement::getAsBoolean);

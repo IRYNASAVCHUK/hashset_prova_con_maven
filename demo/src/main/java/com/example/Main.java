@@ -1,6 +1,6 @@
 package com.example;
 
-import com.example.c_adapter.C;
+import com.example.project.helper.C;
 import com.example.project.helper.animal.Animal;
 import com.example.project.helper.animal.BabyCat;
 import com.example.project.helper.animal.Cat;
