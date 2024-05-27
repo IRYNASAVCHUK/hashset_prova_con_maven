@@ -1,10 +1,10 @@
 package com.example.project.logic.gson;
 
+import com.example.project.logic.log_record.record.Levels;
+
 import java.io.IOException;
 import java.lang.reflect.Field;
 import java.util.List;
-
-import com.example.project.logic.log_record.record.Levels;
 import com.google.gson.TypeAdapter;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
@@ -160,10 +160,8 @@ public class ObjectAdapter extends TypeAdapter<Object> {
         if (isWrapperOrString(val) && !fieldName.equals("target")) {
             out.name("const");
             wrapsValue(out, val);
-        } else {
+        } else
             exploreObject(out, val, currentLevel - 1);
-        }
-
         out.endObject();
     }
 

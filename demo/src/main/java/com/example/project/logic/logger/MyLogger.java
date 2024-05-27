@@ -31,7 +31,6 @@ public class MyLogger extends Logger {
         return logger;
     }
 
-    // INFO -> ALL
     public static void logMethodEntry(String methodName, Object thisObject, Object[] params, Class<?>[] paramsType) {
         logger.logp(Level.ALL, thisObject.getClass().getName(), methodName, Constants.ENTRY,
                 new EnteringRecord(params, paramsType, thisObject));

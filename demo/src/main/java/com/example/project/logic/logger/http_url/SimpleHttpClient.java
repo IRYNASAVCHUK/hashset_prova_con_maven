@@ -1,5 +1,8 @@
 package com.example.project.logic.logger.http_url;
 
+import com.example.project.logic.logger.MyFormatter;
+import com.example.project.logic.utils.Constants;
+
 import java.io.OutputStream;
 import java.io.InputStreamReader;
 import java.io.BufferedReader;
@@ -12,9 +15,6 @@ import java.util.logging.LogRecord;
 import java.util.logging.Logger;
 import java.util.logging.SocketHandler;
 
-import com.example.project.logic.logger.MyFormatter;
-import com.example.project.logic.utils.Constants;
-
 public class SimpleHttpClient extends SocketHandler {
 
     public SimpleHttpClient(String host, int port) throws IOException {
@@ -24,38 +24,33 @@ public class SimpleHttpClient extends SocketHandler {
     @Override
     public void publish(LogRecord record) {
         try {
-            String logData = new MyFormatter().format(record);
-            if (Constants.FORMAT_JSON) {
-                sendDataToServer(logData); // Invia i dati al server HTTP
-            } else {
+            var logData = new MyFormatter().format(record);
+            if (Constants.FORMAT_JSON)
+                sendDataToServer(logData);
+            else
                 super.publish(record);
-            }
+
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-public static void configureHttpClient(Logger logger) {
+
+    public static void configureHttpClient(Logger logger) {
         try {
             SimpleHttpClient httpClient = new SimpleHttpClient(Constants.URL, Constants.PORT);
-            
-            // Configurazione del livello di logging e del formatter
             httpClient.setLevel(Level.ALL);
             httpClient.setFormatter(new MyFormatter());
-            
-            // Rimozione di tutti gli handler esistenti dal logger
-            for (Handler existingHandler : logger.getHandlers()) {
+            for (Handler existingHandler : logger.getHandlers())
                 logger.removeHandler(existingHandler);
-            }
-            
-            // Aggiunta di SimpleHttpClient come handler per il logger
             logger.addHandler(httpClient);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
     private void sendDataToServer(String jsonInputString) {
         try {
-            URL url = new URL("http://"+Constants.URL + ":" + Constants.PORT + "/endpoint"); // URL del server
+            URL url = new URL("http://" + Constants.URL + ":" + Constants.PORT + "/endpoint");
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setRequestMethod("POST");
             conn.setRequestProperty("Content-Type", "application/json; utf-8");
@@ -66,11 +61,10 @@ public static void configureHttpClient(Logger logger) {
                 byte[] input = jsonInputString.getBytes("utf-8");
                 os.write(input, 0, input.length);
             }
-
+            // opzionale
             int code = conn.getResponseCode();
             System.out.println("Response Code: " + code);
-
-            // Optional: Leggi la risposta
+            // opzionale
             try (BufferedReader br = new BufferedReader(
                     new InputStreamReader(conn.getInputStream(), "utf-8"))) {
                 StringBuilder response = new StringBuilder();

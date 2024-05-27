@@ -7,7 +7,7 @@ public interface LogInfoRecordInterface {
 
     Object target();
 
-    List<Object[]>  args();
+    List<Object[]> args();
 
     String name();
 }

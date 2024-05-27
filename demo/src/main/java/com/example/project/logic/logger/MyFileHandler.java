@@ -1,13 +1,13 @@
 package com.example.project.logic.logger;
 
+import com.example.project.logic.utils.Constants;
+
 import java.io.*;
 import java.util.logging.*;
 
-import com.example.project.logic.utils.Constants;
-
 public class MyFileHandler extends FileHandler {
     public MyFileHandler() throws IOException, SecurityException {
-        super(Constants.LOG_FILE, false); // false - sovrascrive il file, ogni volta che lanciamo main
+        super(Constants.LOG_FILE, false);
     }
 
     public static void configureHandler(Logger logger) {
@@ -37,8 +37,7 @@ public class MyFileHandler extends FileHandler {
                 file.writeBytes(new MyFormatter().format(record));
                 file.writeBytes("\n]");
                 file.close();
-            }
-            else {
+            } else {
                 super.publish(record);
             }
         } catch (IOException e) {

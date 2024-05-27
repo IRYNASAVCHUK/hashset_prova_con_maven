@@ -27,11 +27,11 @@ public class LogInfo {
         var args = createArgsPair(myRecord);
         Class<?> returnType = null;
         Object[] result = null;
-        if (myRecord instanceof ExitingRecord){
+        if (myRecord instanceof ExitingRecord) {
             returnType = ((ExitingRecord<?>) myRecord).returnType();
-            result = new Object[] { returnType,((ExitingRecord<?>) myRecord).result() };
+            result = new Object[] { returnType, ((ExitingRecord<?>) myRecord).result() };
         }
-        
+
         return LogInfo.create(event, target, args, result, name, returnType, myRecord);
     }
 

@@ -31,7 +31,7 @@ public class Constants {
                 if (objectLevelElement != null && objectLevelElement.isJsonObject())
                         LEVELS = ConfigLoader.parseJsonObjectLevels(objectLevelElement.getAsJsonObject());
                 else if (objectLevelElement != null && objectLevelElement.isJsonPrimitive()) {
-                        int value = (objectLevelElement.getAsInt()) > 0 ? objectLevelElement.getAsInt() : 0;
+                        var value = (objectLevelElement.getAsInt()) > 0 ? objectLevelElement.getAsInt() : 0;
                         LEVELS = new Levels(value, value, value);
                 } else
                         LEVELS = new Levels(0, 0, 0);
