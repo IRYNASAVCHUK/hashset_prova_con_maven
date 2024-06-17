@@ -7,7 +7,7 @@ import java.util.function.Function;
 import com.google.gson.JsonElement;
 
 public class Constants {
-        public static final String ENTRY = ConfigLoader.getConfigConstants("eventEntry", "entry",
+        public static final String ENTRY = ConfigLoader.getConfigConstants("eventEntry", "enter",
                         JsonElement::getAsString);
         public static final String RETURN = ConfigLoader.getConfigConstants("eventReturn", "return",
                         JsonElement::getAsString);
