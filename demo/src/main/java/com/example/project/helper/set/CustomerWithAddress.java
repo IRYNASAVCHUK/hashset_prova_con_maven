@@ -3,7 +3,6 @@ package com.example.project.helper.set;
 import com.example.project.logic.logger.MyLogger;
 
 public class CustomerWithAddress extends Customer {
-
     private String address;
     private Customer newCustomer = new Customer(99, "Ivan");
 

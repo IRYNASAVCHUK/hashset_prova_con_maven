@@ -7,11 +7,11 @@ public class BabyCat extends Cat {
 
     public BabyCat(boolean veg, String food, int legs, String color, String sound) {
         super(veg, food, legs, color);
-        MyLogger.logMethodEntry("init", this, new Object[] { veg, food, legs,color },
+        MyLogger.logMethodEntry("init", this, new Object[] { veg, food, legs, color },
                 new Class<?>[] { boolean.class, String.class, int.class, String.class });
         this.sound = sound;
         MyLogger.logMethodExit("init", this, void.class, null, new Object[] { veg, food, legs, color },
-        new Class<?>[] { boolean.class, String.class, int.class, String.class });
+                new Class<?>[] { boolean.class, String.class, int.class, String.class });
     }
 
     public String getSound() {
@@ -21,9 +21,9 @@ public class BabyCat extends Cat {
     }
 
     public void setSound(String sound) {
-        MyLogger.logMethodEntry("setColor", this, (new Object[] {sound }), new Class<?>[] { String.class });
+        MyLogger.logMethodEntry("setColor", this, (new Object[] { sound }), new Class<?>[] { String.class });
         this.sound = sound;
-        MyLogger.logMethodExit("setColor", this, void.class, null, (new Object[] {sound}),
-        new Class<?>[] { String.class });
+        MyLogger.logMethodExit("setColor", this, void.class, null, (new Object[] { sound }),
+                new Class<?>[] { String.class });
     }
 }

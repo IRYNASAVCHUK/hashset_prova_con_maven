@@ -6,8 +6,7 @@ import java.io.IOException;
 import java.lang.reflect.Field;
 import java.util.List;
 import com.google.gson.TypeAdapter;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
+import com.google.gson.stream.*;
 
 public class ObjectAdapter extends TypeAdapter<Object> {
     private Levels level;

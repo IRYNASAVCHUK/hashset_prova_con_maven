@@ -1,9 +1,9 @@
 package com.example.project.helper.set;
 
+import com.example.project.logic.logger.MyLogger;
+
 import java.util.*;
 import java.util.function.Predicate;
-
-import com.example.project.logic.logger.MyLogger;
 
 public class MyList {
       private List<Customer> customers;

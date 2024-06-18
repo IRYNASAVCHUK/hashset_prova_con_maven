@@ -4,14 +4,10 @@ import com.example.project.helper.set.CustomerWithAddress;
 import com.example.project.logic.logger.MyLogger;
 
 public class Animal {
-
     private boolean vegetarian;
-
     private String eats;
-
     private int noOfLegs;
-    
-    private CustomerWithAddress prov = new CustomerWithAddress(1, "Animal","Savanna");
+    private CustomerWithAddress prov = new CustomerWithAddress(1, "Animal", "Savanna");
 
     public Animal(boolean veg, String food, int legs) {
         MyLogger.logMethodEntry("init", this, new Object[] { veg, food, legs },
@@ -58,7 +54,8 @@ public class Animal {
     public void setNoOfLegs(int noOfLegs) {
         MyLogger.logMethodEntry("setNoOfLegs", this, (new Object[] { noOfLegs }), new Class<?>[] { int.class });
         this.noOfLegs = noOfLegs;
-        MyLogger.logMethodExit("setNoOfLegs", this,void.class, null, (new Object[] { noOfLegs }), new Class<?>[] { int.class });
+        MyLogger.logMethodExit("setNoOfLegs", this, void.class, null, (new Object[] { noOfLegs }),
+                new Class<?>[] { int.class });
     }
 
 }

@@ -4,7 +4,7 @@ import com.example.project.logic.logger.MyLogger;
 
 public class Counter {
     private int val;
-    private Counter  z = null;
+    private Counter z = null;
     private Customer x = new Customer(val, "null");
 
     public void reset() {

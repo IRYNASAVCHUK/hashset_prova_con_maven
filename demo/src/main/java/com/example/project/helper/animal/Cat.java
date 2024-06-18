@@ -3,7 +3,6 @@ package com.example.project.helper.animal;
 import com.example.project.logic.logger.MyLogger;
 
 public class Cat extends Animal {
-
     private String color;
 
     public Cat(boolean veg, String food, int legs) {
@@ -33,8 +32,8 @@ public class Cat extends Animal {
     public void setColor(String color) {
         MyLogger.logMethodEntry("setColor", this, (new Object[] { color }), new Class<?>[] { String.class });
         this.color = color;
-        MyLogger.logMethodExit("setColor", this, void.class, null, (new Object[] {color }),
-        new Class<?>[] { String.class });
+        MyLogger.logMethodExit("setColor", this, void.class, null, (new Object[] { color }),
+                new Class<?>[] { String.class });
     }
 
 }
