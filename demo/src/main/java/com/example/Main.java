@@ -1,9 +1,7 @@
 package com.example;
 
-import com.example.project.helper.C;
-import com.example.project.helper.animal.Animal;
-import com.example.project.helper.animal.BabyCat;
-import com.example.project.helper.animal.Cat;
+import com.example.project.helper.*;
+import com.example.project.helper.animal.*;
 import com.example.project.helper.set.*;
 
 import java.util.*;
@@ -16,7 +14,7 @@ public class Main {
         var person2 = new Customer(1, "Marco");
         person2.getId();
         person2.getName();
-        var person3 = new CustomerWithAddress(2, "Matteo","via XX Settembre 20");
+        var person3 = new CustomerWithAddress(2, "Matte", "via XX September 20");
         person3.getId();
         person3.getName();
         var example = new MyList();
@@ -41,8 +39,8 @@ public class Main {
         example.containsCustomer(person3);
         example.getSize();
         example.clearSet();
-        
-        //static method
+
+        // static method
         MyList.sum(2, 2);
 
         // new class Counter Simple
@@ -57,10 +55,8 @@ public class Main {
         c1.reset();
         c1.setVal(100);
         c1.getVal();
-        
-        var c = new C(
-        new C(new C(null, null), new C(null, null)),
-        new C(new C(null, null), new C(null, null)));
+
+        new C(new C(new C(null, null), new C(null, null)), new C(new C(null, null), new C(null, null)));
 
         // Inheritance Class
         Animal animal = new Animal(true, "vegetables", 4);
