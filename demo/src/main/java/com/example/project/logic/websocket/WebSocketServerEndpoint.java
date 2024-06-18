@@ -1,4 +1,4 @@
-package com.example.project.logic.logger.websocket;
+package com.example.project.logic.websocket;
 
 import java.io.IOException;
 import javax.websocket.*;
