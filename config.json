@@ -9,7 +9,7 @@
   },
   "allFields": true, 
   "formatJSON": true,
-  "onlineMode": false,
+  "onlineMode": true,
   "url":"localhost",
   "port": 8080
 }

@@ -1,19 +1,12 @@
-package com.example.project.logic.logger.http_url;
+package com.example.project.logic.logger.http;
 
 import com.example.project.logic.logger.MyFormatter;
 import com.example.project.logic.utils.Constants;
 
-import java.io.OutputStream;
-import java.io.InputStreamReader;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.util.logging.Handler;
-import java.util.logging.Level;
-import java.util.logging.LogRecord;
-import java.util.logging.Logger;
-import java.util.logging.SocketHandler;
+import java.io.*;
+import java.net.*;
+import java.util.logging.*;
+
 
 public class SimpleHttpClient extends SocketHandler {
 
@@ -29,7 +22,6 @@ public class SimpleHttpClient extends SocketHandler {
                 sendDataToServer(logData);
             else
                 super.publish(record);
-
         } catch (Exception e) {
             e.printStackTrace();
         }

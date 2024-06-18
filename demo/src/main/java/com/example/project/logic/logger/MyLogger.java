@@ -2,7 +2,8 @@ package com.example.project.logic.logger;
 
 import com.example.project.logic.log_record.record.enteringexiting.EnteringRecord;
 import com.example.project.logic.log_record.record.enteringexiting.ExitingRecord;
-import com.example.project.logic.logger.http_url.SimpleHttpClient;
+//import com.example.project.logic.logger.http.SimpleHttpClient;
+import com.example.project.logic.logger.websocket.WebSocketClient;
 import com.example.project.logic.utils.Constants;
 
 import java.util.logging.*;
@@ -22,7 +23,8 @@ public class MyLogger extends Logger {
     private static void configureLogger() {
         logger.setLevel(Level.ALL);
         if (Constants.ONLINE)
-            SimpleHttpClient.configureHttpClient(logger);
+            // SimpleHttpClient.configureHttpClient(logger);
+            WebSocketClient.configureWebSocketClient(logger);
         else
             MyFileHandler.configureHandler(logger);
     }
@@ -53,5 +55,4 @@ public class MyLogger extends Logger {
         logger.logp(Level.ALL, className, methodName, Constants.RETURN,
                 new ExitingRecord<>(returnType, result, params, paramsType, null));
     }
-
 }

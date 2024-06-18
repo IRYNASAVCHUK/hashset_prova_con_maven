@@ -1,12 +1,9 @@
-package com.example.project.logic.logger.http_url;
+package com.example.project.logic.logger.http;
 
 import com.example.project.logic.utils.Constants;
 
-import com.sun.net.httpserver.HttpExchange;
-import com.sun.net.httpserver.HttpHandler;
-import com.sun.net.httpserver.HttpServer;
-import java.io.IOException;
-import java.io.OutputStream;
+import com.sun.net.httpserver.*;
+import java.io.*;
 import java.net.InetSocketAddress;
 import java.nio.charset.StandardCharsets;
 

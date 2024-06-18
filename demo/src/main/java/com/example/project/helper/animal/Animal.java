@@ -1,6 +1,5 @@
 package com.example.project.helper.animal;
 
-import com.example.project.helper.set.Customer;
 import com.example.project.helper.set.CustomerWithAddress;
 import com.example.project.logic.logger.MyLogger;
 
@@ -11,8 +10,8 @@ public class Animal {
     private String eats;
 
     private int noOfLegs;
-
-    private CustomerWithAddress prova = new CustomerWithAddress(1, "Animal","Savanna");
+    
+    private CustomerWithAddress prov = new CustomerWithAddress(1, "Animal","Savanna");
 
     public Animal(boolean veg, String food, int legs) {
         MyLogger.logMethodEntry("init", this, new Object[] { veg, food, legs },
