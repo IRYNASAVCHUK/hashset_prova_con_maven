@@ -1,15 +1,11 @@
 {
   "logFileName": "customLogFile.json",
-  "eventEntry": "func_pre",
-  "eventReturn": "func_post",
-  "objectLevel": {
-    "target":0,
-    "args": 0,
-    "result":0
-  },
-  "allFields": true, 
-  "formatJSON": true,
-  "onlineMode": true,
+  "eventEntry": "enter",
+  "eventReturn": "exit",
+  "objectLevel": 1,
+  "allFields": false, 
+  "formatJSON":true,
+  "onlineMode": false,
   "url":"localhost",
   "port": 8080
 }
