@@ -1,4 +1,4 @@
-package core.websocket;
+package core.connection;
 
 import java.io.IOException;
 import java.util.Scanner;
@@ -11,9 +11,9 @@ import org.glassfish.tyrus.server.Server;
 import core.utils.Constants;
 
 @ServerEndpoint("/endpoint")
-public class MyServer {
+public class WebSocketServer {
     public static void main(String[] args) {
-        Server server = new Server(Constants.URL, Constants.PORT, "/ws", MyServer.class);
+        Server server = new Server(Constants.URL, Constants.PORT, "/ws", WebSocketServer.class);
         try {
             server.start();
             System.out.println("[SERVER]: Server started at ws://"

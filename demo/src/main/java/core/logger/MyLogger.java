@@ -2,9 +2,9 @@ package core.logger;
 
 import java.util.logging.*;
 
+import core.connection.WebSocketClient;
 import core.utils.Constants;
 import core.utils.Records;
-import core.websocket.MyClient;
 
 public class MyLogger extends Logger {
 
@@ -22,7 +22,7 @@ public class MyLogger extends Logger {
         logger.setLevel(Level.ALL);
         if (Constants.ONLINE)
             // SimpleHttpClient.configureHttpClient(logger);
-            MyClient.configureWebSocketClient(logger);
+            WebSocketClient.configureWebSocketClient(logger);
         else
             MyFileHandler.configureHandler(logger);
     }

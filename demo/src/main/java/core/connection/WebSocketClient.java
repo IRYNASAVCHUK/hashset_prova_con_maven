@@ -1,4 +1,4 @@
-package core.websocket;
+package core.connection;
 
 import java.io.IOException;
 import java.net.URI;
@@ -9,13 +9,13 @@ import core.logger.MyFormatter;
 import core.utils.Constants;
 
 @ClientEndpoint
-public class MyClient extends Handler {
+public class WebSocketClient extends Handler {
 
     private static Session session;
 
     @OnOpen
     public void onOpen(Session session) {
-        MyClient.session = session;
+        WebSocketClient.session = session;
         System.out.println("[CLIENT]: Connected to server with session ID: " + session.getId());
     }
 
@@ -51,8 +51,8 @@ public class MyClient extends Handler {
             WebSocketContainer container = ContainerProvider.getWebSocketContainer();
             String uri = "ws://" + Constants.URL + ":" + Constants.PORT + "/ws/endpoint";
             System.out.println("[CLIENT]: Connecting to " + uri);
-            container.connectToServer(MyClient.class, URI.create(uri));
-            MyClient clientHandler = new MyClient();
+            container.connectToServer(WebSocketClient.class, URI.create(uri));
+            WebSocketClient clientHandler = new WebSocketClient();
             clientHandler.setLevel(Level.ALL);
             clientHandler.setFormatter(new MyFormatter());
             for (Handler existingHandler : logger.getHandlers())
