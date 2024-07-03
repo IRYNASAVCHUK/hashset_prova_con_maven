@@ -4,7 +4,7 @@ import java.util.logging.*;
 
 import logic.utils.Constants;
 import logic.utils.Records;
-import logic.websocket.WebSocketClient;
+import logic.websocket.MyClient;
 
 public class MyLogger extends Logger {
 
@@ -22,7 +22,7 @@ public class MyLogger extends Logger {
         logger.setLevel(Level.ALL);
         if (Constants.ONLINE)
             // SimpleHttpClient.configureHttpClient(logger);
-            WebSocketClient.configureWebSocketClient(logger);
+            MyClient.configureWebSocketClient(logger);
         else
             MyFileHandler.configureHandler(logger);
     }

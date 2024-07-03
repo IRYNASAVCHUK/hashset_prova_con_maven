@@ -1,4 +1,4 @@
-package logic.logger.http;
+package logic.http;
 
 import com.sun.net.httpserver.*;
 

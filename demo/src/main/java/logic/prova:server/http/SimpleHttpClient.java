@@ -1,4 +1,4 @@
-package logic.logger.http;
+package logic.http;
 
 import java.io.*;
 import java.net.*;

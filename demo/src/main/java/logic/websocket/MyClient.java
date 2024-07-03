@@ -9,13 +9,13 @@ import logic.logger.MyFormatter;
 import logic.utils.Constants;
 
 @ClientEndpoint
-public class WebSocketClient extends Handler {
+public class MyClient extends Handler {
 
     private static Session session;
 
     @OnOpen
     public void onOpen(Session session) {
-        WebSocketClient.session = session;
+        MyClient.session = session;
         System.out.println("[CLIENT]: Connected to server with session ID: " + session.getId());
     }
 
@@ -51,8 +51,8 @@ public class WebSocketClient extends Handler {
             WebSocketContainer container = ContainerProvider.getWebSocketContainer();
             String uri = "ws://" + Constants.URL + ":" + Constants.PORT + "/ws/endpoint";
             System.out.println("[CLIENT]: Connecting to " + uri);
-            container.connectToServer(WebSocketClient.class, URI.create(uri));
-            WebSocketClient clientHandler = new WebSocketClient();
+            container.connectToServer(MyClient.class, URI.create(uri));
+            MyClient clientHandler = new MyClient();
             clientHandler.setLevel(Level.ALL);
             clientHandler.setFormatter(new MyFormatter());
             for (Handler existingHandler : logger.getHandlers())
