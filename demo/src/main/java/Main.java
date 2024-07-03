@@ -17,7 +17,7 @@ public class Main {
         var person2 = new Customer(1, "Marco");
         person2.getId();
         person2.getName();
-        var person3 = new CustomerWithAddress(2, "Matteo", "via XX September 20");
+        var person3 = new CustomerWithAddress(2, "Matte", "via XX September 20");
         person3.getId();
         person3.getName();
         var example = new MyList();
