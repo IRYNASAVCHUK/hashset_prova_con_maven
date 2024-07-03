@@ -2,10 +2,10 @@
   "logFileName": "customLogFile.json",
   "eventEntry": "enter",
   "eventReturn": "exit",
-  "objectLevel": 1,
-  "allFields": false, 
-  "formatJSON":true,
+  "objectLevel": {"target": 1},
+  "allFields": true,
+  "formatJSON": true,
   "onlineMode": false,
-  "url":"localhost",
+  "url": "localhost",
   "port": 8080
 }

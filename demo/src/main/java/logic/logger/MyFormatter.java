@@ -3,10 +3,10 @@ package logic.logger;
 import java.util.logging.*;
 import com.google.gson.*;
 
-import logic.gson.ObjectAdapter;
-import logic.log_record.LogInfo;
-import logic.log_record.record.loginfo.*;
+import logic.LogInfo;
+import logic.ObjectAdapter;
 import logic.utils.Constants;
+import logic.utils.Records;
 
 public class MyFormatter extends Formatter {
     private static final ObjectAdapter adapter = new ObjectAdapter(Constants.LEVELS, Constants.ALL_FIELDS);
@@ -14,14 +14,14 @@ public class MyFormatter extends Formatter {
 
     static {
         GsonBuilder builder = new GsonBuilder();
-        builder.registerTypeAdapter(LogInfoWithOutResultRecord.class, adapter);
-        builder.registerTypeAdapter(LogInfoWithResultRecord.class, adapter);
-        gson = builder.serializeNulls().create();//.setPrettyPrinting()
+        builder.registerTypeAdapter(Records.LogInfoWithOutResult.class, adapter);
+        builder.registerTypeAdapter(Records.LogInfoWithResult.class, adapter);
+        gson = builder.setPrettyPrinting().serializeNulls().create();//.setPrettyPrinting()
     }
 
     @Override
     public String format(LogRecord record) {
-        LogInfoRecordInterface logInfo = LogInfo.create(record);
+        Records.LogInfoInterface logInfo = LogInfo.create(record);
         return gson.toJson(logInfo);
     }
 }

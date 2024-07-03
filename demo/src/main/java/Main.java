@@ -3,18 +3,19 @@
 import java.util.*;
 
 import helper.*;
+import helper.animal_hierarchy.BabyCat;
 import helper.set.*;
 
 public class Main {
     public static void main(String[] args) {
-        var person1 = new Customer(0, "Mario");
+        //var person1 = new Customer(0, "Mario");
         //person1.getId();
-        person1.setId(1000);
+        //person1.setId(1000);
         // person1.getName();
         // var person2 = new Customer(1, "Marco");
         // person2.getId();
         // person2.getName();
-        // var person3 = new CustomerWithAddress(2, "Matte", "via XX September 20");
+        //var person3 = new CustomerWithAddress(2, "Matteo", "via XX September 20");
         // person3.getId();
         // person3.getName();
         // var example = new MyList();
@@ -40,11 +41,11 @@ public class Main {
         // example.getSize();
         // example.clearSet();
 
-        // // static method
-        // MyList.sum(2, 2);
+        // static method
+        //MyList.sum(2, 2);
 
         // // new class Counter Simple
-        // var c1 = new Counter();
+        //var c1 = new Counter();
         // c1.inc();
         // c1.inc();
         // c1.getVal();
@@ -70,7 +71,7 @@ public class Main {
         // cat.getNoOfLegs();
         // cat.getColor();
 
-        //BabyCat babyCat = new BabyCat(false, "milk", 4,"white", "meow");
+        BabyCat babyCat = new BabyCat(false, "milk", 4,"white", "meow");
         // babyCat.isVegetarian();
         // babyCat.getEats();
         // babyCat.getNoOfLegs();

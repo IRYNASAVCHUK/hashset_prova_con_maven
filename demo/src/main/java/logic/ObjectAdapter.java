@@ -1,4 +1,4 @@
-package logic.gson;
+package logic;
 
 import java.io.IOException;
 import java.lang.reflect.Field;
@@ -6,14 +6,14 @@ import java.util.List;
 import com.google.gson.TypeAdapter;
 import com.google.gson.stream.*;
 
-import logic.log_record.record.Levels;
+import logic.utils.Records;
 
 public class ObjectAdapter extends TypeAdapter<Object> {
-    private Levels level;
+    private Records.Levels level;
     private boolean allFields;
     private boolean insideObject = false;
 
-    public ObjectAdapter(Levels level, boolean allFields) {
+    public ObjectAdapter(Records.Levels level, boolean allFields) {
         this.level = level;
         this.allFields = allFields;
     }

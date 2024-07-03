@@ -8,10 +8,10 @@ public class CustomerWithAddress extends Customer {
 
     public CustomerWithAddress(int id, String name, String address) {
         super(id, name);
-        MyLogger.logMethodEntry("init", this, new Object[] { id, name, address },
+        MyLogger.logMethodEntry("initCustomerWA", this, new Object[] { id, name, address },
                 new Class<?>[] { int.class, String.class, String.class });
         this.address = address;
-        MyLogger.logMethodExit("init", this, void.class, null, new Object[] { id, name, address },
+        MyLogger.logMethodExit("initCustomerWA", this, void.class, null, new Object[] { id, name, address },
                 new Class<?>[] { int.class, String.class, String.class });
     }
 

@@ -1,9 +1,6 @@
-package logic.gson;
+package logic.utils;
 
 import com.google.gson.*;
-
-import logic.log_record.record.Levels;
-import logic.utils.Constants;
 
 import java.io.*;
 import java.util.function.Function;
@@ -29,11 +26,11 @@ public class ConfigLoader {
         return (value != null) ? value : defaultValue;
     }
 
-    public static Levels parseJsonObjectLevels(JsonObject objectLevel) {
+    public static Records.Levels parseJsonObjectLevel (JsonObject objectLevel) {
         var target = getIntFromJsonObject(objectLevel, "target", 0);
         var args = getIntFromJsonObject(objectLevel, "args", 0);
         var result = getIntFromJsonObject(objectLevel, "result", 0);
-        return new Levels(target, args, result);
+        return new Records.Levels(target, args, result);
     }
 
     private static int getIntFromJsonObject(JsonObject object, String key, int defaultValue) {

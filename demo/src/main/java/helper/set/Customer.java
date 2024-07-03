@@ -9,11 +9,11 @@ public class Customer {
         private String name;
 
         public Customer(int id, String name) {
-                MyLogger.logMethodEntry("init", this, new Object[] { id, name },
+                MyLogger.logMethodEntry("initCustomer", this, new Object[] { id, name },
                                 new Class<?>[] { int.class, String.class });
                 this.id = id;
                 this.name = name;
-                MyLogger.logMethodExit("init", this, void.class, null, new Object[] { id, name },
+                MyLogger.logMethodExit("initCustomer", this, void.class, null, new Object[] { id, name },
                                 new Class<?>[] { int.class, String.class });
         }
 
