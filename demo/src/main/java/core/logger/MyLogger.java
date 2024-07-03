@@ -1,10 +1,10 @@
-package logic.logger;
+package core.logger;
 
 import java.util.logging.*;
 
-import logic.utils.Constants;
-import logic.utils.Records;
-import logic.websocket.MyClient;
+import core.utils.Constants;
+import core.utils.Records;
+import core.websocket.MyClient;
 
 public class MyLogger extends Logger {
 

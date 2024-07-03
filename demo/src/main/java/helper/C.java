@@ -1,6 +1,6 @@
 package helper;
 
-import logic.logger.MyLogger;
+import core.logger.MyLogger;
 
 public class C {
 	C f1;

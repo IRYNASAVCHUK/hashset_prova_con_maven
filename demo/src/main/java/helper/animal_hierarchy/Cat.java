@@ -1,7 +1,7 @@
 package helper.animal_hierarchy;
 
 
-import logic.logger.MyLogger;
+import core.logger.MyLogger;
 
 public class Cat extends Animal {
     private String color;

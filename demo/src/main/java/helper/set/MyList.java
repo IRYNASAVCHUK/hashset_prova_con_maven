@@ -3,7 +3,7 @@ package helper.set;
 import java.util.*;
 import java.util.function.Predicate;
 
-import logic.logger.MyLogger;
+import core.logger.MyLogger;
 
 public class MyList {
       private List<Customer> customers;

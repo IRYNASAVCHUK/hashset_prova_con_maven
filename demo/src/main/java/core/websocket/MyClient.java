@@ -1,12 +1,12 @@
-package logic.websocket;
+package core.websocket;
 
 import java.io.IOException;
 import java.net.URI;
 import java.util.logging.*;
 import javax.websocket.*;
 
-import logic.logger.MyFormatter;
-import logic.utils.Constants;
+import core.logger.MyFormatter;
+import core.utils.Constants;
 
 @ClientEndpoint
 public class MyClient extends Handler {

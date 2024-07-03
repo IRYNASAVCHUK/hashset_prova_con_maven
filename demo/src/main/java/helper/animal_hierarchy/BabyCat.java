@@ -1,7 +1,7 @@
 package helper.animal_hierarchy;
 
 
-import logic.logger.MyLogger;
+import core.logger.MyLogger;
 
 public class BabyCat extends Cat {
     private String sound;

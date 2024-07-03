@@ -2,7 +2,7 @@ package helper.set;
 
 import java.util.Objects;
 
-import logic.logger.MyLogger;
+import core.logger.MyLogger;
 
 public class Customer {
         private int id;

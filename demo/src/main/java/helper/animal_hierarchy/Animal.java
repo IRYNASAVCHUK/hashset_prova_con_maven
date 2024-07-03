@@ -2,7 +2,7 @@ package helper.animal_hierarchy;
 
 
 import helper.set.CustomerWithAddress;
-import logic.logger.MyLogger;
+import core.logger.MyLogger;
 
 public class Animal {
     private boolean vegetarian;

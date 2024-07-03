@@ -1,4 +1,4 @@
-package logic.websocket;
+package core.websocket;
 
 import java.io.IOException;
 import java.util.Scanner;
@@ -8,7 +8,7 @@ import javax.websocket.server.ServerEndpoint;
 
 import org.glassfish.tyrus.server.Server;
 
-import logic.utils.Constants;
+import core.utils.Constants;
 
 @ServerEndpoint("/endpoint")
 public class MyServer {

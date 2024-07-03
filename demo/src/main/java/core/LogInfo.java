@@ -1,9 +1,9 @@
-package logic;
+package core;
 
 import java.util.*;
 import java.util.logging.LogRecord;
 
-import logic.utils.Records;
+import core.utils.Records;
 
 
 public class LogInfo {

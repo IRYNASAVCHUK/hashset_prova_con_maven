@@ -1,6 +1,6 @@
 package helper.set;
 
-import logic.logger.MyLogger;
+import core.logger.MyLogger;
 
 public class CustomerWithAddress extends Customer {
     private String address;

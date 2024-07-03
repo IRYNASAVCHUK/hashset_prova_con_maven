@@ -1,11 +1,11 @@
-package logic.http;
+package core.prova.http;
 
 import java.io.*;
 import java.net.*;
 import java.util.logging.*;
 
-import logic.logger.MyFormatter;
-import logic.utils.Constants;
+import core.logger.MyFormatter;
+import core.utils.Constants;
 
 
 public class SimpleHttpClient extends SocketHandler {

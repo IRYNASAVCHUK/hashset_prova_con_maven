@@ -1,12 +1,12 @@
-package logic.logger;
+package core.logger;
 
 import java.util.logging.*;
 import com.google.gson.*;
 
-import logic.LogInfo;
-import logic.ObjectAdapter;
-import logic.utils.Constants;
-import logic.utils.Records;
+import core.LogInfo;
+import core.ObjectAdapter;
+import core.utils.Constants;
+import core.utils.Records;
 
 public class MyFormatter extends Formatter {
     private static final ObjectAdapter adapter = new ObjectAdapter(Constants.LEVELS, Constants.ALL_FIELDS);

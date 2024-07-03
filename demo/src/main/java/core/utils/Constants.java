@@ -1,4 +1,4 @@
-package logic.utils;
+package core.utils;
 
 import java.util.function.Function;
 import com.google.gson.JsonElement;

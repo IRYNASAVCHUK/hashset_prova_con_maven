@@ -1,8 +1,8 @@
-package logic.http;
+package core.prova.http;
 
 import com.sun.net.httpserver.*;
 
-import logic.utils.Constants;
+import core.utils.Constants;
 
 import java.io.*;
 import java.net.InetSocketAddress;

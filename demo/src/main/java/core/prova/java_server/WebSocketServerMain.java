@@ -1,11 +1,11 @@
-package logic.java_server;
+package core.prova.java_server;
 
 
 import org.java_websocket.WebSocket;
 import org.java_websocket.handshake.ClientHandshake;
 import org.java_websocket.server.WebSocketServer;
 
-import logic.utils.Constants;
+import core.utils.Constants;
 
 import java.net.InetSocketAddress;
 import java.util.Scanner;

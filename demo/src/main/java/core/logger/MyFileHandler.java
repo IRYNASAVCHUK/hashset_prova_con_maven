@@ -1,9 +1,9 @@
-package logic.logger;
+package core.logger;
 
 import java.io.*;
 import java.util.logging.*;
 
-import logic.utils.Constants;
+import core.utils.Constants;
 
 public class MyFileHandler extends FileHandler {
     public MyFileHandler() throws IOException, SecurityException {
