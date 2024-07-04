@@ -1,4 +1,4 @@
-package core.connection;
+package core.logger.handler;
 
 import java.io.IOException;
 import java.net.URI;

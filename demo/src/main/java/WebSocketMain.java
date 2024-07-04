@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 import org.glassfish.tyrus.server.Server;
 
-import core.connection.WebSocketServer;
+import core.logger.handler.WebSocketServer;
 import core.utils.Constants;
 
 public class WebSocketMain {

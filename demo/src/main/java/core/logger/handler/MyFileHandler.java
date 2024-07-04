@@ -1,4 +1,4 @@
-package core.logger;
+package core.logger.handler;
 
 import java.io.*;
 import java.util.logging.*;

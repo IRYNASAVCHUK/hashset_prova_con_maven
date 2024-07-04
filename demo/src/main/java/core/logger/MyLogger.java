@@ -2,7 +2,8 @@ package core.logger;
 
 import java.util.logging.*;
 
-import core.connection.WebSocketClient;
+import core.logger.handler.MyFileHandler;
+import core.logger.handler.WebSocketClient;
 import core.utils.Constants;
 import core.utils.Records;
 
