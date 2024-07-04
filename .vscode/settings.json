@@ -1,0 +1,9 @@
+{
+    "java.configuration.updateBuildConfiguration": "interactive",
+    "cSpell.words": [
+        "Controllo",
+        "Gestisco",
+        "vuoto"
+    ],
+    "java.debug.settings.onBuildFailureProceed": true
+}

@@ -1,5 +1,0 @@
-{
-  "logFile": "customLogFile.json",
-  "eventEntry": "func_pre",
-  "eventReturn": "func_post"
-}
