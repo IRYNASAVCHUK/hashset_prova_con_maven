@@ -4,7 +4,7 @@ import java.io.*;
 import java.net.*;
 import java.util.logging.*;
 
-import core.logger.MyFormatter;
+import core.logger.formatter.MyFormatter;
 import core.utils.Constants;
 
 

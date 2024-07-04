@@ -1,4 +1,4 @@
-package core;
+package core.logger.formatter;
 
 import java.util.*;
 import java.util.logging.LogRecord;

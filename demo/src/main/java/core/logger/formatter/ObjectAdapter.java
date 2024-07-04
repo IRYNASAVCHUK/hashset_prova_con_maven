@@ -1,4 +1,4 @@
-package core;
+package core.logger.formatter;
 
 import java.io.IOException;
 import java.lang.reflect.Field;

@@ -1,10 +1,8 @@
-package core.logger;
+package core.logger.formatter;
 
 import java.util.logging.*;
 import com.google.gson.*;
 
-import core.LogInfo;
-import core.ObjectAdapter;
 import core.utils.Constants;
 import core.utils.Records;
 

@@ -5,7 +5,7 @@ import java.net.URI;
 import java.util.logging.*;
 import javax.websocket.*;
 
-import core.logger.MyFormatter;
+import core.logger.formatter.MyFormatter;
 import core.utils.Constants;
 
 @ClientEndpoint

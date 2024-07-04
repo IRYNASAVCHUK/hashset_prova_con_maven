@@ -3,7 +3,7 @@ package core.prova.java_server;
 import org.java_websocket.client.WebSocketClient;
 import org.java_websocket.handshake.ServerHandshake;
 
-import core.logger.MyFormatter;
+import core.logger.formatter.MyFormatter;
 import core.utils.Constants;
 
 import java.net.URI;

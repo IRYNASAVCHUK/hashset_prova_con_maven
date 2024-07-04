@@ -3,6 +3,7 @@ package core.logger;
 import java.io.*;
 import java.util.logging.*;
 
+import core.logger.formatter.MyFormatter;
 import core.utils.Constants;
 
 public class MyFileHandler extends FileHandler {
